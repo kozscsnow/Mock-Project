@@ -1,0 +1,19 @@
+.success__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
+.success__box {
+  min-width: 400px;
+  padding: 30px;
+
+  border-radius: 24px;
+  background: #191919;
+
+  box-shadow: 10px 10px 20px #191919;
+
+  text-align: center;
+}
