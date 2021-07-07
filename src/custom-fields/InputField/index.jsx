@@ -2,6 +2,7 @@ import React from 'react';
 import { FormGroup, Input, Label, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { ErrorMessage } from 'formik';
+import styles from '../../assets/moduleCss/form.module.css';
 
 InputField.propTypes = {
   field: PropTypes.object.isRequired,
@@ -28,16 +29,16 @@ function InputField(props) {
 
   return (
     <>
-      <FormGroup>
+      <FormGroup className={styles.formGroup}>
         {label && (
-          <Label id="form-id" for={name}>
+          <Label id="form-id" for={name} className={styles.label}>
             {label}
           </Label>
         )}
         <Input
           type={type}
           placeholder={placeholder}
-          className="form-id form-control text-center"
+          className={styles.inputForm}
           id={name}
           name={name}
           onChange={onChange}

@@ -4,7 +4,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 import RegisForm from './components/RegisForm';
 import SuccessRegisBox from './components/SuccessRegisBox';
-import './RegisterPage.css';
+import RegisterPageStyles from './RegisterPage.module.css';
+import styles from '../../assets/moduleCss/form.module.css';
 
 function RegisterPage(props) {
   const dispatch = useDispatch();
@@ -23,20 +24,22 @@ function RegisterPage(props) {
   const handleRegisSuccess = () => {
     setIsRegisSuccess(!isRegisSuccess);
   };
-  const handleButtonLoginClick = () => {
-    history.push('/login');
-  };
+
   return (
     <>
-      {/* <SuccessRegisBox /> */}
-      {/* <button onClick={handleButtonLoginClick}>Log in</button> */}
-      <Link to="/login">Log in</Link>
+      <div>
+        {/* <SuccessRegisBox /> */}
+        {/* <button onClick={handleButtonLoginClick}>Log in</button> */}
+        <Link to="/login" className={RegisterPageStyles.regisButtonLogin}>
+          Log in
+        </Link>
 
-      {isRegisSuccess ? (
-        <SuccessRegisBox onRegisSuccess={handleRegisSuccess} />
-      ) : (
-        <RegisForm onRegisSuccess={handleRegisSuccess} />
-      )}
+        {isRegisSuccess ? (
+          <SuccessRegisBox onRegisSuccess={handleRegisSuccess} />
+        ) : (
+          <RegisForm onRegisSuccess={handleRegisSuccess} />
+        )}
+      </div>
     </>
   );
 }

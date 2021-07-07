@@ -1,0 +1,20 @@
+.loginButtonRegis {
+  width: 216px;
+  margin-top: 20px;
+  padding: 6px;
+  border: solid 2px #55efc4;
+  background: none;
+  border-radius: 24px;
+
+  background-color: #191919;
+  color: #fff;
+  cursor: pointer;
+
+  text-align: center;
+
+  transition: 0.5s;
+  outline: none;
+}
+.loginButtonRegis:focus {
+  outline: none;
+}

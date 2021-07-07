@@ -1,0 +1,28 @@
+.regisContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+.regisButtonLogin {
+  display: block;
+  width: 216px;
+  margin: 20px auto;
+  padding: 6px;
+  border: solid 2px #55efc4;
+  background: none;
+  border-radius: 24px;
+
+  background-color: #191919;
+  color: #fff;
+  cursor: pointer;
+
+  text-align: center;
+
+  transition: 0.5s;
+  outline: none;
+}
+.regisButtonLogin:focus {
+  outline: none;
+}

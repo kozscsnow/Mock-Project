@@ -1,5 +1,4 @@
-import { Route, Switch } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 import About from './components/About';
 import AuthRoute from './components/AuthRoute';
@@ -12,15 +11,6 @@ import RegisterPage from './pages/RegisterPage';
 function App() {
   return (
     <div className="App">
-      <p>
-        <Link to="/login">login</Link>
-      </p>
-      <p>
-        <Link to="/register">register</Link>
-      </p>
-      <p>
-        <Link to="/about">about</Link>
-      </p>
       <Switch>
         <Route exact path="/" component={NewsPage} />
         <Route exact path="/login" component={LoginPage} />

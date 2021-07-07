@@ -4,10 +4,13 @@ import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 import LoginForm from './components/LoginForm';
-import './LoginPage.css';
+// import './LoginPage.css';
+import styles from './LoginPage.module.css';
+import formStyles from '../../assets/moduleCss/form.module.css';
 
 // const history = createBrowserHistory();
 function LoginPage(props) {
+  console.log(styles);
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,12 +24,14 @@ function LoginPage(props) {
 
     if (username === 'admin' && password === 'admin') {
       return true;
-    } else if (
+    }
+    if (
       username !== usernameLocalStorage ||
       password !== passwordLocalStorage
     ) {
       errorMessage = 'Your User or Password is Invalid';
-    } else if (errorMessage) {
+    }
+    if (errorMessage) {
       setErrorMessage(errorMessage);
       return false;
     }
@@ -62,12 +67,9 @@ function LoginPage(props) {
     };
   });
 
-  const handleButtonCreateClick = () => {
-    history.push('/register');
-  };
   return (
     <div>
-      <div className="login__container">
+      <div className={formStyles.formContainer}>
         <LoginForm
           onLoginFormSubmit={handleLoginFormSubmit}
           username={username}
@@ -76,7 +78,9 @@ function LoginPage(props) {
           handleGetPassword={handleGetPassword}
           errorMessage={errorMessage}
         />
-        <button to="/register">Creat Your Account</button>
+        <Link to="/register" className={styles.loginButtonRegis}>
+          Creat Your Account
+        </Link>
       </div>
     </div>
   );

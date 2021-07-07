@@ -2,7 +2,9 @@ import { FastField, Form, Formik } from 'formik';
 import React from 'react';
 import InputField from '../../../../custom-fields/InputField';
 import * as Yup from 'yup';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import styles from '../../../../assets/moduleCss/form.module.css';
+import regisFormStyles from './RegisForm.module.css';
 
 function RegisForm(props) {
   const { onRegisSuccess } = props;
@@ -34,7 +36,7 @@ function RegisForm(props) {
   };
   return (
     <>
-      <div className="regis-container">
+      <div className={regisFormStyles.regisContainer}>
         <div className="form regis-form">
           <div className="form-group form-group-id">
             <Formik
@@ -46,7 +48,7 @@ function RegisForm(props) {
                 const { values, errors, touched } = formikProps;
                 console.log({ values, errors, touched });
                 return (
-                  <Form className="form regis-form">
+                  <Form className={`${styles.form}`}>
                     <h3 className="text-light">Create Your Account</h3>
                     <FastField
                       name="username"
@@ -75,12 +77,12 @@ function RegisForm(props) {
                       type="password"
                     />
                     <div className="form-group">
-                      <button type="submit" className="button regis-btn">
+                      <button type="submit" className={styles.button}>
                         Register
                       </button>
                     </div>
                     <div className="form-group">
-                      <button type="reset" className="button regis-btn">
+                      <button type="reset" className={styles.button}>
                         Reset
                       </button>
                     </div>

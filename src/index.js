@@ -1,23 +1,25 @@
 import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import GlobalLoading from './components/GlobalLoading';
+import 'antd/dist/antd.css';
 
 const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <GlobalLoading />
-      <Router history={history}>
-        <App />
-      </Router>
+      <GlobalLoading>
+        <BrowserRouter history={history}>
+          <App />
+        </BrowserRouter>
+      </GlobalLoading>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

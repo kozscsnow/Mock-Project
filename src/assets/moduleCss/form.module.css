@@ -1,4 +1,4 @@
-.login__container {
+.formContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,26 +6,7 @@
 
   height: 100vh;
 }
-
-.login__button {
-  width: 216px;
-  margin-top: 20px;
-  padding: 6px;
-  border: solid 2px #55efc4;
-  background: none;
-  border-radius: 24px;
-
-  background-color: #191919;
-  color: #fff;
-  cursor: pointer;
-
-  text-align: center;
-
-  transition: 0.5s;
-  outline: none;
-}
-
-form.form {
+.form {
   min-width: 300px;
   padding: 30px;
 
@@ -36,19 +17,19 @@ form.form {
 
   text-align: center;
 }
-label {
+.label {
   margin-bottom: 10px;
   color: #fff;
 }
-.form-group {
+.formGroup {
   display: flex;
   flex-flow: wrap column;
   align-items: center;
+  justify-content: center;
 
   margin: 18px auto;
 }
-input.form-id,
-input.form-password {
+.inputForm {
   width: 200px;
   padding: 6px;
   margin: 0px;
@@ -66,13 +47,12 @@ input.form-password {
   transition: 0.5s;
 }
 
-input.form-id:hover,
-input.form-password:hover {
+.inputForm:hover {
   width: 230px;
 
   border-color: #fdcb6e;
 }
-button.button {
+.button {
   width: 216px;
   margin-top: 10px;
   padding: 6px;
@@ -86,16 +66,21 @@ button.button {
   transition: 0.5s;
   outline: none;
 }
+.button:focus {
+  outline: none;
+}
 
-button.button:hover {
+.button:hover {
   background-color: #81ecec;
   color: #95a5a6;
 }
 
-.form-group-password small.form-valid {
-  color: #f1c40f;
-}
-
 .button.regis-btn {
   width: 300px;
+}
+
+@media screen and (min-width: 800px) {
+  .button {
+    width: 300px;
+  }
 }
