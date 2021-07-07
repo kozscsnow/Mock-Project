@@ -1,0 +1,28 @@
+.navContainer {
+  margin: 10px 0px;
+  padding: 6px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: #84cdf1;
+  border-radius: 10px;
+}
+.navList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 70%;
+  height: 100%;
+  margin: 0px;
+
+  list-style: none;
+  overflow: auto;
+}
+.navItem {
+  display: block;
+}
+.icon {
+  font-size: 30px;
+}

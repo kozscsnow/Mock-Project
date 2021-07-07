@@ -2,8 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { GlobalActions } from '../../redux/rootAction';
 import { Link } from 'react-router-dom';
-import newsAPI from '../../api/newsAPI';
 import HeaderNews from './components/HeaderNews';
+import newsAPI from '../../api/axiosClientNews/newsAPI';
+import IntroCarousel from './components/IntroCarousel';
+import MainContent from './components/MainContent';
+import ContentCarousel from './components/ContentCarousel';
+import Navigation from './components/Navigation';
 
 function NewsPage(props) {
   const dispatch = useDispatch();
@@ -30,7 +34,10 @@ function NewsPage(props) {
   return (
     <div className="container">
       <HeaderNews />
-      <Link to="/login">Go Login</Link>
+      <Navigation />
+      <IntroCarousel />
+      <MainContent />
+      <ContentCarousel />
     </div>
   );
 }

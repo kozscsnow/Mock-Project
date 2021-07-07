@@ -1,0 +1,12 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80px;
+}

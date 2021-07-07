@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const axiosClient = axios.create({
+const axiosClientCovid = axios.create({
   baseURL: 'https://newsapi.org/v2/',
   header: {
     'Content-type': 'application/json',
@@ -8,7 +8,7 @@ const axiosClient = axios.create({
 });
 
 // Add a request interceptor
-axiosClient.interceptors.request.use(
+axiosClientCovid.interceptors.request.use(
   function (config) {
     // Do something before request is sent
     return config;
@@ -20,7 +20,7 @@ axiosClient.interceptors.request.use(
 );
 
 // Add a response interceptor
-axiosClient.interceptors.response.use(
+axiosClientCovid.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -32,4 +32,4 @@ axiosClient.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-export default axiosClient;
+export default axiosClientCovid;

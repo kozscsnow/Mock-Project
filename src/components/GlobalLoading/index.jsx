@@ -13,7 +13,12 @@ function GlobalLoading({ children }) {
           <Roller color="silver" />
         </div>
       ) : null} */}
-      <Spin tip="Loading..." size="large" spinning={isLoading}>
+      <Spin
+        tip="Loading..."
+        size="large"
+        spinning={isLoading}
+        style={{ maxHeight: '100%' }}
+      >
         {children}
       </Spin>
     </div>
