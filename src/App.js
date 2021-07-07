@@ -7,15 +7,17 @@ import NewsPage from './pages/NewsPage';
 import NotFound from './components/NotFound';
 import PrivateRoute from './components/PrivateRoute';
 import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
     <div className="App">
       <Switch>
-        <Route exact path="/" component={NewsPage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/register" component={RegisterPage} />
-        <Route exact path="/about" component={About} />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/news" component={NewsPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/about" component={About} />
         <Route component={NotFound} />
       </Switch>
     </div>

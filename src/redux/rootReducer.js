@@ -1,9 +1,10 @@
-
 import { combineReducers } from 'redux';
 import { GlobalReducer } from './slices/globalSlice';
+import { FormRegisterReducer } from './slices/formRegisterSlice';
 
 const rootReducer = combineReducers({
-  GlobalReducer
+  GlobalReducer,
+  FormRegisterReducer,
 });
 
 export default rootReducer;

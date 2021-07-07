@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 import RegisForm from './components/RegisForm';
@@ -30,14 +30,16 @@ function RegisterPage(props) {
       <div>
         {/* <SuccessRegisBox /> */}
         {/* <button onClick={handleButtonLoginClick}>Log in</button> */}
-        <Link to="/login" className={RegisterPageStyles.regisButtonLogin}>
-          Log in
-        </Link>
 
         {isRegisSuccess ? (
           <SuccessRegisBox onRegisSuccess={handleRegisSuccess} />
         ) : (
-          <RegisForm onRegisSuccess={handleRegisSuccess} />
+          <div>
+            <Link to="/login" className={RegisterPageStyles.regisButtonLogin}>
+              Log in
+            </Link>
+            <RegisForm onRegisSuccess={handleRegisSuccess} />
+          </div>
         )}
       </div>
     </>
