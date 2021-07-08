@@ -1,13 +1,24 @@
 import { FastField, Form, Formik } from 'formik';
-import React from 'react';
+import React, { useRef } from 'react';
 import InputField from '../../../../custom-fields/InputField';
 import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
 import styles from '../../../../assets/moduleCss/form.module.css';
 import regisFormStyles from './RegisForm.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  FormRegisterActions,
+  GlobalActions,
+} from '../../../../redux/rootAction';
 
 function RegisForm(props) {
   const { onRegisSuccess } = props;
+  const storeAccountRef = useRef([]);
+  const storeAccount = useSelector(
+    (state) => state.FormRegisterReducer.storeAccount
+  );
+  const dispatch = useDispatch();
+
   const initialValues = {
     username: '',
     email: '',
@@ -15,7 +26,7 @@ function RegisForm(props) {
     confirmPassword: '',
   };
 
-  const validationShema = Yup.object().shape({
+  const validationSchema = Yup.object().shape({
     username: Yup.string().required(' This field is required!!'),
     email: Yup.string()
       .email('Email is invalid')
@@ -30,6 +41,16 @@ function RegisForm(props) {
 
   const handleFormRegisSubmit = (values) => {
     const { username, password } = values;
+
+    dispatch(FormRegisterActions.getRegisterAccount({ username, password }));
+    console.log(storeAccount);
+    // storeAccountRef.current.push({ username, password });
+    // console.log(storeAccountRef.current);
+    // storeAccount.push({ username, password });
+    // localStorage.setItem(
+    //   'storeAccount',
+    //   JSON.stringify(storeAccountRef.current)
+    // );
     localStorage.setItem('username', username);
     localStorage.setItem('password', password);
     onRegisSuccess();
@@ -39,14 +60,18 @@ function RegisForm(props) {
       <div className={regisFormStyles.regisContainer}>
         <div className="form regis-form">
           <div className="form-group form-group-id">
+            {/* {storeAccount}
+            <button onClick={() => dispatch(FormRegisterActions.increase(1))}>
+              click
+            </button> */}
             <Formik
               initialValues={initialValues}
-              validationSchema={validationShema}
+              validationSchema={validationSchema}
               onSubmit={handleFormRegisSubmit}
             >
               {(formikProps) => {
-                const { values, errors, touched } = formikProps;
-                console.log({ values, errors, touched });
+                // const { values, errors, touched } = formikProps;
+                // console.log({ values, errors, touched });
                 return (
                   <Form className={`${styles.form}`}>
                     <h3 className="text-light">Create Your Account</h3>
@@ -90,58 +115,7 @@ function RegisForm(props) {
                 );
               }}
             </Formik>
-            {/* <label id="form-id" htmlFor="form-id">
-              Your User Name
-            </label>
-            <input
-              type="text"
-              placeholder="Username"
-              className="form-id form-control text-center"
-              id="form-id"
-              name="form-id"
-            ></input> */}
           </div>
-          {/* <div className="form-group form-group-id">
-            <label id="form-id" htmlFor="form-id">
-              Your Email
-            </label>
-            <input
-              type="email"
-              placeholder="Enter Your Email"
-              className="form-id form-control text-center"
-              id="form-id"
-              name="form-id"
-            ></input>
-          </div>
-          <div className="form-group form-group-id">
-            <label id="form-id" htmlFor="form-id">
-              Your Password
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Your Password"
-              className="form-id form-control text-center"
-              id="form-id"
-              name="form-id"
-            ></input>
-          </div>
-          <div className="form-group form-group-id">
-            <label id="form-id" htmlFor="form-id">
-              Re-enter Your Password
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Your Password"
-              className="form-id form-control text-center"
-              id="form-id"
-              name="form-id"
-            ></input>
-          </div>
-          <div className="form-group">
-            <button type="submit" className="button regis-btn">
-              Register
-            </button>
-          </div> */}
         </div>
       </div>
     </>

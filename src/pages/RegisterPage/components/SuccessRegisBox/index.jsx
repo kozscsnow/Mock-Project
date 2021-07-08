@@ -1,6 +1,7 @@
 import { Result, Button } from 'antd';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { GlobalActions } from '../../../../redux/rootAction';
 import './SuccessRegisBox.css';
 function SuccessRegisBox(props) {
@@ -17,7 +18,6 @@ function SuccessRegisBox(props) {
   });
 
   const handleBtnRegisClick = () => {
-    console.log('sd');
     if (!onRegisSuccess) return;
     onRegisSuccess();
   };
@@ -27,9 +27,9 @@ function SuccessRegisBox(props) {
       title="Successfully Register!"
       subTitle="Congratulation"
       extra={[
-        <Button type="primary" key="goLogin">
+        <Link to="/login" type="primary" key="goLogin">
           Go Login
-        </Button>,
+        </Link>,
         <Button onClick={handleBtnRegisClick} key="regisAgain">
           Register another account
         </Button>,

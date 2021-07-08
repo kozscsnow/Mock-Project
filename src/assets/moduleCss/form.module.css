@@ -79,8 +79,12 @@
   width: 300px;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 760px) {
   .button {
     width: 300px;
+  }
+
+  .inputForm:hover {
+    width: 280px;
   }
 }

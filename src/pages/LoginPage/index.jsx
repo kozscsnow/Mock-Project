@@ -10,13 +10,13 @@ import formStyles from '../../assets/moduleCss/form.module.css';
 
 // const history = createBrowserHistory();
 function LoginPage(props) {
-  console.log(styles);
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
+
   const validate = () => {
     let errorMessage = '';
     let usernameLocalStorage = localStorage.getItem('username');
@@ -25,10 +25,7 @@ function LoginPage(props) {
     if (username === 'admin' && password === 'admin') {
       return true;
     }
-    if (
-      username !== usernameLocalStorage ||
-      password !== passwordLocalStorage
-    ) {
+    if (username !== usernameLocalStorage || password !== passwordLocalStorage) {
       errorMessage = 'Your User or Password is Invalid';
     }
     if (errorMessage) {
@@ -44,6 +41,7 @@ function LoginPage(props) {
     let isFormValid = validate();
     if (isFormValid) {
       history.push('/');
+      dispatch(GlobalActions.setIsLoggedIn(true));
       //Clear errorMessage
       setErrorMessage('');
     }
