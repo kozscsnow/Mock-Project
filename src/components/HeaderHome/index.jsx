@@ -1,11 +1,19 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { LogoutOutlined } from '@ant-design/icons';
 import { PageHeader, Button, Descriptions, Menu } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { GlobalActions } from '../../redux/rootAction';
 
 function HeaderHome(props) {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.GlobalReducer.isLoggedIn);
+  const handleLogout = () => {
+    dispatch(GlobalActions.setIsLoggedIn(false));
+    // dispatch(GlobalActions.resetStoreRedux());
+  };
   return (
     <div className="site-page-header-ghost-wrapper">
       {/* <div className="logo">Logo</div> */}
@@ -20,12 +28,30 @@ function HeaderHome(props) {
         title="Home Page"
         subTitle="Covid-19"
         extra={[
-          <Link key="3" to="/news">
+          <Link key="1" to="/news">
             News
           </Link>,
-          <Button key="2">Operation</Button>,
-          <Button onClick={() => history.push('/login')} key="1" type="primary">
-            Login
+          <Link key="6" to="/dashboard">
+            Dashboard
+          </Link>,
+          <Link key="7" to="/countries">
+            Countries
+          </Link>,
+
+          <Button onClick={() => history.push('/login')} key="2">
+            Register
+          </Button>,
+          <Button key="5">
+            {isLoggedIn ? (
+              <Link to="" onClick={handleLogout} key="3">
+                Log Out
+              </Link>
+            ) : (
+              <Link to="/login" key="4">
+                {' '}
+                Log In
+              </Link>
+            )}
           </Button>,
         ]}
       >

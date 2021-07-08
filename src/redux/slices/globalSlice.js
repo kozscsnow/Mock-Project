@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isLoading: true,
+  isLoggedIn: false,
 };
 
 const globalSlice = createSlice({
@@ -10,6 +11,9 @@ const globalSlice = createSlice({
   reducers: {
     setIsLoading(state, action) {
       state.isLoading = action.payload;
+    },
+    setIsLoggedIn(state, action) {
+      state.isLoggedIn = action.payload;
     },
 
     resetStoreRedux(state, action) {

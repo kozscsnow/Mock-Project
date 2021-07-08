@@ -1,14 +1,18 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
 function AuthRoute({ component: Component, ...rest }) {
+  const isLoggedIn = useSelector((state) => state.GlobalReducer.isLoggedIn);
+  console.log(isLoggedIn);
   const checkLoggedIn = () => {
-    let usernameLocalStorage = localStorage.getItem('username');
-    let passwordLocalStorage = localStorage.getItem('password');
-    if (usernameLocalStorage === 'admin' && passwordLocalStorage === 'admin') {
-      return true;
-    }
-    return false;
+    // let usernameLocalStorage = localStorage.getItem('username');
+    // let passwordLocalStorage = localStorage.getItem('password');
+    // if (usernameLocalStorage === 'admin' && passwordLocalStorage === 'admin') {
+    //   return true;
+    // }
+    // return false;
+    return isLoggedIn;
   };
 
   return (

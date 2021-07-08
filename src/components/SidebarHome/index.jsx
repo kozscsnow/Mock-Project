@@ -26,22 +26,22 @@ function SidebarHome(props) {
         <Menu.Item key="dashboard">Dashboard</Menu.Item>
         <SubMenu icon={<MailOutlined />} title="Navigation One" key="info">
           <Menu.ItemGroup key="info" title="Item 1">
-            <Menu.Item key="3">Option 3</Menu.Item>
-            <Menu.Item key="4">Option 4</Menu.Item>
+            <Menu.Item key="1">Option 1</Menu.Item>
+            <Menu.Item key="2">Option 2</Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
         <Menu.Item key="title 1">Title 1</Menu.Item>
-        <SubMenu icon={<AppstoreOutlined />} title="Navigation Two">
+        <SubMenu icon={<AppstoreOutlined />} title="Navigation Two" key="info1">
           <Menu.ItemGroup key="chart" title="Item 1">
             <Menu.Item key="3">Option 3</Menu.Item>
             <Menu.Item key="4">Option 4</Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
         <Menu.Item key="title 2">Title 2</Menu.Item>
-        <SubMenu icon={<DesktopOutlined />} title="Navigation Three">
+        <SubMenu icon={<DesktopOutlined />} title="Navigation Three" key="info2">
           <Menu.ItemGroup key="more" title="Item 1">
-            <Menu.Item key="3">Option 3</Menu.Item>
-            <Menu.Item key="4">Option 4</Menu.Item>
+            <Menu.Item key="5">Option 5</Menu.Item>
+            <Menu.Item key="6">Option 6</Menu.Item>
           </Menu.ItemGroup>
         </SubMenu>
       </Menu>
