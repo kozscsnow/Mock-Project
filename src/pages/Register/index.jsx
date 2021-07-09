@@ -4,10 +4,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 import RegisForm from './components/RegisForm';
 import SuccessRegisBox from './components/SuccessRegisBox';
-import RegisterPageStyles from './RegisterPage.module.css';
+import RegisterStyles from './Register.module.css';
 import styles from '../../assets/moduleCss/form.module.css';
 
-function RegisterPage(props) {
+function Register(props) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [isRegisSuccess, setIsRegisSuccess] = useState(false);
@@ -35,7 +35,7 @@ function RegisterPage(props) {
           <SuccessRegisBox onRegisSuccess={handleRegisSuccess} />
         ) : (
           <div>
-            <Link to="/login" className={RegisterPageStyles.regisButtonLogin}>
+            <Link to="/login" className={RegisterStyles.regisButtonLogin}>
               Log in
             </Link>
             <RegisForm onRegisSuccess={handleRegisSuccess} />
@@ -46,4 +46,4 @@ function RegisterPage(props) {
   );
 }
 
-export default RegisterPage;
+export default Register;
