@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 import { GlobalActions } from '../../redux/rootAction';
 import LoginForm from './components/LoginForm';
 // import './LoginPage.css';
-import styles from './LoginPage.module.css';
+import styles from './Login.module.css';
 import formStyles from '../../assets/moduleCss/form.module.css';
+import SocialMedia from './components/SocialMedia';
+// import login_image from '../../assets/images/login-image.svg';
 
 // const history = createBrowserHistory();
-function LoginPage(props) {
+function Login(props) {
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +27,10 @@ function LoginPage(props) {
     if (username === 'admin' && password === 'admin') {
       return true;
     }
-    if (username !== usernameLocalStorage || password !== passwordLocalStorage) {
+    if (
+      username !== usernameLocalStorage ||
+      password !== passwordLocalStorage
+    ) {
       errorMessage = 'Your User or Password is Invalid';
     }
     if (errorMessage) {
@@ -68,6 +73,13 @@ function LoginPage(props) {
   return (
     <div>
       <div className={formStyles.formContainer}>
+        <div className={styles.imageContainer}>
+          <img
+            src="./images/login-image.svg"
+            alt="login_image"
+            className={styles.image}
+          />
+        </div>
         <LoginForm
           onLoginFormSubmit={handleLoginFormSubmit}
           username={username}
@@ -79,9 +91,10 @@ function LoginPage(props) {
         <Link to="/register" className={styles.loginButtonRegis}>
           Creat Your Account
         </Link>
+        <SocialMedia />
       </div>
     </div>
   );
 }
 
-export default LoginPage;
+export default Login;

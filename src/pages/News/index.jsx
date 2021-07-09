@@ -9,7 +9,7 @@ import MainContent from './components/MainContent';
 import ContentCarousel from './components/ContentCarousel';
 import Navigation from './components/Navigation';
 
-function NewsPage(props) {
+function News(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
@@ -42,4 +42,4 @@ function NewsPage(props) {
   );
 }
 
-export default NewsPage;
+export default News;

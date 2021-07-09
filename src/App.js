@@ -1,12 +1,12 @@
 import { Route, Switch, Link } from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import About from './components/About';
 import AuthRoute from './components/AuthRoute';
-import LoginPage from './pages/LoginPage';
-import NewsPage from './pages/NewsPage';
+import Login from './pages/Login';
+import News from './pages/News';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './components/PrivateRoute';
-import RegisterPage from './pages/RegisterPage';
+import Register from './pages/Register';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Countries from './pages/Countries';
@@ -17,9 +17,9 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
-        <AuthRoute path="/login" component={LoginPage} />
-        <AuthRoute path="/register" component={RegisterPage} />
-        <PrivateRoute path="/news" component={NewsPage} />
+        <AuthRoute path="/login" component={Login} />
+        <AuthRoute path="/register" component={Register} />
+        <PrivateRoute path="/news" component={News} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/countries" component={Countries} />
         <PrivateRoute path="/countries/:countriesID" component={CountryDetail} />
