@@ -2,7 +2,7 @@ import React from 'react';
 import { FormControl, InputLabel, NativeSelect } from '@material-ui/core';
 
 function CountriesSelectorInput(props) {
-  const { value, onInputChange, countries } = props;
+  const { value, onInputChange, listInfoCovidCountries } = props;
   return (
     <div>
       <FormControl style={{ width: '200px' }}>
@@ -17,7 +17,7 @@ function CountriesSelectorInput(props) {
             id: 'country-selector',
           }}
         >
-          {countries.map((country) => {
+          {listInfoCovidCountries.map((country) => {
             return (
               <option
                 value={country.countryInfo.iso2}

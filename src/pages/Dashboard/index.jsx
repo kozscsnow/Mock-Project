@@ -8,23 +8,23 @@ import InfoCovid from './components/InfoCovid';
 
 function Dashboard(props) {
   const dispatch = useDispatch();
-  const [countries, setCountries] = useState([]);
+  const [listInfoCovidCountries, setListInfoCovidCountries] = useState([]);
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
 
     const fetchInfoCovidCountries = async () => {
       const listInfoCovidCountries = await covidCountriesAPI.getAll();
       console.log({ listInfoCovidCountries });
-      setCountries(listInfoCovidCountries);
+      setListInfoCovidCountries(listInfoCovidCountries);
       dispatch(GlobalActions.setIsLoading(false));
     };
     fetchInfoCovidCountries();
   }, [dispatch]);
   return (
     <div className="container">
-      <CountriesSelectorInput countries={countries} />
+      <CountriesSelectorInput listInfoCovidCountries={listInfoCovidCountries} />
       <InfoCovid />
-      <Chart />
+      <Chart listInfoCovidCountries={listInfoCovidCountries} />
     </div>
   );
 }
