@@ -11,6 +11,7 @@ import NotFound from './pages/NotFound';
 import Register from './pages/Register';
 
 function App() {
+  // render
   return (
     <div className="App">
       <Switch>
