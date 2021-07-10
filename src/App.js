@@ -1,16 +1,14 @@
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.scss';
-import About from './components/About';
 import AuthRoute from './components/AuthRoute';
+import PrivateRoute from './components/PrivateRoute';
+import Dashboard from './pages/Dashboard';
+import DetailInfoCountry from './pages/DetailInfoCountry';
+import Home from './pages/Home';
 import Login from './pages/Login';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
-import PrivateRoute from './components/PrivateRoute';
 import Register from './pages/Register';
-import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import Countries from './pages/Countries';
-import CountryDetail from './pages/Countries/components/CountryDetail';
 
 function App() {
   return (
@@ -20,9 +18,11 @@ function App() {
         <AuthRoute path="/login" component={Login} />
         <AuthRoute path="/register" component={Register} />
         <PrivateRoute path="/news" component={News} />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PrivateRoute path="/countries" component={Countries} />
-        <PrivateRoute path="/countries/:countriesID" component={CountryDetail} />
+        <Route path="/dashboard" component={Dashboard} />
+        <PrivateRoute
+          path="/countries/:countryID"
+          component={DetailInfoCountry}
+        />
 
         <Route component={NotFound} />
       </Switch>
