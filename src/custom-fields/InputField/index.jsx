@@ -3,6 +3,7 @@ import { FormGroup, Input, Label, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { ErrorMessage } from 'formik';
 import styles from '../../assets/moduleCss/form.module.css';
+import './InputField.scss';
 
 InputField.propTypes = {
   field: PropTypes.object.isRequired,

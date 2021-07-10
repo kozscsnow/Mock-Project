@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { GlobalActions } from '../../redux/rootAction';
 import { Link } from 'react-router-dom';
 import HeaderNews from './components/HeaderNews';
-import newsAPI from '../../api/axiosClientNews/newsAPI';
+import newsAPI from '../../apis/newsAPI';
 import IntroCarousel from './components/IntroCarousel';
 import MainContent from './components/MainContent';
 import ContentCarousel from './components/ContentCarousel';
 import Navigation from './components/Navigation';
 
-function NewsPage(props) {
+function News(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
@@ -42,4 +42,4 @@ function NewsPage(props) {
   );
 }
 
-export default NewsPage;
+export default News;
