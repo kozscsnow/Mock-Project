@@ -1,93 +1,105 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import HighChartsReact from 'highcharts-react-official';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 
-const generateOptions = () => {
-  return {
-    title: {
-      text: 'Solar Employment Growth by Sector, 2010-2016',
-    },
-
-    subtitle: {
-      text: 'Source: thesolarfoundation.com',
-    },
-
-    yAxis: {
+const generateDataOption = (infoCovidHistory) => {
+  console.log(infoCovidHistory);
+  if (infoCovidHistory) {
+    const { cases } = infoCovidHistory;
+    console.log(cases);
+    // console.log(Object.keys(cases));
+    const categories = [1, 2, 3, 4, 5];
+    return {
       title: {
-        text: 'Number of Employees',
+        text: 'Solar',
       },
-    },
 
-    xAxis: {
-      accessibility: {
-        rangeDescription: 'Range: 2010 to 2017',
+      subtitle: {
+        text: 'Source: thesolarfoundation.com',
       },
-    },
 
-    legend: {
-      layout: 'vertical',
-      align: 'right',
-      verticalAlign: 'middle',
-    },
-
-    plotOptions: {
-      series: {
-        label: {
-          connectorAllowed: false,
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'Number of Employees',
         },
-        pointStart: 2010,
       },
-    },
 
-    series: [
-      {
-        name: 'Installation',
-        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175],
+      xAxis: {
+        categories: categories,
       },
-      {
-        name: 'Manufacturing',
-        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434],
-      },
-      {
-        name: 'Sales & Distribution',
-        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387],
-      },
-      {
-        name: 'Project Development',
-        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227],
-      },
-      {
-        name: 'Other',
-        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111],
-      },
-    ],
 
-    responsive: {
-      rules: [
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat:
+          '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+          '<td style="padding:0"><b>{point.y} ca</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true,
+      },
+
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0,
+        },
+      },
+
+      series: [
         {
-          condition: {
-            maxWidth: 500,
-          },
-          chartOptions: {
-            legend: {
-              layout: 'horizontal',
-              align: 'center',
-              verticalAlign: 'bottom',
-            },
-          },
+          name: 'Số ca nhiễm',
+          data: [],
+        },
+        {
+          name: 'Số ca tử vong',
+          data: [],
+        },
+        {
+          name: 'Số ca hồi phục',
+          data: [],
         },
       ],
-    },
-  };
+
+      responsive: {
+        rules: [
+          {
+            condition: {
+              maxWidth: 500,
+            },
+            chartOptions: {
+              legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom',
+              },
+            },
+          },
+        ],
+      },
+    };
+  }
 };
 
 function LineChart(props) {
+  const { infoCovidHistory } = props;
+  const [options, setOptions] = useState({});
+  // useEffect(() => {
+  //   if (infoCovidHistory) {
+  //     setOptions(generateDataOption(infoCovidHistory));
+  //   }
+  // }, [infoCovidHistory]);
   return (
     <div>
       <HighchartsReact
         highcharts={Highcharts}
-        options={generateOptions()}
+        options={generateDataOption(infoCovidHistory)}
         // constructorType={'mapChart'}
       />
     </div>
