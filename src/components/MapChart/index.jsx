@@ -130,11 +130,12 @@ function MapChart(props) {
   const { listInfoCovidCountries } = props;
   const [DataCovidAll, setDataCovidAll] = useState([]);
   useEffect(() => {
-    const dataCovid = listInfoCovidCountries.map((infoCountry) => {
-      return [infoCountry.country, infoCountry.cases, infoCountry.recovered];
-    });
-
-    setDataCovidAll(dataCovid);
+    if (listInfoCovidCountries) {
+      const dataCovid = listInfoCovidCountries.map((infoCountry) => {
+        return [infoCountry.country, infoCountry.cases, infoCountry.recovered];
+      });
+      setDataCovidAll(dataCovid);
+    }
   }, [listInfoCovidCountries]);
 
   return (
