@@ -20,8 +20,8 @@ function CountriesSelectorInput(props) {
           {listInfoCovidCountries.map((country) => {
             return (
               <option
+                key={country.countryInfo._id}
                 value={country.countryInfo.iso2}
-                // key={country.countryInfo._id}
               >
                 {country.country}
               </option>

@@ -1,8 +1,7 @@
 import React from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
-const generateDataOption = ({ ...dataInfoCovid }) => {
-  //   console.log(dataInfoCovid);
+const generateDataOption = (dataInfoCovid) => {
   return {
     chart: {
       plotBackgroundColor: null,
@@ -13,7 +12,7 @@ const generateDataOption = ({ ...dataInfoCovid }) => {
     title: {
       text: dataInfoCovid.type === 'all' ? 'Toàn thế giới' : dataInfoCovid.type,
     },
-    colors: ['#FF4757', '#FFA502', '#70A1FF'],
+    colors: ['#FF4757', '#70A1FF', '#FFA502'],
     tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
     },
@@ -44,12 +43,12 @@ const generateDataOption = ({ ...dataInfoCovid }) => {
             selected: true,
           },
           {
-            name: 'Số ca tử vong',
-            y: dataInfoCovid.deaths,
-          },
-          {
             name: 'Số ca hồi phục',
             y: dataInfoCovid.recovered,
+          },
+          {
+            name: 'Số ca tử vong',
+            y: dataInfoCovid.deaths,
           },
         ],
       },
@@ -70,7 +69,7 @@ function PieChart(props) {
     <div>
       <HighchartsReact
         highcharts={Highcharts}
-        options={generateDataOption({ ...dataInfoCovid })}
+        options={generateDataOption(dataInfoCovid)}
         // constructorType={'mapChart'}
       />
     </div>

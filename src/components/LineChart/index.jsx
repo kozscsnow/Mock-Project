@@ -2,41 +2,51 @@ import React, { useEffect, useState } from 'react';
 // import HighChartsReact from 'highcharts-react-official';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
+import moment from 'moment';
 
 const generateDataOption = (infoCovidHistory) => {
-  console.log(infoCovidHistory);
-  if (infoCovidHistory) {
-    const { cases } = infoCovidHistory;
-    console.log(cases);
-    // console.log(Object.keys(cases));
-    const categories = [1, 2, 3, 4, 5];
+  if (
+    infoCovidHistory.cases &&
+    infoCovidHistory.deaths &&
+    infoCovidHistory.recovered
+  ) {
+    const listCases = Object.values(infoCovidHistory.cases);
+    const listDeaths = Object.values(infoCovidHistory.deaths);
+    const listRecovered = Object.values(infoCovidHistory.recovered);
+    const listDate = Object.keys(infoCovidHistory.cases);
+    const listDateFormated = listDate.map((item) =>
+      moment(item).format('DD/MM/YYYY')
+    );
+
+    const categories = [...listDateFormated];
     return {
       title: {
-        text: 'Solar',
+        text: 'Toàn thế giới',
       },
 
       subtitle: {
-        text: 'Source: thesolarfoundation.com',
+        text: 'Số ca toàn thế giới',
       },
 
       yAxis: {
         min: 0,
         title: {
-          text: 'Number of Employees',
+          text: 'Số ca nhiễm',
         },
       },
 
       xAxis: {
         categories: categories,
       },
-
+      colors: ['#FF4757', '#70A1FF', '#FFA502'],
       legend: {
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'middle',
       },
       tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        headerFormat:
+          '<span style="font-size:10px">ngày {point.key}</span><table>',
         pointFormat:
           '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
           '<td style="padding:0"><b>{point.y} ca</b></td></tr>',
@@ -55,15 +65,15 @@ const generateDataOption = (infoCovidHistory) => {
       series: [
         {
           name: 'Số ca nhiễm',
-          data: [],
-        },
-        {
-          name: 'Số ca tử vong',
-          data: [],
+          data: [...listCases],
         },
         {
           name: 'Số ca hồi phục',
-          data: [],
+          data: [...listRecovered],
+        },
+        {
+          name: 'Số ca tử vong',
+          data: [...listDeaths],
         },
       ],
 
@@ -90,6 +100,7 @@ const generateDataOption = (infoCovidHistory) => {
 function LineChart(props) {
   const { infoCovidHistory } = props;
   const [options, setOptions] = useState({});
+  console.log(infoCovidHistory);
   // useEffect(() => {
   //   if (infoCovidHistory) {
   //     setOptions(generateDataOption(infoCovidHistory));
