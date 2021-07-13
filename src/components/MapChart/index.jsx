@@ -113,18 +113,12 @@ import Chart from 'react-google-charts';
 
 const options = {
   colors: 'red',
-  tooltip: { textStyle: { color: 'blue' } },
-  // displayMode: 'markers',
-  // region: 'IT',
-  // colorAxis: { colors: ['green', 'blue'] },
-  // backgroundColor: '#d4f1f9',
-  // legend: 'hello',
+  tooltip: { textStyle: { color: '#000' } },
   animation: {
     startup: true,
     easing: 'linear',
     duration: 1500,
   },
-  // is3D: true,
 };
 function MapChart(props) {
   const { listInfoCovidCountries } = props;
@@ -154,8 +148,6 @@ function MapChart(props) {
         loader={<div>Loading Chart</div>}
         data={[['Country', 'Total Cases', 'Recovered'], ...DataCovidAll]}
         options={options}
-        // Note: you will need to get a mapsApiKey for your project.
-        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
         mapsApiKey="YOUR_KEY_HERE"
         rootProps={{ 'data-testid': '1' }}
       />

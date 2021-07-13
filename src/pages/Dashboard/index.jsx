@@ -13,7 +13,7 @@ import { DatePicker, Space } from 'antd';
 import moment from 'moment';
 import covidVaccineAPI from 'apis/covidVaccineAPI';
 import { Tabs } from 'antd';
-import { AppleOutlined, AndroidOutlined } from '@ant-design/icons';
+import { FundViewOutlined, TableOutlined } from '@ant-design/icons';
 import './Dashboard.scss';
 import MapChart from 'components/MapChart';
 import LineChart from 'components/LineChart';
@@ -21,6 +21,10 @@ import PieChart from 'components/PieChart';
 import ColumnChart from 'components/ColumnChart';
 import LineColumnChart from 'components/LineColumnChart';
 import GroupColumnChart from 'components/GroupColumnChart';
+import HeaderDashBoard from './components/HeaderDashboard';
+import HeaderDashboard from './components/HeaderDashboard';
+import FooterDashboard from './components/FooterDashboard';
+import ScrollToTopButton from 'components/ScrollToTopButton';
 
 const { TabPane } = Tabs;
 
@@ -47,8 +51,15 @@ function Dashboard(props) {
     dispatch(GlobalActions.setIsLoading(true));
 
     const fetchCovidAll = async () => {
-      const InfoCovidAll = await covidAllAPI.getAll();
-      setInfoCovidAll(InfoCovidAll);
+      try {
+        const InfoCovidAll = await covidAllAPI.getAll();
+        setInfoCovidAll(InfoCovidAll);
+      } catch (error) {
+        alert(`
+        Something wrong !!!
+        Please try again or check your connection
+        `);
+      }
       dispatch(GlobalActions.setIsLoading(false));
     };
     fetchCovidAll();
@@ -61,8 +72,15 @@ function Dashboard(props) {
       const params = {
         lastdays: 'all',
       };
-      const infoCovidHistory = await covidHistoryAPI.getAll(params);
-      setInfoCovidHistory(infoCovidHistory);
+      try {
+        const infoCovidHistory = await covidHistoryAPI.getAll(params);
+        setInfoCovidHistory(infoCovidHistory);
+      } catch (error) {
+        alert(`
+        Something wrong !!!
+        Please try again or check your connection
+        `);
+      }
       dispatch(GlobalActions.setIsLoading(false));
     };
     fetCovidHistory();
@@ -75,9 +93,15 @@ function Dashboard(props) {
       const params = {
         lastdays: '1',
       };
-      const listInfoCovidVaccine = await covidVaccineAPI.getAll(params);
-      setListInfoCovidVaccine(listInfoCovidVaccine);
-      console.log(listInfoCovidVaccine);
+      try {
+        const listInfoCovidVaccine = await covidVaccineAPI.getAll(params);
+        setListInfoCovidVaccine(listInfoCovidVaccine);
+      } catch (error) {
+        alert(`
+        Something wrong !!!
+        Please try again or check your connection
+        `);
+      }
       dispatch(GlobalActions.setIsLoading(false));
     };
     fetchCovidVaccine();
@@ -91,20 +115,13 @@ function Dashboard(props) {
   };
   return (
     <div className="container">
-      <header className="header-dashboard">
-        <div className="header-dashboard__logo">logo</div>
-        <input type="text" className="header-dashboard__input" />
-        <div className="header-dashboard__contact"></div>
-        <p className="header-dashboard__text">
-          Coronavirus (COVID-19) Dashboard
-        </p>
-      </header>
+      <HeaderDashboard />
       <content className="header-dashboard__content">
         <Tabs defaultActiveKey="1">
           <TabPane
             tab={
               <span>
-                <AppleOutlined />
+                <FundViewOutlined />
                 Overview
               </span>
             }
@@ -158,7 +175,7 @@ function Dashboard(props) {
           <TabPane
             tab={
               <span>
-                <AndroidOutlined />
+                <TableOutlined />
                 Data table
               </span>
             }
@@ -190,12 +207,8 @@ function Dashboard(props) {
           listInfoCovidCountries={listInfoCovidCountries}
         />
       </Row> */}
-      <footer className="footer-dashboard">
-        <div className="footer-dashboard__wrapper">
-          <div className="footer-dashboard__icon">icon</div>
-          <p className="footer-dashboard__text">nguyen nhat khanh</p>
-        </div>
-      </footer>
+      <FooterDashboard />
+      <ScrollToTopButton />
     </div>
   );
 }
