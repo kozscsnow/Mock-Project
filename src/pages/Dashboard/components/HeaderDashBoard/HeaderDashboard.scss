@@ -23,6 +23,9 @@
   &__icon {
     font-size: 30px;
   }
+  &__logo {
+    cursor: pointer;
+  }
 }
 @media screen and (min-width: 768px) {
   .header-dashboard {

@@ -49,7 +49,28 @@ body {
 [tabindex='-1']:focus {
   outline: 0 !important;
 }
+.border-box {
+  padding: 10px;
+  border: #ccc 1px solid;
+  border-radius: 6px;
+}
 
+@media screen and (max-width: 992px) {
+  .mobileHidden {
+    display: none;
+  }
+  .mobileVisible {
+    display: block;
+  }
+}
+@media screen and (min-width: 993px) {
+  .mobileHidden {
+    display: block;
+  }
+  .mobileVisible {
+    display: none;
+  }
+}
 hr {
   box-sizing: content-box;
   height: 0;

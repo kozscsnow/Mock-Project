@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import HeaderHome from '../../components/HeaderHome';
+import HeaderHome from './component/HeaderHome';
 import { GlobalActions } from '../../redux/rootAction';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import {
@@ -10,6 +10,9 @@ import {
 } from '@ant-design/icons';
 import SidebarHome from '../../components/SidebarHome';
 import './Home.scss';
+import IntroHome from 'pages/Home/component/IntroHome';
+import MainContent from './component/MainContent';
+import NewsHome from './component/NewsHome';
 
 const { Header, Content, Footer, Sider } = Layout;
 function HomePage(props) {
@@ -27,9 +30,12 @@ function HomePage(props) {
   return (
     <div className="container">
       <Layout className="main-layout">
-        <Header className="header">
-          <HeaderHome />
-        </Header>
+        <HeaderHome />
+        <div className="home-body">
+          <IntroHome />
+          <MainContent />
+          <NewsHome />
+        </div>
       </Layout>
     </div>
   );

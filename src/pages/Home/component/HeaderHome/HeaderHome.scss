@@ -1,0 +1,91 @@
+.header-home {
+  &__wrapper {
+    width: 100%;
+    padding: 0px 10px;
+    border-bottom: 1px #ccc solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: #fff;
+  }
+  &__link {
+    padding: 10px;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #108885;
+  }
+  &__link:hover {
+    border-bottom: 4px #108885 solid;
+    color: #108885;
+
+    transition: 0.5s;
+  }
+  &__nav .ant-anchor {
+    // height: 70px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__user {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  &__avatar {
+  }
+  &__icon {
+    padding: 10px;
+    font-size: 26px;
+    color: #108885;
+  }
+  &__btn-login {
+    padding: 6px;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    color: #258508;
+    border: #40db11 1px solid;
+    border-radius: 10px;
+  }
+  &__menu {
+    font-size: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-home {
+    &__nav .ant-anchor {
+      flex-direction: row;
+    }
+  }
+}
+@media screen and (min-width: 992px) {
+  .header-home {
+    &__nav {
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &__user {
+      display: flex;
+    }
+    &__avatar {
+    }
+    &__icon {
+      padding: 10px;
+      font-size: 26px;
+      color: #108885;
+    }
+    &__nav .ant-anchor {
+      flex-direction: row;
+    }
+  }
+}

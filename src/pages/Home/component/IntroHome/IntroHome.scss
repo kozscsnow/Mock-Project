@@ -1,0 +1,48 @@
+.intro-container {
+  margin-top: 10px;
+}
+.intro-home {
+  &__info {
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        font-size: 16px;
+      }
+    }
+    &-content {
+      display: flex;
+      justify-content: space-around;
+    }
+    &-item {
+      p {
+        text-align: center;
+        margin: 0;
+        font-weight: 700;
+      }
+      h4 {
+        font-weight: 700;
+      }
+    }
+  }
+  &__chart div {
+    min-height: 150px;
+  }
+  &__chart p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+.info-item {
+  &__confirmed {
+    color: rgb(243, 11, 11);
+  }
+  &__recovered {
+    color: rgb(0, 225, 255);
+  }
+  &__deaths {
+    color: rgb(155, 155, 155);
+  }
+}

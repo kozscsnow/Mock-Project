@@ -1,0 +1,46 @@
+.main-home {
+  &__verify {
+    &-news {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      p {
+        margin-bottom: 0;
+        border-left: 4px solid #108885;
+
+        font-size: 16px;
+        font-weight: 700;
+        padding-left: 16px;
+      }
+    }
+    &-button {
+      margin: 4px;
+    }
+  }
+
+  &__tag {
+    &-item {
+      padding: 10px;
+      margin: 4px;
+
+      border: 2px solid #108885;
+      border-radius: 20px;
+
+      color: #108885;
+      background-color: #fff;
+    }
+    &-item:hover {
+      color: #fff;
+      background-color: #108885;
+      transition: 0.3s;
+    }
+    p {
+      font-size: 16px;
+
+      color: rgb(47, 103, 177);
+    }
+    p :hover {
+      color: rgb(68, 133, 219);
+    }
+  }
+}

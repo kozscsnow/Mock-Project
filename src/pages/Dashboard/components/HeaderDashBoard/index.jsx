@@ -6,9 +6,11 @@ import {
   SearchOutlined,
   CloseCircleOutlined,
 } from '@ant-design/icons';
+import { useHistory } from 'react-router';
+
 function HeaderDashboard(props) {
   const [isSearchClick, setIsSearchClick] = useState(false);
-
+  const history = useHistory();
   const handleSearchClick = (params) => {
     setIsSearchClick(!isSearchClick);
   };
@@ -17,7 +19,10 @@ function HeaderDashboard(props) {
       <header className="header-dashboard">
         <div className="header-dashboard__content">
           <div className="header-dashboard__logo">
-            <img src="./images/logo/reactjs-icon.svg" />
+            <img
+              src="./images/logo/reactjs-icon.svg"
+              onClick={() => history.push('/')}
+            />
           </div>
           {isSearchClick ? (
             <>
