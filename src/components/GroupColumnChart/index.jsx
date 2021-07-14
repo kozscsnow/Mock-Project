@@ -24,7 +24,7 @@ const generateDataOption = (infoCovidHistory) => {
       },
 
       title: {
-        text: 'Line and Column Chart',
+        text: 'Column Chart',
       },
 
       xAxis: {
@@ -35,7 +35,7 @@ const generateDataOption = (infoCovidHistory) => {
         allowDecimals: false,
         min: 0,
         title: {
-          text: 'Number of fruits',
+          text: 'Cases',
         },
       },
 
@@ -63,14 +63,12 @@ const generateDataOption = (infoCovidHistory) => {
 
       series: [
         {
-          name: 'John',
+          name: 'Confirmed',
           data: [...listCases],
-          stack: 'male',
         },
         {
-          name: 'Joe',
+          name: 'Deaths',
           data: [...listRecovered],
-          stack: 'male',
         },
       ],
     };

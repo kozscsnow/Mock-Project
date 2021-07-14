@@ -1,18 +1,50 @@
 import { Button, Col, InputNumber, Row } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ChartBox from './components/ChartBox';
 import { LikeOutlined } from '@ant-design/icons';
 import './MainContent.scss';
 import Form from 'antd/lib/form/Form';
 import { Input } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import { GlobalActions } from 'redux/rootAction';
+import { useState } from 'react';
+import covidHistoryAPI from 'apis/covidHistoryAPI';
+import LineColumnChart from 'components/LineColumnChart';
+import GroupColumnChart from 'components/GroupColumnChart';
 
 function MainContent(props) {
+  const dispatch = useDispatch();
+  const [infoCovidHistory, setInfoCovidHistory] = useState({});
+  // Fetch Covid History
+  useEffect(() => {
+    dispatch(GlobalActions.setIsLoading(true));
+
+    const fetCovidHistory = async () => {
+      const params = {
+        lastdays: 'all',
+      };
+      try {
+        const infoCovidHistory = await covidHistoryAPI.getAll(params);
+        setInfoCovidHistory(infoCovidHistory);
+      } catch (error) {
+        alert(`
+        Something wrong !!!
+        Please try again or check your connection
+        `);
+      }
+      dispatch(GlobalActions.setIsLoading(false));
+    };
+    fetCovidHistory();
+  }, [dispatch]);
   return (
     <div className="main-content__container">
       <Row gutter={[16, 16]}>
         <Col xs={24}>
           <div className="border-box">
-            <ChartBox />
+            <GroupColumnChart
+              infoCovidHistory={infoCovidHistory}
+              type={'all'}
+            />
           </div>
         </Col>
       </Row>
@@ -20,7 +52,7 @@ function MainContent(props) {
       <Row gutter={[16, 16]}>
         <Col xs={24}>
           <div className="border-box">
-            <ChartBox />
+            <LineColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
           </div>
         </Col>
       </Row>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import HeaderHome from './component/HeaderHome';
 import { GlobalActions } from '../../redux/rootAction';
@@ -13,26 +13,37 @@ import './Home.scss';
 import IntroHome from 'pages/Home/component/IntroHome';
 import MainContent from './component/MainContent';
 import NewsHome from './component/NewsHome';
+import covidAllAPI from 'apis/covidAllAPI';
 
 const { Header, Content, Footer, Sider } = Layout;
 function HomePage(props) {
   const dispatch = useDispatch();
-  // fake loading
+  const [infoCovidAll, setInfoCovidAll] = useState({});
+
+  // Fetch Covid All
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
-    const loadingFake = setTimeout(() => {
+
+    const fetchCovidAll = async () => {
+      try {
+        const InfoCovidAll = await covidAllAPI.getAll();
+        setInfoCovidAll(InfoCovidAll);
+      } catch (error) {
+        alert(`
+      Something wrong !!!
+      Please try again or check your connection
+      `);
+      }
       dispatch(GlobalActions.setIsLoading(false));
-    }, 500);
-    return () => {
-      clearTimeout(loadingFake);
     };
-  });
+    fetchCovidAll();
+  }, [dispatch]);
   return (
     <div className="container">
       <Layout className="main-layout">
         <HeaderHome />
         <div className="home-body">
-          <IntroHome />
+          <IntroHome infoCovidAll={infoCovidAll} />
           <MainContent />
           <NewsHome />
         </div>

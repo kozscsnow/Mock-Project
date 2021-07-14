@@ -116,7 +116,7 @@ function Dashboard(props) {
   return (
     <div className="container">
       <HeaderDashboard />
-      <content className="header-dashboard__content">
+      <content>
         <Tabs defaultActiveKey="1">
           <TabPane
             tab={

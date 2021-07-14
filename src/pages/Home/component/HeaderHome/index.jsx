@@ -40,7 +40,9 @@ function HeaderHome(props) {
             <Link to="/news" className="header-home__link">
               HOME
             </Link>
-            <Link className="header-home__link">Dashboard</Link>
+            <Link to="/dashboard" className="header-home__link">
+              Dashboard
+            </Link>
             <Link className="header-home__link">Travel Alert</Link>
             <Link className="header-home__link">Analytics</Link>
             <Link className="header-home__link">About</Link>
@@ -85,7 +87,9 @@ function HeaderHome(props) {
               <Link to="/news" className="header-home__link">
                 HOME
               </Link>
-              <Link className="header-home__link">Dashboard</Link>
+              <Link to="/dashboard" className="header-home__link">
+                Dashboard
+              </Link>
               <Link className="header-home__link">Travel Alert</Link>
               <Link className="header-home__link">Analytics</Link>
               <Link className="header-home__link">About</Link>

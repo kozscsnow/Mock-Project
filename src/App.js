@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.scss';
-import AuthRoute from './components/AuthRoute';
-import PrivateRoute from './components/PrivateRoute';
+import AuthRoute from './HOCs/AuthRoute';
+import PrivateRoute from './HOCs/PrivateRoute';
 import Dashboard from './pages/Dashboard';
 import DetailInfoCountry from './pages/DetailInfoCountry';
 import Home from './pages/Home';

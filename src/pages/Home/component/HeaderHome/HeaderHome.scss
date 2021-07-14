@@ -58,13 +58,13 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .header-home {
-    &__nav .ant-anchor {
-      flex-direction: row;
-    }
-  }
-}
+// @media screen and (min-width: 768px) {
+//   .header-home {
+//     &__nav .ant-anchor {
+//       flex-direction: row;
+//     }
+//   }
+// }
 @media screen and (min-width: 992px) {
   .header-home {
     &__nav {

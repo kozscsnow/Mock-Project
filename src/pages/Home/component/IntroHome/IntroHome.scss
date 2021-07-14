@@ -16,33 +16,46 @@
       justify-content: space-around;
     }
     &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       p {
         text-align: center;
         margin: 0;
         font-weight: 700;
       }
+
       h4 {
         font-weight: 700;
       }
     }
   }
-  &__chart div {
-    min-height: 150px;
+  &__chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      min-height: 150px;
+    }
+    p {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    p.text-large-size {
+      font-size: 40px;
+    }
   }
-  &__chart p {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 600;
+  &__chart.background-img {
+    background: url('https://i.stack.imgur.com/WRPum.png') no-repeat center;
   }
 }
-.info-item {
-  &__confirmed {
-    color: rgb(243, 11, 11);
-  }
-  &__recovered {
-    color: rgb(0, 225, 255);
-  }
-  &__deaths {
-    color: rgb(155, 155, 155);
-  }
+.confirmed {
+  color: rgb(243, 11, 11);
+}
+.recovered {
+  color: rgb(0, 225, 255);
+}
+.deaths {
+  color: rgb(155, 155, 155);
 }
