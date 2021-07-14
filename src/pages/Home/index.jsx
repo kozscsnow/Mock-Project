@@ -14,6 +14,8 @@ import IntroHome from 'pages/Home/component/IntroHome';
 import MainContent from './component/MainContent';
 import NewsHome from './component/NewsHome';
 import covidAllAPI from 'apis/covidAllAPI';
+import FooterHome from './component/FooterHome/indejx';
+import ScrollToTopButton from 'components/ScrollToTopButton';
 
 const { Header, Content, Footer, Sider } = Layout;
 function HomePage(props) {
@@ -47,7 +49,9 @@ function HomePage(props) {
           <MainContent />
           <NewsHome />
         </div>
+        <FooterHome />
       </Layout>
+      <ScrollToTopButton />
     </div>
   );
 }

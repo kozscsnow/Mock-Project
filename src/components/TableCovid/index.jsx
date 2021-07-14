@@ -1,11 +1,30 @@
 import { Table } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 function TableCovid(props) {
+  const { listInfoCovidCountries, localLoading } = props;
+  const [DataCovidAll, setDataCovidAll] = useState([]);
+  useEffect(() => {
+    if (listInfoCovidCountries) {
+      const dataCovid = listInfoCovidCountries.map((infoCountry) => {
+        return {
+          key: uuidv4(),
+          country: infoCountry.country,
+          cases: infoCountry.cases,
+          recovered: infoCountry.recovered,
+          deaths: infoCountry.deaths,
+        };
+        // return [infoCountry.country, infoCountry.cases, infoCountry.recovered];
+      });
+      setDataCovidAll(dataCovid);
+    }
+  }, [listInfoCovidCountries]);
+  console.log(DataCovidAll);
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
+      title: 'Country',
+      dataIndex: 'country',
       filters: [
         {
           text: 'Joe',
@@ -15,56 +34,37 @@ function TableCovid(props) {
           text: 'Jim',
           value: 'Jim',
         },
-        {
-          text: 'Submenu',
-          value: 'Submenu',
-          children: [
-            {
-              text: 'Green',
-              value: 'Green',
-            },
-            {
-              text: 'Black',
-              value: 'Black',
-            },
-          ],
-        },
       ],
-      // specify the condition of filtering result
-      // here is that finding the name started with `value`
       onFilter: (value, record) => record.name.indexOf(value) === 0,
-      sorter: (a, b) => a.name.length - b.name.length,
+      sorter: (a, b) => a.country.length - b.country.length,
       sortDirections: ['descend'],
     },
     {
-      title: 'Age',
-      dataIndex: 'age',
+      title: 'Cases',
+      dataIndex: 'cases',
       defaultSortOrder: 'descend',
-      sorter: (a, b) => a.age - b.age,
+      sorter: (a, b) => a.cases - b.cases,
     },
     {
-      title: 'Address',
-      dataIndex: 'address',
-      filters: [
-        {
-          text: 'London',
-          value: 'London',
-        },
-        {
-          text: 'New York',
-          value: 'New York',
-        },
-      ],
-      onFilter: (value, record) => record.address.indexOf(value) === 0,
+      title: 'Recovered',
+      dataIndex: 'recovered',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.recovered - b.recovered,
+    },
+    {
+      title: 'Deaths',
+      dataIndex: 'deaths',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.deaths - b.deaths,
     },
   ];
 
   const data = [
     {
       key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
+      country: 'John Brown',
+      cases: 32,
+      recovered: 'New York No. 1 Lake Park',
     },
     {
       key: '2',
@@ -137,7 +137,12 @@ function TableCovid(props) {
   function onChange(pagination, filters, sorter, extra) {}
   return (
     <div>
-      <Table columns={columns} dataSource={data} onChange={onChange} />
+      <Table
+        columns={columns}
+        dataSource={DataCovidAll}
+        onChange={onChange}
+        loading={localLoading}
+      />
     </div>
   );
 }

@@ -17,12 +17,12 @@ function InfoCovidBox(props) {
               bordered={true}
               loading={false}
               headStyle={{
-                'text-align': 'center',
+                textAlign: 'center',
                 backgroundColor: '#FED7D7',
                 color: '#E53E3E',
               }}
               bodyStyle={{
-                'text-align': 'center',
+                textAlign: 'center',
                 backgroundColor: '#FFF5F5',
                 color: '#E53E3E',
                 fontSize: '30px',
@@ -38,12 +38,12 @@ function InfoCovidBox(props) {
               title="Số ca khỏi"
               bordered={true}
               headStyle={{
-                'text-align': 'center',
+                textAlign: 'center',
                 backgroundColor: '#C6F6D5',
                 color: '#38A169',
               }}
               bodyStyle={{
-                'text-align': 'center',
+                textAlign: 'center',
                 backgroundColor: '#F0FFF4',
                 color: '#38A169',
                 fontSize: '30px',
@@ -59,12 +59,12 @@ function InfoCovidBox(props) {
               title="Số ca tử vong"
               bordered={true}
               headStyle={{
-                'text-align': 'center',
+                textAlign: 'center',
                 backgroundColor: '#E2E8F0',
                 color: '#718096',
               }}
               bodyStyle={{
-                'text-align': 'center',
+                textAlign: 'center',
                 backgroundColor: '#EDF2F7',
                 color: '#718096',
                 fontSize: '30px',

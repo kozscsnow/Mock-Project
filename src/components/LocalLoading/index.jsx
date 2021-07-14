@@ -4,14 +4,16 @@ import styles from './GlobalLoading.module.css';
 // import { Roller } from 'react-awesome-spinners';
 import { Spin } from 'antd';
 
-function GlobalLoading({ children }) {
-  const isLoading = useSelector((state) => state.GlobalReducer.isLoading);
+function LocalLoading({ children }) {
+  const isLocalLoading = useSelector(
+    (state) => state.GlobalReducer.isLocalLoading
+  );
   return (
     <div>
       <Spin
         tip="Loading..."
         size="large"
-        spinning={isLoading}
+        spinning={isLocalLoading}
         style={{ maxHeight: '100%' }}
       >
         {children}
@@ -20,4 +22,4 @@ function GlobalLoading({ children }) {
   );
 }
 
-export default GlobalLoading;
+export default LocalLoading;

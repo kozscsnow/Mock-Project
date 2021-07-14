@@ -51,20 +51,35 @@ function HeaderHome(props) {
         </div>
         <div className="mobileHidden">
           <div className="header-home__user">
-            <div className="header-home__avatar"></div>
-            <UserOutlined
-              className="header-home__icon"
-              style={{ color: 'rgb(0,216,255)' }}
-            />
             {isLoggedIn ? (
-              <LogoutOutlined
-                onClick={handleLogout}
-                className="header-home__icon"
-              />
+              <>
+                <p>
+                  Xin chào <span>Admin</span>
+                </p>
+                <img
+                  src="./images/avatar.png"
+                  alt="avatar"
+                  className="header-home__avatar"
+                />
+                <LogoutOutlined
+                  onClick={handleLogout}
+                  className="header-home__icon"
+                />
+              </>
             ) : (
-              <Link type="primary" to="/login">
-                Login
-              </Link>
+              <>
+                <UserOutlined
+                  className="header-home__icon"
+                  style={{ color: 'rgb(0,216,255)' }}
+                />
+                <Link
+                  type="primary"
+                  to="/login"
+                  className="header-home__btn-login"
+                >
+                  Login
+                </Link>
+              </>
             )}
           </div>
         </div>
@@ -97,16 +112,21 @@ function HeaderHome(props) {
             </Anchor>
 
             <div className="header-home__user">
-              {/* <div className="header-home__avatar"></div> */}
-              <UserOutlined
-                className="header-home__icon"
-                style={{ color: 'rgb(0,216,255)' }}
-              />
               {isLoggedIn ? (
-                <LogoutOutlined
-                  onClick={handleLogout}
-                  className="header-home__icon"
-                />
+                <>
+                  <p>
+                    Xin chào <span>Admin</span>
+                  </p>
+                  <img
+                    src="./images/avatar.png"
+                    alt="avatar"
+                    className="header-home__avatar"
+                  />
+                  <LogoutOutlined
+                    onClick={handleLogout}
+                    className="header-home__icon"
+                  />
+                </>
               ) : (
                 <Link
                   type="primary"

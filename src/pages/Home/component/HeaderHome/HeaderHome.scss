@@ -35,9 +35,17 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    p {
+      margin: 0px 10px;
+
+      font-size: 16px;
+
+      span {
+        color: #00e1ff;
+      }
+    }
   }
-  &__avatar {
-  }
+
   &__icon {
     padding: 10px;
     font-size: 26px;
@@ -49,12 +57,17 @@
     font-size: 20px;
     font-weight: 600;
 
-    color: #258508;
-    border: #40db11 1px solid;
+    color: #00e1ff;
+    border: #00e1ff 1px solid;
     border-radius: 10px;
   }
   &__menu {
     font-size: 30px;
+  }
+  &__avatar {
+    width: 40px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
   }
 }
 
@@ -67,6 +80,9 @@
 // }
 @media screen and (min-width: 992px) {
   .header-home {
+    &__wrapper {
+      padding: 0px 30px;
+    }
     &__nav {
       height: 70px;
 

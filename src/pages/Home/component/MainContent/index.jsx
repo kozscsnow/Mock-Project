@@ -11,6 +11,7 @@ import { useState } from 'react';
 import covidHistoryAPI from 'apis/covidHistoryAPI';
 import LineColumnChart from 'components/LineColumnChart';
 import GroupColumnChart from 'components/GroupColumnChart';
+import NewsBox from './components/NewsBox';
 
 function MainContent(props) {
   const dispatch = useDispatch();
@@ -87,8 +88,7 @@ function MainContent(props) {
         </div>
         <p>Clear all</p>
       </div>
-
-      <div className="mobileHidden">news</div>
+      <br />
     </div>
   );
 }

@@ -36,13 +36,16 @@ function Dashboard(props) {
   const [infoCovidAll, setInfoCovidAll] = useState({});
   const [infoCovidHistory, setInfoCovidHistory] = useState({});
   const [listInfoCovidVaccine, setListInfoCovidVaccine] = useState([]);
+  const [localLoading, setLocalLoading] = useState(true);
   // Fetch Covid  Countries
   useEffect(() => {
-    dispatch(GlobalActions.setIsLoading(true));
+    // dispatch(GlobalActions.setIsLoading(true));
+    setLocalLoading(true);
     const fetchInfoCovidCountries = async () => {
       const listInfoCovidCountries = await covidCountriesAPI.getAll();
       setListInfoCovidCountries(listInfoCovidCountries);
-      dispatch(GlobalActions.setIsLoading(false));
+      // dispatch(GlobalActions.setIsLoading(false));
+      setLocalLoading(false);
     };
     fetchInfoCovidCountries();
   }, [dispatch]);
@@ -188,25 +191,19 @@ function Dashboard(props) {
               />
             </Space>
 
-            <Chart
-              listInfoCovidCountries={listInfoCovidCountries}
-              infoCovidAll={infoCovidAll}
-              infoCovidHistory={infoCovidHistory}
-            />
             <br />
             <Row>
               <Col xs={24}>
-                <TableCovid />
+                <TableCovid
+                  listInfoCovidCountries={listInfoCovidCountries}
+                  localLoading={localLoading}
+                />
               </Col>
             </Row>
           </TabPane>
         </Tabs>
       </content>
-      {/* <Row justify="center">
-        <CountriesSelectorInput
-          listInfoCovidCountries={listInfoCovidCountries}
-        />
-      </Row> */}
+
       <FooterDashboard />
       <ScrollToTopButton />
     </div>

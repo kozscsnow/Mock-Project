@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Pagination } from 'antd';
 
 import { usePagination } from '@material-ui/lab/Pagination';
@@ -6,8 +6,34 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 import { List, Avatar, Space } from 'antd';
 import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
+import NewsBox from '../MainContent/components/NewsBox';
+import { useDispatch } from 'react-redux';
+import { GlobalActions } from 'redux/rootAction';
+import newsAPI from 'apis/newsAPI';
+import { v4 as uuidv4 } from 'uuid';
 
 function NewsHome(props) {
+  const [listNewsData, setListNewsData] = useState([]);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(GlobalActions.setIsLoading(true));
+    const fetchNewsData = async () => {
+      try {
+        const listNewsData = await newsAPI.getAll();
+        setListNewsData(listNewsData);
+        dispatch(GlobalActions.setIsLoading(false));
+        console.log(listNewsData);
+      } catch (error) {
+        alert(`
+      Something wrong !!!
+      Please try again or check your connection
+      `);
+      }
+    };
+    fetchNewsData();
+  }, [dispatch]);
+
   const listData = [];
   for (let i = 0; i < 23; i++) {
     listData.push({
@@ -38,43 +64,18 @@ function NewsHome(props) {
           },
           pageSize: 5,
         }}
-        dataSource={listData}
+        dataSource={listNewsData}
         renderItem={(item) => (
-          <>{item.title}</>
-          // <List.Item
-          //   key={item.title}
-          //   actions={[
-          //     <IconText
-          //       icon={StarOutlined}
-          //       text="156"
-          //       key="list-vertical-star-o"
-          //     />,
-          //     <IconText
-          //       icon={LikeOutlined}
-          //       text="156"
-          //       key="list-vertical-like-o"
-          //     />,
-          //     <IconText
-          //       icon={MessageOutlined}
-          //       text="2"
-          //       key="list-vertical-message"
-          //     />,
-          //   ]}
-          //   extra={
-          //     <img
-          //       width={272}
-          //       alt="logo"
-          //       src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-          //     />
-          //   }
-          // >
-          //   <List.Item.Meta
-          //     avatar={<Avatar src={item.avatar} />}
-          //     title={<a href={item.href}>{item.title}</a>}
-          //     description={item.description}
-          //   />
-          //   {item.content}
-          // </List.Item>
+          <>
+            <br />
+            <NewsBox
+              title={item.title}
+              author={item.author}
+              content={item.content}
+              url={item.url}
+              urlToImage={item.urlToImage}
+            />
+          </>
         )}
       />
     </div>

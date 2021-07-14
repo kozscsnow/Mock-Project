@@ -19,7 +19,7 @@ function App() {
         <AuthRoute path="/login" component={Login} />
         <AuthRoute path="/register" component={Register} />
         <PrivateRoute path="/news" component={News} />
-        <Route path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute
           path="/countries/:countryID"
           component={DetailInfoCountry}
