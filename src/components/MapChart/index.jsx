@@ -134,13 +134,6 @@ function MapChart(props) {
 
   return (
     <div>
-      {/* <div>
-        <HighchartsReact
-          highcharts={Highcharts}
-          options={generateOptions()}
-          constructorType={'mapChart'}
-        />
-      </div> */}
       <Chart
         width={'100%'}
         height={'600px'}

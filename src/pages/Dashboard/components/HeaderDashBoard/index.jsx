@@ -7,8 +7,10 @@ import {
   CloseCircleOutlined,
 } from '@ant-design/icons';
 import { useHistory } from 'react-router';
+import CountriesSearchInput from '../ContriesSearchInput';
 
 function HeaderDashboard(props) {
+  const { listInfoCovidCountries } = props;
   const [isSearchClick, setIsSearchClick] = useState(false);
   const history = useHistory();
   const handleSearchClick = (params) => {
@@ -26,10 +28,13 @@ function HeaderDashboard(props) {
           </div>
           {isSearchClick ? (
             <>
-              <input
+              {/* <input
                 type="text"
                 className="header-dashboard__input"
                 style={{}}
+              /> */}
+              <CountriesSearchInput
+                listInfoCovidCountries={listInfoCovidCountries}
               />
               <CloseCircleOutlined
                 onClick={handleSearchClick}

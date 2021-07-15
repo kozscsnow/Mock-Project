@@ -28,7 +28,7 @@ function InfoCovidBox(props) {
                 fontSize: '30px',
               }}
             >
-              {formatNumber.format(cases)}
+              {formatNumber.format(cases ? cases : 0)}
             </Card>
           </Col>
           <br />
@@ -49,7 +49,7 @@ function InfoCovidBox(props) {
                 fontSize: '30px',
               }}
             >
-              {formatNumber.format(recovered)}
+              {formatNumber.format(recovered ? recovered : 0)}
             </Card>
           </Col>
           <br />
@@ -70,7 +70,7 @@ function InfoCovidBox(props) {
                 fontSize: '30px',
               }}
             >
-              {formatNumber.format(deaths)}
+              {formatNumber.format(deaths ? deaths : 0)}
             </Card>
           </Col>
         </Row>

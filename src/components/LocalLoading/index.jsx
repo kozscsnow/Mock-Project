@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import styles from './GlobalLoading.module.css';
+// import styles from './GlobalLoading.module.css';
 // import { Roller } from 'react-awesome-spinners';
 import { Spin } from 'antd';
 

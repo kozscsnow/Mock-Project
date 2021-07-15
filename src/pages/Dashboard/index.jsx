@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd';
+import { Col, Row, Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import covidAllAPI from '../../apis/covidAllAPI';
@@ -39,12 +39,10 @@ function Dashboard(props) {
   const [localLoading, setLocalLoading] = useState(true);
   // Fetch Covid  Countries
   useEffect(() => {
-    // dispatch(GlobalActions.setIsLoading(true));
     setLocalLoading(true);
     const fetchInfoCovidCountries = async () => {
       const listInfoCovidCountries = await covidCountriesAPI.getAll();
       setListInfoCovidCountries(listInfoCovidCountries);
-      // dispatch(GlobalActions.setIsLoading(false));
       setLocalLoading(false);
     };
     fetchInfoCovidCountries();
@@ -118,7 +116,7 @@ function Dashboard(props) {
   };
   return (
     <div className="container">
-      <HeaderDashboard />
+      <HeaderDashboard listInfoCovidCountries={listInfoCovidCountries} />
       <content>
         <Tabs defaultActiveKey="1">
           <TabPane
@@ -134,7 +132,11 @@ function Dashboard(props) {
 
             <Row>
               <Col xs={24} lg={24}>
-                <MapChart listInfoCovidCountries={listInfoCovidCountries} />
+                {localLoading ? (
+                  <Skeleton paragraph={{ rows: 18 }} active />
+                ) : (
+                  <MapChart listInfoCovidCountries={listInfoCovidCountries} />
+                )}
               </Col>
             </Row>
 

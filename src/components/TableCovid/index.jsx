@@ -25,17 +25,17 @@ function TableCovid(props) {
     {
       title: 'Country',
       dataIndex: 'country',
-      filters: [
-        {
-          text: 'Joe',
-          value: 'Joe',
-        },
-        {
-          text: 'Jim',
-          value: 'Jim',
-        },
-      ],
-      onFilter: (value, record) => record.name.indexOf(value) === 0,
+      // filters: [
+      //   {
+      //     text: 'Joe',
+      //     value: 'Joe',
+      //   },
+      //   {
+      //     text: 'Jim',
+      //     value: 'Jim',
+      //   },
+      // ],
+      // onFilter: (value, record) => record.name.indexOf(value) === 0,
       sorter: (a, b) => a.country.length - b.country.length,
       sortDirections: ['descend'],
     },

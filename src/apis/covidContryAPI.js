@@ -1,27 +1,27 @@
 import { axiosClientCovid } from './axiosClient';
 
 const urlParam = 'countries';
-const covidCountriesAPI = {
-  getAll(params) {
-    const url = `/${urlParam}`;
+const covidContryAPI = {
+  getAll(country, params) {
+    const url = `/countries/${country}`;
     return axiosClientCovid.get(url, { params });
   },
-  get(countryName) {
-    const url = `/${urlParam}/${countryName}`;
+  get(id) {
+    const url = `/countries/${id}`;
     return axiosClientCovid.get(url);
   },
   add(data) {
-    const url = `/${urlParam}`;
+    const url = `/countries`;
     return axiosClientCovid.post(url, data);
   },
   update(data) {
-    const url = `/${urlParam}/${data.id}`;
+    const url = `/countries/${data.id}`;
     return axiosClientCovid.patch(url, data);
   },
   remove(id) {
-    const url = `/${urlParam}/${id}`;
+    const url = `/countries/${id}`;
     return axiosClientCovid.delete(url);
   },
 };
 
-export default covidCountriesAPI;
+export default covidContryAPI;
