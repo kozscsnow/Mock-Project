@@ -54,7 +54,7 @@ function HeaderHome(props) {
             {isLoggedIn ? (
               <>
                 <p>
-                  Xin chào <span>Nhat Khanh</span>
+                  Xin chào <span>Admin</span>
                 </p>
                 <img
                   src="./images/avatar.png"

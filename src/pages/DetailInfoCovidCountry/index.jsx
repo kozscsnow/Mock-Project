@@ -1,11 +1,13 @@
 import { Skeleton } from 'antd';
 import InfoCovidBox from 'components/InfoCovidBox';
 import LocalLoading from 'components/LocalLoading';
+import PieChart from 'components/PieChart';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import covidCountriesAPI from '../../apis/covidCoutriesAPI';
 import { GlobalActions } from '../../redux/rootAction';
+import CovidOverViewBox from './CovidOverViewBox';
 
 function DetailInfoCovidCountry(props) {
   const [cases, setCases] = useState(0);
@@ -32,6 +34,8 @@ function DetailInfoCovidCountry(props) {
         <InfoCovidBox infoCovidAll={infoCovidCountry} />
       )} */}
       <InfoCovidBox infoCovidAll={infoCovidCountry} />
+      <PieChart infoCovidAll={infoCovidCountry} />
+      <CovidOverViewBox infoCovidAll={infoCovidCountry} />
     </div>
   );
 }

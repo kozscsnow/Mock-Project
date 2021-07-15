@@ -21,7 +21,6 @@ function IntroHome(props) {
 
   const formatterNumber = new Intl.NumberFormat('en');
   let percentDeaths = parseFloat((deaths / cases) * 100).toFixed(2);
-  console.log(percentDeaths);
   let percentRecovered = parseFloat((recovered / cases) * 100).toFixed(2);
   return (
     <div className="intro-container">
