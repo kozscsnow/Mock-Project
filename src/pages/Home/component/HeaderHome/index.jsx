@@ -38,7 +38,7 @@ function HeaderHome(props) {
         <div className="mobileHidden">
           <Anchor className="header-home__nav">
             <Link to="/news" className="header-home__link">
-              HOME
+              News
             </Link>
             <Link to="/dashboard" className="header-home__link">
               Dashboard

@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import HeaderNews from './components/HeaderNews';
 import newsAPI from '../../apis/newsAPI';
 import IntroCarousel from './components/IntroCarousel';
-import MainContent from './components/MainContent';
+import MainContent from './components/MainContentNews';
 import ContentCarousel from './components/ContentCarousel';
 import Navigation from './components/Navigation';
+import MultimediaNews from './components/MultimediaNews';
 
 function News(props) {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function News(props) {
       <Navigation />
       <IntroCarousel />
       <MainContent />
+      <MultimediaNews />
       <ContentCarousel />
     </div>
   );
