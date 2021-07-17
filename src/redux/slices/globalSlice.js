@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   isLoggedIn: false,
-  isLocalLoading: true,
+  isLocalLoading: false,
 };
 
 const globalSlice = createSlice({

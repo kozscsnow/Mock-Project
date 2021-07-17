@@ -9,18 +9,19 @@ import MainContent from './components/MainContentNews';
 import ContentCarousel from './components/ContentCarousel';
 import Navigation from './components/Navigation';
 import MultimediaNews from './components/MultimediaNews';
+import Article from './components/Article';
 
 function News(props) {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(GlobalActions.setIsLoading(true));
-    const fetchNewsData = async () => {
-      const listNewsData = await newsAPI.getAll();
-      dispatch(GlobalActions.setIsLoading(false));
-      console.log(listNewsData);
-    };
-    fetchNewsData();
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(GlobalActions.setIsLoading(true));
+  //   const fetchNewsData = async () => {
+  //     const listNewsData = await newsAPI.getAll();
+  //     dispatch(GlobalActions.setIsLoading(false));
+  //     console.log(listNewsData);
+  //   };
+  //   fetchNewsData();
+  // }, [dispatch]);
 
   return (
     <div className="container">
@@ -30,6 +31,7 @@ function News(props) {
       <MainContent />
       <MultimediaNews />
       <ContentCarousel />
+      <Article />
     </div>
   );
 }

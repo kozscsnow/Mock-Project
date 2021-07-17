@@ -1,0 +1,23 @@
+.article-news {
+  &__item {
+    margin: 10px 0px;
+  }
+  &__thumbnail {
+    img {
+      width: 100%;
+    }
+
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  &__title {
+    font-size: 14px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .article-news {
+    &__title {
+      font-size: 20px;
+    }
+  }
+}
