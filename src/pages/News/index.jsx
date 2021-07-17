@@ -22,16 +22,6 @@ function News(props) {
     fetchNewsData();
   }, [dispatch]);
 
-  //Fake Loading
-  // useEffect(() => {
-  //   dispatch(GlobalActions.setIsLoading(true));
-  //   const loadingFake = setTimeout(() => {
-  //     dispatch(GlobalActions.setIsLoading(false));
-  //   }, 500);
-  //   return () => {
-  //     clearTimeout(loadingFake);
-  //   };
-  // });
   return (
     <div className="container">
       <HeaderNews />

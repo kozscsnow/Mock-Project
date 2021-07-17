@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styles from './HeaderNews.module.css';
 import {
   MenuOutlined,
   SearchOutlined,

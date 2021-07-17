@@ -111,6 +111,11 @@ function MainContent(props) {
                       Phó thủ tướng: Tất cả địa phương kêu gọi người dân hạn chế
                       ra khỏi nhà
                     </p>
+                    <p className="main-news__intro-content">
+                      Ban Chỉ đạo phòng, chống dịch Covid-19 quốc gia sẽ báo cáo
+                      Thủ tướng, Chính phủ để có chỉ đạo với tinh thần nâng cao
+                      cảnh giác, chuẩn bị cho tình huống xấu hơn.
+                    </p>
                   </Col>
                 </Row>
               </Col>
