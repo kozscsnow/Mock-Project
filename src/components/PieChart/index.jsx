@@ -57,8 +57,7 @@ const generateDataOption = (dataInfoCovid) => {
 };
 
 function PieChart(props) {
-  const { infoCovidAll, type } = props;
-  const { cases, deaths, recovered } = infoCovidAll;
+  const { cases, deaths, recovered, type } = props;
   const dataInfoCovid = {
     cases,
     deaths,

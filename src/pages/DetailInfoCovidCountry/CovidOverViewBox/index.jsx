@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TwitterOutlined, FacebookOutlined } from '@ant-design/icons';
 
 function CovidOverViewBox(props) {
-  const { infoCovidAll } = props;
+  // const { infoCovidAll } = props;
   //   const [country, setCountry] = useState('');
   //   const [cases, setCases] = useState(0);
   //   const [deaths, setDeaths] = useState(0);
@@ -11,7 +11,7 @@ function CovidOverViewBox(props) {
   //   const [todayCases, setTodayCases] = useState(0);
   //   const [todayDeaths, setTodayDeaths] = useState(0);
   //   const [todayRecovered, setTodayRecovered] = useState(0);
-  const [flag, setFlag] = useState('');
+  // const [flag, setFlag] = useState('');
 
   const {
     country,
@@ -22,11 +22,9 @@ function CovidOverViewBox(props) {
     todayDeaths,
     todayRecovered,
     countryInfo,
-  } = infoCovidAll;
-  if (countryInfo) {
-    const { flag } = countryInfo;
-  }
-
+  } = props;
+  // const { flag } = countryInfo;
+  // console.log(countryInfo);
   const formatterNumber = new Intl.NumberFormat('en');
   return (
     <div>
@@ -36,7 +34,7 @@ function CovidOverViewBox(props) {
             <div className="intro-home__info">
               <div className="intro-home__info-header">
                 <h3>
-                  {/* <img src={flag} alt="flag country" /> */}
+                  <img src={countryInfo?.flag} alt="flag country" />
                   <span> {country}</span> Overview
                 </h3>
                 <p>

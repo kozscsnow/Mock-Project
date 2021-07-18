@@ -47,6 +47,7 @@ function Login(props) {
     if (isFormValid) {
       history.push('/');
       dispatch(GlobalActions.setIsLoggedIn(true));
+      localStorage.setItem('isLoggedIn', true);
       //Clear errorMessage
       setErrorMessage('');
     }

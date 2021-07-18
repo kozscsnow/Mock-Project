@@ -1,12 +1,12 @@
 import { Col, Row, Skeleton } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import covidAllAPI from '../../apis/covidAllAPI';
 import covidCountriesAPI from '../../apis/covidCoutriesAPI';
 import covidHistoryAPI from '../../apis/covidHistoryAPI';
 import InfoCovidBox from '../../components/InfoCovidBox';
 import TableCovid from '../../components/TableCovid';
-import { GlobalActions } from '../../redux/rootAction';
+import { CovidInfoActions, GlobalActions } from '../../redux/rootAction';
 import Chart from './components/Chart';
 import CountriesSelectorInput from './components/CountriesSelectorInput';
 import { DatePicker, Space } from 'antd';
@@ -37,6 +37,7 @@ function Dashboard(props) {
   const [infoCovidHistory, setInfoCovidHistory] = useState({});
   const [listInfoCovidVaccine, setListInfoCovidVaccine] = useState([]);
   const [localLoading, setLocalLoading] = useState(true);
+
   // Fetch Covid  Countries
   useEffect(() => {
     setLocalLoading(true);
@@ -55,6 +56,7 @@ function Dashboard(props) {
       try {
         const InfoCovidAll = await covidAllAPI.getAll();
         setInfoCovidAll(InfoCovidAll);
+        dispatch(CovidInfoActions.getInfoCovidAll(InfoCovidAll));
       } catch (error) {
         alert(`
         Something wrong !!!
@@ -114,6 +116,8 @@ function Dashboard(props) {
   const handleDateChange = (value, dateString) => {
     console.log(value, dateString);
   };
+
+  const { cases, deaths, recovered } = infoCovidAll;
   return (
     <div className="container">
       <HeaderDashboard listInfoCovidCountries={listInfoCovidCountries} />
@@ -128,7 +132,7 @@ function Dashboard(props) {
             }
             key="1"
           >
-            <InfoCovidBox infoCovidAll={infoCovidAll} />
+            <InfoCovidBox cases={cases} deaths={deaths} recovered={recovered} />
 
             <Row>
               <Col xs={24} lg={24}>
@@ -145,7 +149,12 @@ function Dashboard(props) {
                 <LineChart infoCovidHistory={infoCovidHistory} type={'all'} />
               </Col>
               <Col xs={24} lg={12}>
-                <PieChart infoCovidAll={infoCovidAll} type={'all'} />
+                <PieChart
+                  cases={cases}
+                  deaths={deaths}
+                  recovered={recovered}
+                  type={'all'}
+                />
               </Col>
             </Row>
             <Row>
@@ -205,9 +214,6 @@ function Dashboard(props) {
           </TabPane>
         </Tabs>
       </content>
-
-      <FooterDashboard />
-      <ScrollToTopButton />
     </div>
   );
 }

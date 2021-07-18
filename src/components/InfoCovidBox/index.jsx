@@ -2,8 +2,7 @@ import React from 'react';
 import { Card, Col, Row } from 'antd';
 
 function InfoCovidBox(props) {
-  const { infoCovidAll } = props;
-  const { cases, deaths, recovered } = infoCovidAll;
+  const { cases, deaths, recovered } = props;
 
   const formatNumber = Intl.NumberFormat('en');
   return (

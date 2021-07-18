@@ -18,6 +18,7 @@ function HeaderHome(props) {
   const handleLogout = () => {
     dispatch(GlobalActions.setIsLoggedIn(false));
     // dispatch(GlobalActions.resetStoreRedux());
+    localStorage.setItem('isLoggedIn', false);
   };
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {

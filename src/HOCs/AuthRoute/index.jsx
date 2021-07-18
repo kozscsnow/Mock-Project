@@ -4,7 +4,6 @@ import { Redirect, Route } from 'react-router-dom';
 
 function AuthRoute({ component: Component, ...rest }) {
   const isLoggedIn = useSelector((state) => state.GlobalReducer.isLoggedIn);
-  console.log(isLoggedIn);
   const checkLoggedIn = () => {
     // let usernameLocalStorage = localStorage.getItem('username');
     // let passwordLocalStorage = localStorage.getItem('password');
@@ -12,6 +11,8 @@ function AuthRoute({ component: Component, ...rest }) {
     //   return true;
     // }
     // return false;
+    // const isLoggedIn = localStorage.getItem('isLoggedIn');
+
     return isLoggedIn;
   };
 

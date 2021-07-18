@@ -12,9 +12,11 @@ function PrivateRoute({ component: Component, ...rest }) {
     //   return true;
     // }
     // return false;
+    // const isLoggedIn = localStorage.getItem('isLoggedIn');
     return isLoggedIn;
   };
 
+  console.log(checkLoggedIn());
   return (
     <Route
       {...rest}
