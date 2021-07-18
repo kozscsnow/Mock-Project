@@ -25,6 +25,7 @@ import HeaderDashBoard from './components/HeaderDashboard';
 import HeaderDashboard from './components/HeaderDashboard';
 import FooterDashboard from './components/FooterDashboard';
 import ScrollToTopButton from 'components/ScrollToTopButton';
+import WrapperDashboard from 'HOCs/WrapperDashboard';
 
 const { TabPane } = Tabs;
 
@@ -44,6 +45,9 @@ function Dashboard(props) {
     const fetchInfoCovidCountries = async () => {
       const listInfoCovidCountries = await covidCountriesAPI.getAll();
       setListInfoCovidCountries(listInfoCovidCountries);
+      dispatch(
+        CovidInfoActions.getListInfoCovidCountries(listInfoCovidCountries)
+      );
       setLocalLoading(false);
     };
     fetchInfoCovidCountries();
@@ -119,8 +123,8 @@ function Dashboard(props) {
 
   const { cases, deaths, recovered } = infoCovidAll;
   return (
-    <div className="container">
-      <HeaderDashboard listInfoCovidCountries={listInfoCovidCountries} />
+    <div>
+      {/* <HeaderDashboard listInfoCovidCountries={listInfoCovidCountries} /> */}
       <content>
         <Tabs defaultActiveKey="1">
           <TabPane
@@ -218,4 +222,4 @@ function Dashboard(props) {
   );
 }
 
-export default Dashboard;
+export default WrapperDashboard(Dashboard);

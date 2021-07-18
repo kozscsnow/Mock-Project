@@ -2,6 +2,7 @@ import { Skeleton } from 'antd';
 import InfoCovidBox from 'components/InfoCovidBox';
 import LocalLoading from 'components/LocalLoading';
 import PieChart from 'components/PieChart';
+import WrapperDashboard from 'HOCs/WrapperDashboard';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
@@ -26,7 +27,7 @@ function DetailInfoCovidCountry(props) {
       // dispatch(GlobalActions.setIsLoading(false));
     };
     fetchInfoCovidCountries();
-  }, [dispatch]);
+  }, [dispatch, countryName]);
 
   const {
     country,
@@ -37,6 +38,9 @@ function DetailInfoCovidCountry(props) {
     todayDeaths,
     todayRecovered,
     countryInfo,
+    active,
+    tests,
+    undefined,
   } = infoCovidCountry;
   return (
     <div>
@@ -45,14 +49,10 @@ function DetailInfoCovidCountry(props) {
       ) : (
         <InfoCovidBox infoCovidAll={infoCovidCountry} />
       )} */}
-      <InfoCovidBox cases={cases} deaths={deaths} recovered={recovered} />
-      <PieChart
-        cases={cases}
-        deaths={deaths}
-        recovered={recovered}
-        type={`${countryName}`}
-      />
       <CovidOverViewBox
+        active={active}
+        tests={tests}
+        undefined={undefined}
         country={country}
         cases={cases}
         deaths={deaths}
@@ -62,8 +62,15 @@ function DetailInfoCovidCountry(props) {
         todayRecovered={todayRecovered}
         countryInfo={countryInfo}
       />
+      <InfoCovidBox cases={cases} deaths={deaths} recovered={recovered} />
+      <PieChart
+        cases={cases}
+        deaths={deaths}
+        recovered={recovered}
+        type={`${countryName}`}
+      />
     </div>
   );
 }
 
-export default DetailInfoCovidCountry;
+export default WrapperDashboard(DetailInfoCovidCountry);

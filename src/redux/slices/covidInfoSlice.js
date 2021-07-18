@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   infoCovidAll: [],
   infoCovidHistory: {},
-  listInfoCovidCountries: {},
+  listInfoCovidCountries: [],
 };
 
 const covidInfoSlice = createSlice({
@@ -12,6 +12,9 @@ const covidInfoSlice = createSlice({
   reducers: {
     getInfoCovidAll(state, action) {
       state.infoCovidAll = action.payload;
+    },
+    getListInfoCovidCountries(state, action) {
+      state.listInfoCovidCountries = action.payload;
     },
   },
 });

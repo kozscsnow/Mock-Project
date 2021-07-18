@@ -1,6 +1,7 @@
 import { Col, Row } from 'antd';
 import React, { useState } from 'react';
 import { TwitterOutlined, FacebookOutlined } from '@ant-design/icons';
+import './CovidOverViewBox.scss';
 
 function CovidOverViewBox(props) {
   // const { infoCovidAll } = props;
@@ -27,12 +28,12 @@ function CovidOverViewBox(props) {
   // console.log(countryInfo);
   const formatterNumber = new Intl.NumberFormat('en');
   return (
-    <div>
+    <div className="covid-overview-box__container">
       <Row>
-        <Col xs={24} sm={24} lg={12}>
+        <Col xs={24} sm={24} lg={24}>
           <div className="border-box">
-            <div className="intro-home__info">
-              <div className="intro-home__info-header">
+            <div className="covid-overview-box__info">
+              <div className="covid-overview-box__info-header">
                 <h3>
                   <img src={countryInfo?.flag} alt="flag country" />
                   <span> {country}</span> Overview
@@ -42,38 +43,39 @@ function CovidOverViewBox(props) {
                   <FacebookOutlined style={{ color: '#285091' }} />
                 </p>
               </div>
-              <div className="intro-home__info-content">
+              <div className="covid-overview-box__info-content">
                 <Row gutter={[48, 48]}>
                   <Col xs={24} lg={8}>
-                    <div className="intro-home__info-item">
+                    <div className="covid-overview-box__info-item">
                       <h4 className="info-item__confirmed confirmed">
                         {formatterNumber.format(cases)}
                       </h4>
                       <p>Confirmed</p>
                       <small className="info-item__confirmed confirmed">
-                        +{formatterNumber.format(todayCases)}
+                        Today Cases +{formatterNumber.format(todayCases)}
                       </small>
                     </div>
                   </Col>
                   <Col xs={24} lg={8}>
-                    <div className="intro-home__info-item">
+                    <div className="covid-overview-box__info-item">
                       <h4 className="info-item__recovered recovered">
                         {formatterNumber.format(recovered)}
                       </h4>
                       <p>Recovered</p>
                       <small className="info-item__confirmed recovered">
-                        +{formatterNumber.format(todayRecovered)}
+                        Today Recovered +
+                        {formatterNumber.format(todayRecovered)}
                       </small>
                     </div>
                   </Col>
                   <Col xs={24} lg={8}>
-                    <div className="intro-home__info-item">
+                    <div className="covid-overview-box__info-item">
                       <h4 className="info-item__deaths deaths">
                         {formatterNumber.format(deaths)}
                       </h4>
                       <p>Deaths</p>
                       <small className="info-item__deaths deaths">
-                        +{formatterNumber.format(todayDeaths)}
+                        Today Deaths +{formatterNumber.format(todayDeaths)}
                       </small>
                     </div>
                   </Col>

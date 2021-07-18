@@ -11,9 +11,14 @@ function TableCovid(props) {
         return {
           key: uuidv4(),
           country: infoCountry.country,
+          population: infoCountry.population,
           cases: infoCountry.cases,
           recovered: infoCountry.recovered,
           deaths: infoCountry.deaths,
+          active: infoCountry.active,
+          critical: infoCountry.critical,
+          tests: infoCountry.tests,
+          undefined: infoCountry.undefined,
         };
         // return [infoCountry.country, infoCountry.cases, infoCountry.recovered];
       });
@@ -26,6 +31,7 @@ function TableCovid(props) {
       dataIndex: 'country',
       sorter: (a, b) => a.country.length - b.country.length,
       sortDirections: ['descend'],
+      fixed: 'left',
     },
     {
       title: 'Cases',
@@ -45,80 +51,30 @@ function TableCovid(props) {
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.deaths - b.deaths,
     },
-  ];
-
-  const data = [
     {
-      key: '1',
-      country: 'John Brown',
-      cases: 32,
-      recovered: 'New York No. 1 Lake Park',
+      title: 'Active',
+      dataIndex: 'active',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.active - b.active,
     },
     {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
+      title: 'Critical',
+      dataIndex: 'critical',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.critical - b.critical,
     },
     {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
+      title: 'Tested',
+      dataIndex: 'tests',
+      defaultSortOrder: 'descend',
+      sorter: (a, b) => a.tests - b.tests,
     },
     {
-      key: '4',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '5',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '6',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '7',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '8',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '9',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '10',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '11',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-      key: '12',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
+      title: 'Undefined',
+      dataIndex: 'undefined',
+      defaultSortOrder: 'descend',
+      responsive: ['lg'],
+      sorter: (a, b) => a.undefined - b.undefined,
     },
   ];
 
@@ -126,10 +82,13 @@ function TableCovid(props) {
   return (
     <div>
       <Table
+        scroll={{ x: true }}
         columns={columns}
         dataSource={DataCovidAll}
         onChange={onChange}
         loading={localLoading}
+        pagination={{ position: ['bottomLeft'], responsive: true }}
+        sticky
       />
     </div>
   );
