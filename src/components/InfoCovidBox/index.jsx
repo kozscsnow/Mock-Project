@@ -1,7 +1,9 @@
 import React from 'react';
 import { Card, Col, Row } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 function InfoCovidBox(props) {
+  const { t } = useTranslation();
   const { cases, deaths, recovered } = props;
 
   const formatNumber = Intl.NumberFormat('en');
@@ -12,7 +14,7 @@ function InfoCovidBox(props) {
           <Col xs={24} md={8} style={{ marginBottom: '16px' }}>
             <Card
               hoverable={true}
-              title="Số ca mắc"
+              title={t('total_cases')}
               bordered={true}
               loading={false}
               headStyle={{
@@ -34,7 +36,7 @@ function InfoCovidBox(props) {
           <Col xs={24} md={8} style={{ marginBottom: '16px' }}>
             <Card
               hoverable={true}
-              title="Số ca khỏi"
+              title={t('total_recovered')}
               bordered={true}
               headStyle={{
                 textAlign: 'center',
@@ -55,7 +57,7 @@ function InfoCovidBox(props) {
           <Col xs={24} md={8} style={{ marginBottom: '16px' }}>
             <Card
               hoverable={true}
-              title="Số ca tử vong"
+              title={t('total_deaths')}
               bordered={true}
               headStyle={{
                 textAlign: 'center',

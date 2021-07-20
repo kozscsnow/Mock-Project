@@ -1,9 +1,14 @@
 {
     "app_title": "Tiêu đề",
     "language": "Ngôn ngữ",
+    "overview": "Thống kê",
+    "data_table": "Bảng Thống Kê",
     "cases": "Ca nhiễm",
     "recovered": "Ca hồi phục",
     "deaths": "Ca chết",
+    "total_cases": "Tổng Ca Nhiễm",
+    "total_recovered": "Tổng Ca Hồi Phục",
+    "total_deaths": "Tổng Ca Chết",
     "header_home_news": "Tin tức",
     "header_home_dashboard": "Thống kê",
     "header_home_alert": "Cảnh báo",
@@ -25,6 +30,7 @@
     "group-column-chart_title": "Biểu đồ nhóm",
     "line-column-chart_title": "Biểu đồ đường và cột",
     "line-column-chart_sub-title": "Dữ liệu covid toàn thế giới",
+    "header-dashboard_title": "Bảng hống kê (COVID-19) ",
     "welcome_message": "Xin chào",
     "days_since_release": "Ngày {{number_day}} "
 }

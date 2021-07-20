@@ -1,9 +1,14 @@
 {
     "app_title": "Title",
     "language": "Language",
+    "overview": "Overview",
+    "data_table": "Data Table",
     "cases": "Cases",
     "recovered": "Recovered",
     "deaths": "Deaths",
+    "total_cases": "Cases",
+    "total_recovered": "Recovered",
+    "total_deaths": "Deaths",
     "header_home_news": "News",
     "header_home_dashboard": "Dashboard",
     "header_home_alert": "Alert",
@@ -25,6 +30,7 @@
     "group-column-chart_title": "Group Column Chart",
     "line-column-chart_title": "Line and Column Chart",
     "line-column-chart_sub-title": "Covid 19 All Data",
+    "header-dashboard_title": "Coronavirus (COVID-19) Dashboard",
     "welcome_message": "Welcome",
     "days_since_release": "it's been {{number_day}} "
 }

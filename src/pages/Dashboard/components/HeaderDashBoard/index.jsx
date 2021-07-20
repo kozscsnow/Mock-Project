@@ -8,8 +8,10 @@ import {
 } from '@ant-design/icons';
 import { useHistory } from 'react-router';
 import CountriesSearchInput from '../ContriesSearchInput';
+import { useTranslation } from 'react-i18next';
 
 function HeaderDashboard(props) {
+  const { t } = useTranslation();
   const { listInfoCovidCountries } = props;
   const [isSearchClick, setIsSearchClick] = useState(false);
   const history = useHistory();
@@ -28,11 +30,6 @@ function HeaderDashboard(props) {
           </div>
           {isSearchClick ? (
             <>
-              {/* <input
-                type="text"
-                className="header-dashboard__input"
-                style={{}}
-              /> */}
               <CountriesSearchInput
                 listInfoCovidCountries={listInfoCovidCountries}
               />
@@ -63,7 +60,7 @@ function HeaderDashboard(props) {
 
         <div className="header-dashboard__nav">
           <p className="header-dashboard__text">
-            Coronavirus (COVID-19) Dashboard
+            {t('header-dashboard_title')}
           </p>
         </div>
       </header>

@@ -26,12 +26,14 @@ import HeaderDashboard from './components/HeaderDashboard';
 import FooterDashboard from './components/FooterDashboard';
 import ScrollToTopButton from 'components/ScrollToTopButton';
 import WrapperDashboard from 'HOCs/WrapperDashboard';
+import { useTranslation } from 'react-i18next';
 
 const { TabPane } = Tabs;
 
 const { RangePicker } = DatePicker;
 
 function Dashboard(props) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [listInfoCovidCountries, setListInfoCovidCountries] = useState([]);
   const [infoCovidAll, setInfoCovidAll] = useState({});
@@ -131,7 +133,7 @@ function Dashboard(props) {
             tab={
               <span>
                 <FundViewOutlined />
-                Overview
+                {t('overview')}
               </span>
             }
             key="1"
@@ -194,7 +196,7 @@ function Dashboard(props) {
             tab={
               <span>
                 <TableOutlined />
-                Data table
+                {t('data_table')}
               </span>
             }
             key="2"

@@ -95,9 +95,9 @@ function MainContent(props) {
               </Col>
             </Row>
           </Col>
-          <Col lg={18}>
-            <Row gutter={[16, 16]} className="mobileHidden">
-              <Col xs={0} md={0} lg={16}>
+          <Col lg={18} className="mobileHidden">
+            <Row gutter={[16, 16]}>
+              <Col lg={16}>
                 <Row className="main-news__intro-item">
                   <Col lg={24}>
                     <img
