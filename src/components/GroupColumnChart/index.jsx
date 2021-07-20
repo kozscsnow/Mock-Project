@@ -3,7 +3,8 @@ import Highcharts from 'highcharts';
 
 import React from 'react';
 import moment from 'moment';
-const generateDataOption = (infoCovidHistory) => {
+import { useTranslation } from 'react-i18next';
+const generateDataOption = (infoCovidHistory, t) => {
   if (
     infoCovidHistory.cases &&
     infoCovidHistory.deaths &&
@@ -24,7 +25,7 @@ const generateDataOption = (infoCovidHistory) => {
       },
 
       title: {
-        text: 'Column Chart',
+        text: `${t('group-column-chart_title')}`,
       },
 
       xAxis: {
@@ -35,7 +36,7 @@ const generateDataOption = (infoCovidHistory) => {
         allowDecimals: false,
         min: 0,
         title: {
-          text: 'Cases',
+          text: `${t('cases')}`,
         },
       },
 
@@ -63,11 +64,11 @@ const generateDataOption = (infoCovidHistory) => {
 
       series: [
         {
-          name: 'Confirmed',
+          name: `${t('cases')}`,
           data: [...listCases],
         },
         {
-          name: 'Deaths',
+          name: `${t('deaths')}`,
           data: [...listRecovered],
         },
       ],
@@ -76,12 +77,12 @@ const generateDataOption = (infoCovidHistory) => {
 };
 function GroupColumnChart(props) {
   const { infoCovidHistory, type } = props;
-
+  const { t } = useTranslation();
   return (
     <div>
       <HighchartsReact
         highcharts={Highcharts}
-        options={generateDataOption(infoCovidHistory)}
+        options={generateDataOption(infoCovidHistory, t)}
       />
     </div>
   );

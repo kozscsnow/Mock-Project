@@ -1,14 +1,53 @@
+import 'antd/dist/antd.css';
 import { createBrowserHistory } from 'history';
+import i18n from 'i18next';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { initReactI18next, useTranslation } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import HttpApi from 'i18next-http-backend';
+
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
-import store from './redux/store';
 import GlobalLoading from './components/GlobalLoading';
-import 'antd/dist/antd.css';
+import './index.css';
+import store from './redux/store';
+import reportWebVitals from './reportWebVitals';
+
+i18n
+  .use(initReactI18next)
+  .use(LanguageDetector)
+  .use(HttpApi)
+  .init({
+    // the translations
+    // (tip move them in a JSON file and import them,
+    // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
+    // resources: {
+    //   vi: {
+    //     translation: {
+    //       'Welcome to React': 'Xin chào',
+    //     },
+    //   },
+    //   en: {
+    //     translation: {
+    //       'Welcome to React': 'Welcome to React and react-i18next',
+    //     },
+    //   },
+    // },
+    detection: {
+      order: ['path', 'cookie', 'htmlTag', 'localStorage', 'subdomain'],
+      caches: ['cookie'],
+    },
+    fallbackLng: 'en',
+    supportedLngs: ['en', 'vi'],
+    backend: {
+      loadPath: '/assets/locales/{{lng}}/translation.json',
+    },
+    react: {
+      useSuspense: false,
+    },
+  });
 
 const history = createBrowserHistory();
 

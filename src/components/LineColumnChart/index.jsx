@@ -2,7 +2,8 @@ import React from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import moment from 'moment';
-const generateDataOption = (infoCovidHistory) => {
+import { useTranslation } from 'react-i18next';
+const generateDataOption = (infoCovidHistory, t) => {
   if (
     infoCovidHistory.cases &&
     infoCovidHistory.deaths &&
@@ -22,10 +23,10 @@ const generateDataOption = (infoCovidHistory) => {
         zoomType: 'xy',
       },
       title: {
-        text: 'Line and Column Chart',
+        text: `${t('line-column-chart_title')}`,
       },
       subtitle: {
-        text: 'Covid 19 All Data',
+        text: `${t('line-column-chart_sub-title')}`,
       },
       xAxis: [
         {
@@ -43,7 +44,7 @@ const generateDataOption = (infoCovidHistory) => {
             },
           },
           title: {
-            text: 'Cases',
+            text: `${t('cases')}`,
             style: {
               color: Highcharts.getOptions().colors[0],
             },
@@ -52,7 +53,7 @@ const generateDataOption = (infoCovidHistory) => {
         {
           // Secondary yAxis
           title: {
-            text: 'Recovered',
+            text: `${t('recovered')}`,
             style: {
               color: Highcharts.getOptions().colors[1],
             },
@@ -82,7 +83,7 @@ const generateDataOption = (infoCovidHistory) => {
       },
       series: [
         {
-          name: 'Cases',
+          name: `${t('recovered')}`,
           type: 'column',
           yAxis: 1,
           data: [...listCases],
@@ -91,7 +92,7 @@ const generateDataOption = (infoCovidHistory) => {
           },
         },
         {
-          name: 'Recovered',
+          name: `${t('cases')}`,
           type: 'spline',
           data: [...listRecovered],
           tooltip: {
@@ -103,13 +104,14 @@ const generateDataOption = (infoCovidHistory) => {
   }
 };
 function LineColumnChart(props) {
+  const { t } = useTranslation();
   const { infoCovidHistory } = props;
   console.log(infoCovidHistory);
   return (
     <div>
       <HighchartsReact
         highcharts={Highcharts}
-        options={generateDataOption(infoCovidHistory)}
+        options={generateDataOption(infoCovidHistory, t)}
       />
     </div>
   );
