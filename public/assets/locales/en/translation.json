@@ -18,6 +18,23 @@
     "today_recovered": "Today Recovered",
     "today_deaths": "Today Deaths",
     "country": "Country",
+
+    "login": "Login",
+    "login_user-name": "User Name",
+    "login_password": "Password",
+    "login_create-your-account": "Create Your Account",
+
+    "regis_register": "Register",
+    "regis_reset": "Reset",
+    "regis_create-your-account": "Create Your Account",
+    "regis_your-user-name": "Your User Name",
+    "regis_enter-your-user-name": "Enter Your User Name",
+    "regis_your-email": "Your Email",
+    "regis_enter-your-email": "Enter Your Email",
+    "regis_your-password": "Your Password",
+    "regis_enter-your-password": "Enter Your Password",
+    "regis_confirm-your-password": "Confirm Your Password",
+
     "home_header_news": "News",
     "home_header_dashboard": "Dashboard",
     "home_header_alert": "Alert",

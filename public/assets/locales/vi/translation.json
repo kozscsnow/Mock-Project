@@ -18,6 +18,23 @@
     "today_recovered": "Today Recovered",
     "today_deaths": "Today Deaths",
     "country": "Đất nước",
+
+    "login": "Đăng Nhập",
+    "login_user-name": "Tài Khoản",
+    "login_password": "Mật Khẩu",
+    "login_create-your-account": "Tạo Tài Khoản",
+
+    "regis_register": "Đăng Ký",
+    "regis_reset": "Khôi Phục",
+    "regis_create-your-account": "Tạo Tài Khoản",
+    "regis_your-user-name": "Tài Khoản",
+    "regis_enter-your-user-name": "Nhập Tài Khoản",
+    "regis_your-email": "Email",
+    "regis_enter-your-email": "Nhập Email",
+    "regis_your-password": "Mật Khẩu",
+    "regis_enter-your-password": "Nhập Mật Khẩu",
+    "regis_confirm-your-user-name": "Xác Nhận Lại Mật Khẩu",
+
     "home_header_news": "Tin tức",
     "home_header_dashboard": "Thống kê",
     "home_header_alert": "Cảnh báo",
@@ -36,6 +53,7 @@
     "home_intro_cases-per-one-million": "Số ca nhiễm trên một triệu người",
     "home_intro_recovered-per-one-million": "Số hồi phục trên một triệu người",
     "home_intro_deaths-per-one-million": "Số ca chết trên một triệu người",
+
     "dashboard_header_input_search-country": "Tìm kiếm đất nước",
     "group-column-chart_title": "Biểu đồ nhóm",
     "line-column-chart_title": "Biểu đồ đường và cột",

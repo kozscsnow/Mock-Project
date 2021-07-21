@@ -29,7 +29,7 @@ function InputField(props) {
   const showError = errors[name] && touched[name];
 
   return (
-    <>
+    <div className="input-field__container">
       <FormGroup className={styles.formGroup}>
         {label && (
           <Label id="form-id" for={name} className={styles.label}>
@@ -49,7 +49,7 @@ function InputField(props) {
           invalid={showError}
         ></Input>
         {showError && (
-          <small className="form-valid form-text text-danger">
+          <small className="form-valid form-text input-field__text--danger">
             {errors[name]}
           </small>
         )}
@@ -65,7 +65,7 @@ function InputField(props) {
             disabled={disabled}
           /> */}
       </FormGroup>
-    </>
+    </div>
   );
 }
 

@@ -19,6 +19,11 @@
 
   text-align: center;
 }
+.form h3{
+  color: #fff;
+
+  font-size: 30px;
+}
 .label {
   margin-bottom: 10px;
   color: #fff;

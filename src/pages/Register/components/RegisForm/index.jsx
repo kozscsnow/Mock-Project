@@ -10,8 +10,10 @@ import {
   FormRegisterActions,
   GlobalActions,
 } from '../../../../redux/rootAction';
+import { useTranslation } from 'react-i18next';
 
 function RegisForm(props) {
+  const { t } = useTranslation();
   const { onRegisSuccess } = props;
   const storeAccountRef = useRef([]);
   const storeAccount = useSelector(
@@ -74,41 +76,43 @@ function RegisForm(props) {
                 // console.log({ values, errors, touched });
                 return (
                   <Form className={`${styles.form}`}>
-                    <h3 className="text-light">Create Your Account</h3>
+                    <h3 className="text-light">
+                      {t('regis_create-your-account')}
+                    </h3>
                     <FastField
                       name="username"
                       component={InputField}
-                      label="Your User Name"
-                      placeholder="Username"
+                      label={t('regis_your-user-name')}
+                      placeholder={t('regis_enter-your-user-name')}
                     />
                     <FastField
                       name="email"
                       component={InputField}
-                      label="Your Email"
-                      placeholder="Enter Your Email"
+                      label={t('regis_your-email')}
+                      placeholder={t('regis_enter-your-email')}
                     />
                     <FastField
                       name="password"
                       component={InputField}
-                      label="Your Password"
-                      placeholder="Enter Your Password"
+                      label={t('regis_your-password')}
+                      placeholder={t('regis_enter-your-password')}
                       type="password"
                     />
                     <FastField
                       name="confirmPassword"
                       component={InputField}
-                      label="Confirm Your Password"
-                      placeholder="Confirm Your Password"
+                      label={t('regis_confirm-your-user-name')}
+                      placeholder={t('regis_confirm-your-user-name')}
                       type="password"
                     />
                     <div className="form-group">
                       <button type="submit" className={styles.button}>
-                        Register
+                        {t('regis_register')}
                       </button>
                     </div>
                     <div className="form-group">
                       <button type="reset" className={styles.button}>
-                        Reset
+                        {t('regis_reset')}
                       </button>
                     </div>
                   </Form>

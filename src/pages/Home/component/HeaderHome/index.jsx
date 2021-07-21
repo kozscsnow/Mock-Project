@@ -119,9 +119,9 @@ function HeaderHome(props) {
           <Link className="header-home__link">{t('home_header_contact')}</Link>
         </Anchor>
       </div>
-      <div className="mobileHidden">
-        <Switch checkedChildren="Dark" unCheckedChildren="Light" />
-      </div>
+
+      <Switch checkedChildren="Dark" unCheckedChildren="Light" />
+
       <div className="mobileHidden">
         <div className="header-home__user">
           {/* <GlobalOutlined onClick={handleClick} /> */}

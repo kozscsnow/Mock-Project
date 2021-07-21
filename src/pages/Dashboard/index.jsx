@@ -207,12 +207,12 @@ function Dashboard(props) {
             }
             key="2"
           >
-            <Space direction="vertical" size={12}>
+            {/* <Space direction="vertical" size={12}>
               <RangePicker
                 disabledDate={(current) => disableFutureDates(current)}
                 onChange={handleDateChange}
               />
-            </Space>
+            </Space> */}
             <Row>
               <Col xs={24}>
                 <TableCovid
