@@ -100,18 +100,18 @@ function HeaderHome(props) {
         <div className="mobileHidden">
           <Anchor className="header-home__nav">
             <Link to="/news" className="header-home__link">
-              {t('header_home_news')}
+              {t('home_header_news')}
             </Link>
             <Link to="/dashboard" className="header-home__link">
-              {t('header_home_dashboard')}
+              {t('home_header_dashboard')}
             </Link>
-            <Link className="header-home__link">{t('header_home_alert')}</Link>
+            <Link className="header-home__link">{t('home_header_alert')}</Link>
             <Link className="header-home__link">
-              {t('header_home_analytics')}
+              {t('home_header_analytics')}
             </Link>
-            <Link className="header-home__link">{t('header_home_about')}</Link>
+            <Link className="header-home__link">{t('home_header_about')}</Link>
             <Link className="header-home__link">
-              {t('header_home_contact')}
+              {t('home_header_contact')}
             </Link>
           </Anchor>
         </div>
@@ -167,7 +167,7 @@ function HeaderHome(props) {
             {isLoggedIn ? (
               <>
                 <p>
-                  {t('header_home_user')}
+                  {t('home_header_user')}
                   <span>Admin</span>
                 </p>
                 <img
@@ -191,7 +191,7 @@ function HeaderHome(props) {
                   to="/login"
                   className="header-home__btn-login"
                 >
-                  {t('header_home_login')}
+                  {t('home_header_login')}
                 </Link>
               </>
             )}
@@ -214,22 +214,22 @@ function HeaderHome(props) {
           >
             <Anchor className="header-home__nav">
               <Link to="/news" className="header-home__link">
-                {t('header_home_news')}
+                {t('home_header_news')}
               </Link>
               <Link to="/dashboard" className="header-home__link">
-                {t('header_home_dashboard')}
+                {t('home_header_dashboard')}
               </Link>
               <Link className="header-home__link">
-                {t('header_home_alert')}
+                {t('home_header_alert')}
               </Link>
               <Link className="header-home__link">
-                {t('header_home_analytics')}
+                {t('home_header_analytics')}
               </Link>
               <Link className="header-home__link">
-                {t('header_home_about')}
+                {t('home_header_about')}
               </Link>
               <Link className="header-home__link">
-                {t('header_home_contact')}
+                {t('home_header_contact')}
               </Link>
             </Anchor>
 
@@ -237,7 +237,7 @@ function HeaderHome(props) {
               {isLoggedIn ? (
                 <>
                   <p>
-                    {t('header_home_user')}
+                    {t('home_header_user')}
                     <span>Admin</span>
                   </p>
                   <img
@@ -256,7 +256,7 @@ function HeaderHome(props) {
                   to="/login"
                   className="header-home__btn-login"
                 >
-                  {t('header_home_login')}
+                  {t('home_header_login')}
                 </Link>
               )}
             </div>

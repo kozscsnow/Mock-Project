@@ -2,6 +2,7 @@ import { Col, Row } from 'antd';
 import React, { useState } from 'react';
 import { TwitterOutlined, FacebookOutlined } from '@ant-design/icons';
 import './CovidOverViewBox.scss';
+import { useTranslation } from 'react-i18next';
 
 function CovidOverViewBox(props) {
   // const { infoCovidAll } = props;
@@ -27,6 +28,7 @@ function CovidOverViewBox(props) {
   // const { flag } = countryInfo;
   // console.log(countryInfo);
   const formatterNumber = new Intl.NumberFormat('en');
+  const { t } = useTranslation();
   return (
     <div className="covid-overview-box__container">
       <Row>
@@ -36,51 +38,61 @@ function CovidOverViewBox(props) {
               <div className="covid-overview-box__info-header">
                 <h3>
                   <img src={countryInfo?.flag} alt="flag country" />
-                  <span> {country}</span> Overview
+                  <span> {country}</span> {t('overview')}
                 </h3>
                 <p>
-                  Share: <TwitterOutlined style={{ color: '#1890FF' }} />
+                  {t('share')}: <TwitterOutlined style={{ color: '#1890FF' }} />
                   <FacebookOutlined style={{ color: '#285091' }} />
                 </p>
               </div>
-              <div className="covid-overview-box__info-content">
-                <Row gutter={[48, 48]}>
-                  <Col xs={24} lg={8}>
-                    <div className="covid-overview-box__info-item">
-                      <h4 className="info-item__confirmed confirmed">
-                        {formatterNumber.format(cases)}
-                      </h4>
-                      <p>Confirmed</p>
-                      <small className="info-item__confirmed confirmed">
-                        Today Cases +{formatterNumber.format(todayCases)}
-                      </small>
-                    </div>
-                  </Col>
-                  <Col xs={24} lg={8}>
-                    <div className="covid-overview-box__info-item">
-                      <h4 className="info-item__recovered recovered">
-                        {formatterNumber.format(recovered)}
-                      </h4>
-                      <p>Recovered</p>
-                      <small className="info-item__confirmed recovered">
-                        Today Recovered +
-                        {formatterNumber.format(todayRecovered)}
-                      </small>
-                    </div>
-                  </Col>
-                  <Col xs={24} lg={8}>
-                    <div className="covid-overview-box__info-item">
-                      <h4 className="info-item__deaths deaths">
-                        {formatterNumber.format(deaths)}
-                      </h4>
-                      <p>Deaths</p>
-                      <small className="info-item__deaths deaths">
-                        Today Deaths +{formatterNumber.format(todayDeaths)}
-                      </small>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+
+              <Row
+                gutter={[48, 48]}
+                className="covid-overview-box__info-content"
+              >
+                <Col xs={24} md={16} lg={8}>
+                  <div className="covid-overview-box__info-item">
+                    <h4 className="info-item__confirmed confirmed">
+                      {formatterNumber.format(cases)}
+                    </h4>
+                    <p>{t('confirmed')}</p>
+                    <small className="info-item__confirmed confirmed">
+                      {t('today_cases')}
+                    </small>
+                    <small className="info-item__confirmed confirmed">
+                      + {formatterNumber.format(todayCases)}
+                    </small>
+                  </div>
+                </Col>
+                <Col xs={24} md={16} lg={8}>
+                  <div className="covid-overview-box__info-item">
+                    <h4 className="info-item__recovered recovered">
+                      {formatterNumber.format(recovered)}
+                    </h4>
+                    <p>{t('recovered')}</p>
+                    <small className="info-item__confirmed recovered">
+                      {t('today_recovered')}
+                    </small>
+                    <small className="info-item__confirmed recovered">
+                      + {formatterNumber.format(todayRecovered)}
+                    </small>
+                  </div>
+                </Col>
+                <Col xs={24} md={16} lg={8}>
+                  <div className="covid-overview-box__info-item">
+                    <h4 className="info-item__deaths deaths">
+                      {formatterNumber.format(deaths)}
+                    </h4>
+                    <p> {t('deaths')}</p>
+                    <small className="info-item__confirmed deaths">
+                      {t('today_deaths')}
+                    </small>
+                    <small className="info-item__deaths deaths">
+                      + {formatterNumber.format(todayDeaths)}
+                    </small>
+                  </div>
+                </Col>
+              </Row>
             </div>
           </div>
         </Col>

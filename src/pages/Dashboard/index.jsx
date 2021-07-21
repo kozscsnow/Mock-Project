@@ -39,24 +39,24 @@ function Dashboard(props) {
   const [infoCovidAll, setInfoCovidAll] = useState({});
   const [infoCovidHistory, setInfoCovidHistory] = useState({});
   const [listInfoCovidVaccine, setListInfoCovidVaccine] = useState([]);
-  const [localLoading, setLocalLoading] = useState(true);
+  const [isLocalLoading, setIsLocalLoading] = useState(true);
 
   // Fetch Covid  Countries
   useEffect(() => {
-    setLocalLoading(true);
+    setIsLocalLoading(true);
     const fetchInfoCovidCountries = async () => {
       const listInfoCovidCountries = await covidCountriesAPI.getAll();
       setListInfoCovidCountries(listInfoCovidCountries);
       dispatch(
         CovidInfoActions.getListInfoCovidCountries(listInfoCovidCountries)
       );
-      setLocalLoading(false);
+      setIsLocalLoading(false);
     };
     fetchInfoCovidCountries();
   }, [dispatch]);
   // Fetch Covid All
   useEffect(() => {
-    dispatch(GlobalActions.setIsLoading(true));
+    // dispatch(GlobalActions.setIsLoading(true));
 
     const fetchCovidAll = async () => {
       try {
@@ -69,13 +69,13 @@ function Dashboard(props) {
         Please try again or check your connection
         `);
       }
-      dispatch(GlobalActions.setIsLoading(false));
+      // dispatch(GlobalActions.setIsLoading(false));
     };
     fetchCovidAll();
   }, [dispatch]);
   // Fetch Covid History
   useEffect(() => {
-    dispatch(GlobalActions.setIsLoading(true));
+    // dispatch(GlobalActions.setIsLoading(true));
 
     const fetCovidHistory = async () => {
       const params = {
@@ -90,13 +90,13 @@ function Dashboard(props) {
         Please try again or check your connection
         `);
       }
-      dispatch(GlobalActions.setIsLoading(false));
+      // dispatch(GlobalActions.setIsLoading(false));
     };
     fetCovidHistory();
   }, [dispatch]);
   // Fetch Covid Vaccine
   useEffect(() => {
-    dispatch(GlobalActions.setIsLoading(true));
+    // dispatch(GlobalActions.setIsLoading(true));
 
     const fetchCovidVaccine = async () => {
       const params = {
@@ -111,7 +111,7 @@ function Dashboard(props) {
         Please try again or check your connection
         `);
       }
-      dispatch(GlobalActions.setIsLoading(false));
+      // dispatch(GlobalActions.setIsLoading(false));
     };
     fetchCovidVaccine();
   }, [dispatch]);
@@ -124,6 +124,7 @@ function Dashboard(props) {
   };
 
   const { cases, deaths, recovered } = infoCovidAll;
+
   return (
     <div>
       {/* <HeaderDashboard listInfoCovidCountries={listInfoCovidCountries} /> */}
@@ -138,11 +139,16 @@ function Dashboard(props) {
             }
             key="1"
           >
-            <InfoCovidBox cases={cases} deaths={deaths} recovered={recovered} />
+            <InfoCovidBox
+              cases={cases}
+              deaths={deaths}
+              recovered={recovered}
+              isLocalLoading={isLocalLoading}
+            />
 
             <Row>
               <Col xs={24} lg={24}>
-                {localLoading ? (
+                {isLocalLoading ? (
                   <Skeleton paragraph={{ rows: 18 }} active />
                 ) : (
                   <MapChart listInfoCovidCountries={listInfoCovidCountries} />
@@ -175,7 +181,7 @@ function Dashboard(props) {
               </Col>
             </Row>
 
-            <Row>
+            <Row className="mobileHidden">
               <Col xs={24} lg={24}>
                 <LineColumnChart
                   infoCovidHistory={infoCovidHistory}
@@ -207,13 +213,11 @@ function Dashboard(props) {
                 onChange={handleDateChange}
               />
             </Space>
-
-            <br />
             <Row>
               <Col xs={24}>
                 <TableCovid
                   listInfoCovidCountries={listInfoCovidCountries}
-                  localLoading={localLoading}
+                  isLocalLoading={isLocalLoading}
                 />
               </Col>
             </Row>

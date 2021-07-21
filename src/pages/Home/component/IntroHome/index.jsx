@@ -31,9 +31,9 @@ function IntroHome(props) {
           <div className="border-box">
             <div className="intro-home__info">
               <div className="intro-home__info-header">
-                <h3>{t('intro_home_overview')}</h3>
+                <h3>{t('home_intro_overview')}</h3>
                 <p>
-                  {t('intro_home_share')}:{' '}
+                  {t('home_intro_share')}:{' '}
                   <TwitterOutlined style={{ color: '#1890FF' }} />
                   <FacebookOutlined style={{ color: '#285091' }} />
                 </p>
@@ -45,7 +45,7 @@ function IntroHome(props) {
                       <h4 className="info-item__confirmed confirmed">
                         {formatterNumber.format(cases)}
                       </h4>
-                      <p>{t('intro_home_confirmed')}</p>
+                      <p>{t('home_intro_confirmed')}</p>
                       <small className="info-item__confirmed confirmed">
                         +{formatterNumber.format(todayCases)}
                       </small>
@@ -56,7 +56,7 @@ function IntroHome(props) {
                       <h4 className="info-item__recovered recovered">
                         {formatterNumber.format(recovered)}
                       </h4>
-                      <p>{t('intro_home_recovered')}</p>
+                      <p>{t('home_intro_recovered')}</p>
                       <small className="info-item__confirmed recovered">
                         +{formatterNumber.format(todayRecovered)}
                       </small>
@@ -67,7 +67,7 @@ function IntroHome(props) {
                       <h4 className="info-item__deaths deaths">
                         {formatterNumber.format(deaths)}
                       </h4>
-                      <p>{t('intro_home_deaths')}</p>
+                      <p>{t('home_intro_deaths')}</p>
                       <small className="info-item__deaths deaths">
                         +{formatterNumber.format(todayDeaths)}
                       </small>
@@ -90,7 +90,7 @@ function IntroHome(props) {
                   }}
                 />
               </div>
-              <p>{t('intro_home_fatality-rate')}</p>
+              <p>{t('home_intro_fatality-rate')}</p>
             </div>
           </div>
         </Col>
@@ -106,7 +106,7 @@ function IntroHome(props) {
                   }}
                 />
               </div>
-              <p>{t('intro_home_recover-rate')}</p>
+              <p>{t('home_intro_recover-rate')}</p>
             </div>
           </div>
         </Col>
@@ -117,7 +117,7 @@ function IntroHome(props) {
           <div className="border-box">
             <div className="intro-home__chart background-img">
               <div>
-                <h5>{t('intro_home_cases-per-one-million')}</h5>
+                <h5>{t('home_intro_cases-per-one-million')}</h5>
                 <p className="text-large-size confirmed">
                   {formatterNumber.format(casesPerOneMillion)}
                 </p>
@@ -129,7 +129,7 @@ function IntroHome(props) {
           <div className="border-box">
             <div className="intro-home__chart background-img">
               <div>
-                <h5>{t('intro_home_recovered-per-one-million')}</h5>
+                <h5>{t('home_intro_recovered-per-one-million')}</h5>
                 <p className="text-large-size recovered">
                   {formatterNumber.format(recoveredPerOneMillion)}
                 </p>
@@ -141,7 +141,7 @@ function IntroHome(props) {
           <div className="border-box">
             <div className="intro-home__chart background-img">
               <div>
-                <h5>{t('intro_home_deaths-per-one-million')}</h5>
+                <h5>{t('home_intro_deaths-per-one-million')}</h5>
                 <p className="text-large-size deaths">
                   {formatterNumber.format(deathsPerOneMillion)}
                 </p>

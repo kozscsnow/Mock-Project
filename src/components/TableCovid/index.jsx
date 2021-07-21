@@ -1,9 +1,11 @@
 import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 
 function TableCovid(props) {
-  const { listInfoCovidCountries, localLoading } = props;
+  const { t } = useTranslation();
+  const { listInfoCovidCountries, isLocalLoading } = props;
   const [DataCovidAll, setDataCovidAll] = useState([]);
   useEffect(() => {
     if (listInfoCovidCountries) {
@@ -27,54 +29,54 @@ function TableCovid(props) {
   }, [listInfoCovidCountries]);
   const columns = [
     {
-      title: 'Country',
+      title: `${t('country')}`,
       dataIndex: 'country',
       sorter: (a, b) => a.country.length - b.country.length,
       sortDirections: ['descend'],
       fixed: 'left',
+      width: 150,
     },
     {
-      title: 'Cases',
+      title: `${t('cases')}`,
       dataIndex: 'cases',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.cases - b.cases,
+      width: 150,
     },
     {
-      title: 'Recovered',
+      title: `${t('recovered')}`,
       dataIndex: 'recovered',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.recovered - b.recovered,
+      width: 150,
     },
     {
-      title: 'Deaths',
+      title: `${t('deaths')}`,
       dataIndex: 'deaths',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.deaths - b.deaths,
+      width: 150,
     },
     {
-      title: 'Active',
+      title: `${t('active')}`,
       dataIndex: 'active',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.active - b.active,
+      width: 150,
     },
     {
-      title: 'Critical',
+      title: `${t('critical')}`,
       dataIndex: 'critical',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.critical - b.critical,
+      width: 150,
     },
     {
-      title: 'Tested',
+      title: `${t('tested')}`,
       dataIndex: 'tests',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.tests - b.tests,
-    },
-    {
-      title: 'Undefined',
-      dataIndex: 'undefined',
-      defaultSortOrder: 'descend',
-      responsive: ['lg'],
-      sorter: (a, b) => a.undefined - b.undefined,
+      width: 150,
     },
   ];
 
@@ -86,7 +88,7 @@ function TableCovid(props) {
         columns={columns}
         dataSource={DataCovidAll}
         onChange={onChange}
-        loading={localLoading}
+        loading={isLocalLoading}
         pagination={{ position: ['bottomLeft'], responsive: true }}
         sticky
       />
