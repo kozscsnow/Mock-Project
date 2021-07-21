@@ -40,6 +40,8 @@ function HeaderHome(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+  const themeStore = useSelector((state) => state.GlobalReducer.theme);
+  console.log(themeStore);
   const showDrawer = () => {
     setVisible(true);
   };
@@ -91,6 +93,10 @@ function HeaderHome(props) {
     prevOpen.current = open;
   }, [open]);
 
+  const handleThemeChange = () => {
+    dispatch(GlobalActions.setTheme(themeStore === 'light' ? 'dark' : 'light'));
+  };
+
   const menu = (
     <Menu>
       <Menu.Item onClick={() => i18next.changeLanguage('en')}>En</Menu.Item>
@@ -120,7 +126,11 @@ function HeaderHome(props) {
         </Anchor>
       </div>
 
-      <Switch checkedChildren="Dark" unCheckedChildren="Light" />
+      <Switch
+        checkedChildren="Dark"
+        unCheckedChildren="Light"
+        onChange={handleThemeChange}
+      />
 
       <div className="mobileHidden">
         <div className="header-home__user">
