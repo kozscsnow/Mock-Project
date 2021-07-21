@@ -1,15 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Anchor, Avatar, Col, Drawer, Row } from 'antd';
+import { Anchor, Avatar, Col, Drawer, Row, Switch, Menu, Dropdown } from 'antd';
 import {
   LogoutOutlined,
   UserOutlined,
   MenuFoldOutlined,
   GlobalOutlined,
+  CheckOutlined,
+  CloseOutlined,
 } from '@ant-design/icons';
 
 // import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
+// import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { PageHeader, Button, Descriptions } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
@@ -64,11 +66,11 @@ function HeaderHome(props) {
 
     setOpen(false);
   };
-  const handleChangeLanguage = (event, language) => {
+  const handleChangeLanguage = (language) => {
     i18next.changeLanguage(language);
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
+    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
+    //   return;
+    // }
 
     setOpen(false);
   };
@@ -88,117 +90,129 @@ function HeaderHome(props) {
 
     prevOpen.current = open;
   }, [open]);
+
+  const menu = (
+    <Menu>
+      <Menu.Item onClick={() => i18next.changeLanguage('en')}>En</Menu.Item>
+      <Menu.Item onClick={() => i18next.changeLanguage('vi')}>Vi</Menu.Item>
+    </Menu>
+  );
   return (
     <div className="header-home__wrapper">
-      <Row justify="space-between" align="middle">
-        <Col>
-          <div className="logo">
-            <img src="./images/logo/reactjs-icon.svg" />
-          </div>
-        </Col>
+      <div className="logo">
+        <img src="./images/logo/reactjs-icon.svg" />
+      </div>
 
-        <div className="mobileHidden">
-          <Anchor className="header-home__nav">
-            <Link to="/news" className="header-home__link">
-              {t('home_header_news')}
-            </Link>
-            <Link to="/dashboard" className="header-home__link">
-              {t('home_header_dashboard')}
-            </Link>
-            <Link className="header-home__link">{t('home_header_alert')}</Link>
-            <Link className="header-home__link">
-              {t('home_header_analytics')}
-            </Link>
-            <Link className="header-home__link">{t('home_header_about')}</Link>
-            <Link className="header-home__link">
-              {t('home_header_contact')}
-            </Link>
-          </Anchor>
+      <div className="mobileHidden">
+        <Anchor className="header-home__nav">
+          <Link to="/news" className="header-home__link">
+            {t('home_header_news')}
+          </Link>
+          <Link to="/dashboard" className="header-home__link">
+            {t('home_header_dashboard')}
+          </Link>
+          <Link className="header-home__link">{t('home_header_alert')}</Link>
+          <Link className="header-home__link">
+            {t('home_header_analytics')}
+          </Link>
+          <Link className="header-home__link">{t('home_header_about')}</Link>
+          <Link className="header-home__link">{t('home_header_contact')}</Link>
+        </Anchor>
+      </div>
+      <div className="mobileHidden">
+        <Switch checkedChildren="Dark" unCheckedChildren="Light" />
+      </div>
+      <div className="mobileHidden">
+        <div className="header-home__user">
+          {/* <GlobalOutlined onClick={handleClick} /> */}
+          <Dropdown
+            overlay={menu}
+            arrow
+            placement="bottomCenter"
+            className="header-home__language-icon"
+          >
+            <GlobalOutlined />
+          </Dropdown>
+          {/* <button onClick={() => i18next.changeLanguage('en')}>En</button>
+          <button onClick={() => i18next.changeLanguage('vi')}>Vi</button> */}
+          {isLoggedIn ? (
+            <>
+              <p>
+                {t('home_header_user')}
+                <span> Admin</span>
+              </p>
+              <img
+                src="./images/avatar.png"
+                alt="avatar"
+                className="header-home__avatar"
+              />
+              <LogoutOutlined
+                onClick={handleLogout}
+                className="header-home__icon"
+              />
+            </>
+          ) : (
+            <>
+              <UserOutlined
+                className="header-home__icon"
+                style={{ color: 'rgb(0,216,255)' }}
+              />
+              <Link
+                type="primary"
+                to="/login"
+                className="header-home__btn-login"
+              >
+                {t('home_header_login')}
+              </Link>
+            </>
+          )}
         </div>
-        <div className="mobileHidden">
-          <div className="header-home__user">
-            {/* <GlobalOutlined onClick={handleClick} /> */}
+      </div>
 
-            <Button
-              ref={anchorRef}
-              aria-controls={open ? 'menu-list-grow' : undefined}
-              aria-haspopup="true"
-              onClick={handleToggle}
-            >
-              <GlobalOutlined />
-            </Button>
-            <Popper
-              open={open}
-              anchorEl={anchorRef.current}
-              role={undefined}
-              transition
-              disablePortal
-            >
-              {({ TransitionProps, placement }) => (
-                <Grow
-                  {...TransitionProps}
-                  style={{
-                    transformOrigin:
-                      placement === 'bottom' ? 'center top' : 'center bottom',
-                  }}
-                >
-                  <Paper>
-                    {/* <ClickAwayListener onClickAway={handleChangeLanguage}> */}
-                    <MenuList
-                      autoFocusItem={open}
-                      id="menu-list-grow"
-                      onKeyDown={handleListKeyDown}
-                    >
-                      <MenuItem onClick={() => handleChangeLanguage('en')}>
-                        En
-                      </MenuItem>
-                      <MenuItem onClick={() => handleChangeLanguage('vi')}>
-                        Vi
-                      </MenuItem>
-                    </MenuList>
-                    {/* </ClickAwayListener> */}
-                  </Paper>
-                </Grow>
-              )}
-            </Popper>
-
-            <button onClick={() => i18next.changeLanguage('en')}>En</button>
-            <button onClick={() => i18next.changeLanguage('vi')}>Vi</button>
-            {isLoggedIn ? (
-              <>
-                <p>
-                  {t('home_header_user')}
-                  <span>Admin</span>
-                </p>
-                <img
-                  src="./images/avatar.png"
-                  alt="avatar"
-                  className="header-home__avatar"
-                />
-                <LogoutOutlined
-                  onClick={handleLogout}
-                  className="header-home__icon"
-                />
-              </>
-            ) : (
-              <>
-                <UserOutlined
-                  className="header-home__icon"
-                  style={{ color: 'rgb(0,216,255)' }}
-                />
-                <Link
-                  type="primary"
-                  to="/login"
-                  className="header-home__btn-login"
-                >
-                  {t('home_header_login')}
-                </Link>
-              </>
+      <div className="mobileVisible ">
+        <div className="header-home__user-mobile">
+          <Button
+            ref={anchorRef}
+            aria-controls={open ? 'menu-list-grow' : undefined}
+            aria-haspopup="true"
+            onClick={handleToggle}
+          >
+            <GlobalOutlined />
+          </Button>
+          <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === 'bottom' ? 'center top' : 'center bottom',
+                }}
+              >
+                <Paper>
+                  {/* <ClickAwayListener onClickAway={handleChangeLanguage}> */}
+                  <MenuList
+                    autoFocusItem={open}
+                    id="menu-list-grow"
+                    onKeyDown={handleListKeyDown}
+                  >
+                    <MenuItem onClick={() => handleChangeLanguage('en')}>
+                      En
+                    </MenuItem>
+                    <MenuItem onClick={() => handleChangeLanguage('vi')}>
+                      Vi
+                    </MenuItem>
+                  </MenuList>
+                  {/* </ClickAwayListener> */}
+                </Paper>
+              </Grow>
             )}
-          </div>
-        </div>
-
-        <div className="mobileVisible">
+          </Popper>
           <MenuFoldOutlined
             onClick={showDrawer}
             className="header-home__menu"
@@ -238,7 +252,7 @@ function HeaderHome(props) {
                 <>
                   <p>
                     {t('home_header_user')}
-                    <span>Admin</span>
+                    <span> Admin</span>
                   </p>
                   <img
                     src="./images/avatar.png"
@@ -262,7 +276,7 @@ function HeaderHome(props) {
             </div>
           </Drawer>
         </div>
-      </Row>
+      </div>
     </div>
   );
 }
