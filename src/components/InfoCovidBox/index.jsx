@@ -13,29 +13,25 @@ function InfoCovidBox(props) {
       <div className="site-card-wrapper">
         <Row gutter={[8, 8]}>
           <Col xs={24} md={8} style={{ marginBottom: '16px' }}>
-            {isLocalLoading ? (
-              <CircularProgress />
-            ) : (
-              <Card
-                hoverable={true}
-                title={t('total_cases')}
-                bordered={true}
-                loading={false}
-                headStyle={{
-                  textAlign: 'center',
-                  backgroundColor: '#FED7D7',
-                  color: '#E53E3E',
-                }}
-                bodyStyle={{
-                  textAlign: 'center',
-                  backgroundColor: '#FFF5F5',
-                  color: '#E53E3E',
-                  fontSize: '30px',
-                }}
-              >
-                {formatNumber.format(cases ? cases : 0)}
-              </Card>
-            )}
+            <Card
+              hoverable={true}
+              title={t('total_cases')}
+              bordered={true}
+              loading={false}
+              headStyle={{
+                textAlign: 'center',
+                backgroundColor: '#FED7D7',
+                color: '#E53E3E',
+              }}
+              bodyStyle={{
+                textAlign: 'center',
+                backgroundColor: '#FFF5F5',
+                color: '#E53E3E',
+                fontSize: '30px',
+              }}
+            >
+              {formatNumber.format(cases ? cases : 0)}
+            </Card>
           </Col>
           <br />
           <Col xs={24} md={8} style={{ marginBottom: '16px' }}>
