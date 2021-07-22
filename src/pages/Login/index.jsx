@@ -8,6 +8,7 @@ import LoginForm from './components/LoginForm';
 import styles from './Login.module.css';
 import formStyles from '../../assets/moduleCss/form.module.css';
 import SocialMedia from './components/SocialMedia';
+import { useTranslation } from 'react-i18next';
 // import login_image from '../../assets/images/login-image.svg';
 
 // const history = createBrowserHistory();
@@ -16,6 +17,7 @@ function Login(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -47,6 +49,7 @@ function Login(props) {
     if (isFormValid) {
       history.push('/');
       dispatch(GlobalActions.setIsLoggedIn(true));
+      localStorage.setItem('isLoggedIn', true);
       //Clear errorMessage
       setErrorMessage('');
     }
@@ -89,7 +92,7 @@ function Login(props) {
           errorMessage={errorMessage}
         />
         <Link to="/register" className={styles.loginButtonRegis}>
-          Creat Your Account
+          {t('login_create-your-account')}
         </Link>
         <SocialMedia />
       </div>

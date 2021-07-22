@@ -1,19 +1,40 @@
 import React from 'react';
 import LineChart from '../../../../components/LineChart';
 import MapChart from '../../../../components/MapChart';
-import { Grid } from '@material-ui/core';
+import { Col, Row } from 'antd';
+import PieChart from '../../../../components/PieChart';
+import ColumnChart from 'components/ColumnChart';
+import GroupColumnChart from 'components/GroupColumnChart';
+import LineColumnChart from 'components/LineColumnChart';
 
 function Chart(props) {
+  const { listInfoCovidCountries, infoCovidAll, infoCovidHistory } = props;
   return (
     <div>
-      <Grid container spacing={3}>
-        <Grid xs={12} sm={8}>
-          <LineChart />
-        </Grid>
-        <Grid xs={12} sm={4}>
-          <MapChart />
-        </Grid>
-      </Grid>
+      <Row>
+        <Col xs={24} lg={12}>
+          <LineChart infoCovidHistory={infoCovidHistory} />
+        </Col>
+        <Col xs={24} lg={12}>
+          <MapChart listInfoCovidCountries={listInfoCovidCountries} />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={24} lg={12}>
+          <PieChart infoCovidAll={infoCovidAll} type={'all'} />
+        </Col>
+        <Col xs={24} lg={12}>
+          <ColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={24} lg={12}>
+          <GroupColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
+        </Col>
+        <Col xs={24} lg={12}>
+          <LineColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
+        </Col>
+      </Row>
     </div>
   );
 }

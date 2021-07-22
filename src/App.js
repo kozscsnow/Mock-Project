@@ -1,9 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
 import './App.scss';
-import AuthRoute from './components/AuthRoute';
-import PrivateRoute from './components/PrivateRoute';
+import AuthRoute from './HOCs/AuthRoute';
+import PrivateRoute from './HOCs/PrivateRoute';
 import Dashboard from './pages/Dashboard';
-import DetailInfoCountry from './pages/DetailInfoCountry';
+import DetailInfoCovidCountry from './pages/DetailInfoCovidCountry';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import News from './pages/News';
@@ -16,14 +16,15 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/news" component={News} />
         <AuthRoute path="/login" component={Login} />
         <AuthRoute path="/register" component={Register} />
-        <PrivateRoute path="/news" component={News} />
         <Route path="/dashboard" component={Dashboard} />
-        <PrivateRoute
-          path="/countries/:countryID"
-          component={DetailInfoCountry}
+        <Route
+          path="/countries/:countryName"
+          component={DetailInfoCovidCountry}
         />
+        <Route path="/test/:hello" component={NotFound} />
 
         <Route component={NotFound} />
       </Switch>

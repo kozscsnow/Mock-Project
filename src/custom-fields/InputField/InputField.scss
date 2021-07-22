@@ -1,0 +1,9 @@
+.input-field {
+  &__text {
+    &--danger {
+      margin: 4px 0px 0px 0px;
+      color: red;
+    }
+  }
+}
+

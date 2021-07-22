@@ -6,9 +6,11 @@ import RegisForm from './components/RegisForm';
 import SuccessRegisBox from './components/SuccessRegisBox';
 import RegisterStyles from './Register.module.css';
 import styles from '../../assets/moduleCss/form.module.css';
+import { useTranslation } from 'react-i18next';
 
 function Register(props) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const history = useHistory();
   const [isRegisSuccess, setIsRegisSuccess] = useState(false);
   //Fake Loading
@@ -36,7 +38,7 @@ function Register(props) {
         ) : (
           <div>
             <Link to="/login" className={RegisterStyles.regisButtonLogin}>
-              Log in
+              {t('login')}
             </Link>
             <RegisForm onRegisSuccess={handleRegisSuccess} />
           </div>

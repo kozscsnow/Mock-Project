@@ -1,0 +1,54 @@
+.content-carousel {
+  &__container {
+    margin: 10px 0px;
+  }
+  &__header {
+    position: relative;
+    margin-left: 20px;
+
+    font-size: 22px;
+    font-weight: 700;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 5px;
+      left: -16px;
+      top: 2px;
+      bottom: 2px;
+
+      background-color: #dd3333;
+
+      -khtml-transform: skew(-20deg);
+      transform: skew(-20deg);
+    }
+  }
+  &__title {
+    border-radius: 20px;
+  }
+  &__content {
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .content-carousel {
+    &__header {
+      margin-left: 40px;
+    }
+    &__container {
+      margin: 30px 0px;
+    }
+    &__title {
+      min-height: 300px;
+      margin: 0px;
+    }
+    &__content {
+      margin: 0px;
+
+      text-align: center;
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+}

@@ -8,11 +8,6 @@ function GlobalLoading({ children }) {
   const isLoading = useSelector((state) => state.GlobalReducer.isLoading);
   return (
     <div>
-      {/* {isLoading ? (
-        <div className={styles.loading__container}>
-          <Roller color="silver" />
-        </div>
-      ) : null} */}
       <Spin
         tip="Loading..."
         size="large"

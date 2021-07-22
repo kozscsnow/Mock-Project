@@ -1,0 +1,97 @@
+.main-news {
+  &__intro {
+    &-item {
+      //   display: flex;
+      margin-bottom: 10px;
+    }
+    &-thumbnail {
+      width: 112px;
+      height: 75px;
+      border-radius: 4px;
+    }
+    &-title {
+      margin-left: 10px;
+
+      line-height: 18px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    &-thumbnail,
+    &-title {
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main-news {
+    &__intro {
+      &-thumbnail {
+        width: 280px;
+        height: 186px;
+        border-radius: 4px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .main-news {
+    &__widget {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin: 10px 0px;
+      &-ticket {
+        position: relative;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      &-ticket::before {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        content: '';
+        width: 26px;
+        height: 26px;
+
+        background: url('https://static-znews.zadn.vn/images/stat.svg')
+          no-repeat;
+      }
+      &-tag {
+        margin: 0px 10px;
+        padding: 0px 10px;
+        border-radius: 100px;
+
+        background-color: #f0f0f0;
+      }
+      &-tag:first-child {
+        margin-left: 40px;
+      }
+    }
+    &__intro {
+      &-thumbnail {
+        width: 120px;
+        height: 80px;
+        border-radius: 4px;
+      }
+    }
+  }
+  .main-news {
+    &__intro {
+      &-thumbnail.center {
+        width: 100%;
+        height: 330px;
+        border-radius: 4px;
+      }
+      &-title.center {
+        margin: 10px 0px;
+
+        font-size: 40px;
+        line-height: 40px;
+        text-align: left;
+      }
+    }
+  }
+}

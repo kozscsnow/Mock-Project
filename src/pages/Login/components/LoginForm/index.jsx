@@ -1,18 +1,27 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import styles from '../../../../assets/moduleCss/form.module.css';
 function LoginForm(props) {
-  const { onLoginFormSubmit, username, handleGetUsername, password, handleGetPassword, errorMessage } = props;
+  const {
+    onLoginFormSubmit,
+    username,
+    handleGetUsername,
+    password,
+    handleGetPassword,
+    errorMessage,
+  } = props;
+  const { t } = useTranslation();
   return (
     <div>
       <Form className={`${styles.form}`} onSubmit={onLoginFormSubmit}>
         <FormGroup className={`${styles.formGroup}`}>
           <Label id="form-id" htmlFor="form-id" className={styles.label}>
-            User Name
+            {t('login_user-name')}
           </Label>
           <Input
             type="text"
-            placeholder="Username"
+            placeholder={t('login_user-name')}
             className={styles.inputForm}
             id="form-id"
             name="form-id"
@@ -21,23 +30,29 @@ function LoginForm(props) {
           ></Input>
         </FormGroup>
         <FormGroup className={`${styles.formGroup}`}>
-          <Label id="form-password" htmlFor="form-password" className={styles.label}>
-            Password
+          <Label
+            id="form-password"
+            htmlFor="form-password"
+            className={styles.label}
+          >
+            {t('login_password')}
           </Label>
           <Input
             type="password"
-            placeholder="Password"
+            placeholder={t('login_password')}
             className={styles.inputForm}
             id="form-password"
             name="form-password"
             value={password}
             onChange={handleGetPassword}
           ></Input>
-          <small className="form-valid form-text text-danger">{errorMessage}</small>
+          <small className="form-valid form-text text-danger">
+            {errorMessage}
+          </small>
         </FormGroup>
         <FormGroup className={styles.formGroup}>
           <Button type="submit" className={styles.button}>
-            Log in
+            {t('login')}
           </Button>
         </FormGroup>
       </Form>
