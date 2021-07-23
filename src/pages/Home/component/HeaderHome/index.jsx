@@ -25,6 +25,25 @@ import Popper from '@material-ui/core/Popper';
 import MenuList from '@material-ui/core/MenuList';
 import './HeaderHome.scss';
 
+import styled from 'styled-components';
+const Wrapper = styled.div`
+  background-color: ${(props) => props.theme.pageBackground};
+  transition: 0.3s ease;
+`;
+const StyleLink = styled(Link)`
+  color: ${(props) => props.theme.linkColor};
+  &:hover {
+    color: #13a8a8;
+    border-bottom: #13a8a8 4px solid;
+  }
+`;
+const StyleGlobalOutlined = styled(GlobalOutlined)`
+  color: ${(props) => props.theme.iconColor};
+`;
+
+const StyleMenuItem = styled(MenuItem)`
+  color: ${(props) => props.theme.textColor};
+`;
 function HeaderHome(props) {
   const { t } = useTranslation();
 
@@ -48,26 +67,10 @@ function HeaderHome(props) {
   const onClose = () => {
     setVisible(false);
   };
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setOpen(false);
-  };
   const handleChangeLanguage = (language) => {
     i18next.changeLanguage(language);
     // if (anchorRef.current && anchorRef.current.contains(event.target)) {
@@ -104,25 +107,31 @@ function HeaderHome(props) {
     </Menu>
   );
   return (
-    <div className="header-home__wrapper">
+    <Wrapper className="header-home__wrapper">
       <div className="logo">
         <img src="./images/logo/reactjs-icon.svg" />
       </div>
 
       <div className="mobileHidden">
         <Anchor className="header-home__nav">
-          <Link to="/news" className="header-home__link">
+          <StyleLink to="/news" className="header-home__link">
             {t('home_header_news')}
-          </Link>
-          <Link to="/dashboard" className="header-home__link">
+          </StyleLink>
+          <StyleLink to="/dashboard" className="header-home__link">
             {t('home_header_dashboard')}
-          </Link>
-          <Link className="header-home__link">{t('home_header_alert')}</Link>
-          <Link className="header-home__link">
+          </StyleLink>
+          <StyleLink className="header-home__link">
+            {t('home_header_alert')}
+          </StyleLink>
+          <StyleLink className="header-home__link">
             {t('home_header_analytics')}
-          </Link>
-          <Link className="header-home__link">{t('home_header_about')}</Link>
-          <Link className="header-home__link">{t('home_header_contact')}</Link>
+          </StyleLink>
+          <StyleLink className="header-home__link">
+            {t('home_header_about')}
+          </StyleLink>
+          <StyleLink className="header-home__link">
+            {t('home_header_contact')}
+          </StyleLink>
         </Anchor>
       </div>
 
@@ -141,7 +150,7 @@ function HeaderHome(props) {
             placement="bottomCenter"
             className="header-home__language-icon"
           >
-            <GlobalOutlined />
+            <StyleGlobalOutlined />
           </Dropdown>
           {/* <button onClick={() => i18next.changeLanguage('en')}>En</button>
           <button onClick={() => i18next.changeLanguage('vi')}>Vi</button> */}
@@ -187,7 +196,7 @@ function HeaderHome(props) {
             aria-haspopup="true"
             onClick={handleToggle}
           >
-            <GlobalOutlined />
+            <StyleGlobalOutlined />
           </Button>
           <Popper
             open={open}
@@ -211,12 +220,12 @@ function HeaderHome(props) {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={() => handleChangeLanguage('en')}>
+                    <StyleMenuItem onClick={() => handleChangeLanguage('en')}>
                       En
-                    </MenuItem>
-                    <MenuItem onClick={() => handleChangeLanguage('vi')}>
+                    </StyleMenuItem>
+                    <StyleMenuItem onClick={() => handleChangeLanguage('vi')}>
                       Vi
-                    </MenuItem>
+                    </StyleMenuItem>
                   </MenuList>
                   {/* </ClickAwayListener> */}
                 </Paper>
@@ -237,24 +246,24 @@ function HeaderHome(props) {
             visible={visible}
           >
             <Anchor className="header-home__nav">
-              <Link to="/news" className="header-home__link">
+              <StyleLink to="/news" className="header-home__link">
                 {t('home_header_news')}
-              </Link>
-              <Link to="/dashboard" className="header-home__link">
+              </StyleLink>
+              <StyleLink to="/dashboard" className="header-home__link">
                 {t('home_header_dashboard')}
-              </Link>
-              <Link className="header-home__link">
+              </StyleLink>
+              <StyleLink className="header-home__link">
                 {t('home_header_alert')}
-              </Link>
-              <Link className="header-home__link">
+              </StyleLink>
+              <StyleLink className="header-home__link">
                 {t('home_header_analytics')}
-              </Link>
-              <Link className="header-home__link">
+              </StyleLink>
+              <StyleLink className="header-home__link">
                 {t('home_header_about')}
-              </Link>
-              <Link className="header-home__link">
+              </StyleLink>
+              <StyleLink className="header-home__link">
                 {t('home_header_contact')}
-              </Link>
+              </StyleLink>
             </Anchor>
 
             <div className="header-home__user">
@@ -287,7 +296,7 @@ function HeaderHome(props) {
           </Drawer>
         </div>
       </div>
-    </div>
+    </Wrapper>
   );
 }
 

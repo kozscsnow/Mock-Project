@@ -16,6 +16,11 @@ import NewsHome from './component/NewsHome';
 import covidAllAPI from 'apis/covidAllAPI';
 import FooterHome from './component/FooterHome/indejx';
 import ScrollToTopButton from 'components/ScrollToTopButton';
+import styled from 'styled-components';
+const Wrapper = styled.div`
+  background-color: ${(props) => props.theme.pageBackground};
+  transition: 0.3s ease;
+`;
 
 const { Header, Content, Footer, Sider } = Layout;
 function HomePage(props) {
@@ -41,7 +46,7 @@ function HomePage(props) {
     fetchCovidAll();
   }, [dispatch]);
   return (
-    <div className="container">
+    <Wrapper className="container">
       <Layout className="main-layout">
         <HeaderHome />
         <div className="home-body">
@@ -52,7 +57,7 @@ function HomePage(props) {
         <FooterHome />
       </Layout>
       <ScrollToTopButton />
-    </div>
+    </Wrapper>
   );
 }
 

@@ -1,7 +1,7 @@
 import 'antd/dist/antd.css';
 import { createBrowserHistory } from 'history';
 import i18n from 'i18next';
-import React from 'react';
+import React, { useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -20,21 +20,6 @@ i18n
   .use(LanguageDetector)
   .use(HttpApi)
   .init({
-    // the translations
-    // (tip move them in a JSON file and import them,
-    // or even better, manage them via a UI: https://react.i18next.com/guides/multiple-translation-files#manage-your-translations-with-a-management-gui)
-    // resources: {
-    //   vi: {
-    //     translation: {
-    //       'Welcome to React': 'Xin chào',
-    //     },
-    //   },
-    //   en: {
-    //     translation: {
-    //       'Welcome to React': 'Welcome to React and react-i18next',
-    //     },
-    //   },
-    // },
     detection: {
       order: ['path', 'cookie', 'htmlTag', 'localStorage', 'subdomain'],
       caches: ['cookie'],
@@ -54,11 +39,9 @@ const history = createBrowserHistory();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <GlobalLoading>
-        <BrowserRouter history={history}>
-          <App />
-        </BrowserRouter>
-      </GlobalLoading>
+      <BrowserRouter history={history}>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

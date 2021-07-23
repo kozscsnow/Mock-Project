@@ -1,6 +1,6 @@
 import ScrollToTopButton from 'components/ScrollToTopButton';
 import FooterDashboard from 'pages/Dashboard/components/FooterDashboard';
-import HeaderDashboard from 'pages/Dashboard/components/HeaderDashboard';
+import HeaderDashboard from 'pages/Dashboard/components/HeaderDashBoard';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
