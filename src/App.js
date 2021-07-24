@@ -31,6 +31,8 @@ const DarkTheme = {
   linkColor: '#b7e3fa',
   iconColor: '#b7e3fa',
   buttonColor: '#b7e3fa',
+  backgroundLogoColor: '#164c7e',
+  inputColor: '#fff',
 };
 
 const themes = {

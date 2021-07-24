@@ -60,7 +60,7 @@
     "group-column-chart_title": "Biểu đồ nhóm",
     "line-column-chart_title": "Biểu đồ đường và cột",
     "line-column-chart_sub-title": "Dữ liệu covid toàn thế giới",
-    "header-dashboard_title": "Bảng hống kê (COVID-19) ",
+    "header-dashboard_title": "Bảng thống kê (COVID-19) ",
     "welcome_message": "Xin chào",
     "days_since_release": "Ngày {{number_day}} "
 }

@@ -61,6 +61,7 @@ function HeaderHome(props) {
   const history = useHistory();
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.GlobalReducer.isLoggedIn);
+  const themeStore = useSelector((state) => state.GlobalReducer.theme);
   const handleLogout = () => {
     dispatch(GlobalActions.setIsLoggedIn(false));
     // dispatch(GlobalActions.resetStoreRedux());
@@ -70,8 +71,6 @@ function HeaderHome(props) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-  const themeStore = useSelector((state) => state.GlobalReducer.theme);
-  console.log(themeStore);
   const showDrawer = () => {
     setVisible(true);
   };
@@ -146,6 +145,7 @@ function HeaderHome(props) {
         checkedChildren="Dark"
         unCheckedChildren="Light"
         onChange={handleThemeChange}
+        checked={themeStore === 'dark'}
       />
 
       <div className="mobileHidden">

@@ -24,7 +24,7 @@ function SelectField(props) {
   const { field, form, label, placeholder, disabled, options } = props;
   const { name, value, onChange, onBlur } = field;
 
-  const selectOption = options.filter(option => option.value === value)
+  const selectOption = options.filter((option) => option.value === value);
 
   const handleSelectOptionChange = (selectOption) => {
     const selectValue = selectOption ? selectOption.value : selectOption;
