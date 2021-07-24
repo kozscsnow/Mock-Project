@@ -49,11 +49,11 @@ function HomePage(props) {
     <Wrapper className="container">
       <Layout className="main-layout">
         <HeaderHome />
-        <div className="home-body">
+        <Wrapper className="home-body">
           <IntroHome infoCovidAll={infoCovidAll} />
           <MainContent />
           <NewsHome />
-        </div>
+        </Wrapper>
         <FooterHome />
       </Layout>
       <ScrollToTopButton />

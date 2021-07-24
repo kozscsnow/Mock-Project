@@ -14,6 +14,7 @@ import { createTheme } from '@material-ui/core/styles';
 import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 
 const LightTheme = {
   pageBackground: 'white',
@@ -24,8 +25,9 @@ const LightTheme = {
 
 const DarkTheme = {
   pageBackground: '#164c7e',
+  backgroundColor: '#164c7e',
   titleColor: 'lightpink',
-  textColor: '#b7e3fa',
+  textColor: '#fff',
   linkColor: '#b7e3fa',
   iconColor: '#b7e3fa',
   buttonColor: '#b7e3fa',
@@ -36,12 +38,15 @@ const themes = {
   dark: DarkTheme,
 };
 
+const Wrapper = styled.div`
+  background: ${(props) => props.theme.backgroundColor};
+`;
 function App() {
   const theme = useSelector((state) => state.GlobalReducer.theme);
   // render
   return (
-    <div className="App">
-      <ThemeProvider theme={themes[theme]}>
+    <ThemeProvider theme={themes[theme]}>
+      <Wrapper className="App">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/news" component={News} />
@@ -56,8 +61,8 @@ function App() {
 
           <Route component={NotFound} />
         </Switch>
-      </ThemeProvider>
-    </div>
+      </Wrapper>
+    </ThemeProvider>
   );
 }
 

@@ -47,16 +47,15 @@
       margin: 0px 10px;
 
       font-size: 16px;
-
-      span {
-        color: #00e1ff;
-      }
     }
     &-mobile {
       min-width: 100px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+    &-name {
+      color: #00e1ff;
     }
   }
 

@@ -12,6 +12,7 @@ import { GlobalActions } from 'redux/rootAction';
 import newsAPI from 'apis/newsAPI';
 import { v4 as uuidv4 } from 'uuid';
 
+
 function NewsHome(props) {
   const [listNewsData, setListNewsData] = useState([]);
 

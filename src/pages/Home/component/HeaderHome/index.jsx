@@ -41,8 +41,19 @@ const StyleGlobalOutlined = styled(GlobalOutlined)`
   color: ${(props) => props.theme.iconColor};
 `;
 
-const StyleMenuItem = styled(MenuItem)`
+const StyleDrawer = styled(Drawer)`
+  .ant-drawer-wrapper-body {
+    background-color: ${(props) => props.theme.pageBackground};
+  }
+`;
+const StyleMenuFoldOutlined = styled(MenuFoldOutlined)`
+  color: ${(props) => props.theme.iconColor};
+`;
+const StyleText = styled.span`
   color: ${(props) => props.theme.textColor};
+`;
+const StyleLogoutOutlined = styled(LogoutOutlined)`
+  color: ${(props) => props.theme.iconColor};
 `;
 function HeaderHome(props) {
   const { t } = useTranslation();
@@ -73,10 +84,6 @@ function HeaderHome(props) {
 
   const handleChangeLanguage = (language) => {
     i18next.changeLanguage(language);
-    // if (anchorRef.current && anchorRef.current.contains(event.target)) {
-    //   return;
-    // }
-
     setOpen(false);
   };
   function handleListKeyDown(event) {
@@ -152,20 +159,18 @@ function HeaderHome(props) {
           >
             <StyleGlobalOutlined />
           </Dropdown>
-          {/* <button onClick={() => i18next.changeLanguage('en')}>En</button>
-          <button onClick={() => i18next.changeLanguage('vi')}>Vi</button> */}
           {isLoggedIn ? (
             <>
               <p>
-                {t('home_header_user')}
-                <span> Admin</span>
+                <StyleText>{t('home_header_user')}</StyleText>
+                <span className="header-home__user-name"> Admin</span>
               </p>
               <img
                 src="./images/avatar.png"
                 alt="avatar"
                 className="header-home__avatar"
               />
-              <LogoutOutlined
+              <StyleLogoutOutlined
                 onClick={handleLogout}
                 className="header-home__icon"
               />
@@ -220,26 +225,23 @@ function HeaderHome(props) {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <StyleMenuItem onClick={() => handleChangeLanguage('en')}>
+                    <MenuItem onClick={() => handleChangeLanguage('en')}>
                       En
-                    </StyleMenuItem>
-                    <StyleMenuItem onClick={() => handleChangeLanguage('vi')}>
+                    </MenuItem>
+                    <MenuItem onClick={() => handleChangeLanguage('vi')}>
                       Vi
-                    </StyleMenuItem>
+                    </MenuItem>
                   </MenuList>
                   {/* </ClickAwayListener> */}
                 </Paper>
               </Grow>
             )}
           </Popper>
-          <MenuFoldOutlined
+          <StyleMenuFoldOutlined
             onClick={showDrawer}
             className="header-home__menu"
           />
-          {/* <Button type="primary" onClick={showDrawer}>
-              Open
-            </Button> */}
-          <Drawer
+          <StyleDrawer
             placement="right"
             closable={false}
             onClose={onClose}
@@ -270,15 +272,15 @@ function HeaderHome(props) {
               {isLoggedIn ? (
                 <>
                   <p>
-                    {t('home_header_user')}
-                    <span> Admin</span>
+                    <StyleText>{t('home_header_user')}</StyleText>
+                    <span className="header-home__user-name"> Admin</span>
                   </p>
                   <img
                     src="./images/avatar.png"
                     alt="avatar"
                     className="header-home__avatar"
                   />
-                  <LogoutOutlined
+                  <StyleLogoutOutlined
                     onClick={handleLogout}
                     className="header-home__icon"
                   />
@@ -293,7 +295,7 @@ function HeaderHome(props) {
                 </Link>
               )}
             </div>
-          </Drawer>
+          </StyleDrawer>
         </div>
       </div>
     </Wrapper>

@@ -1,6 +1,19 @@
 import { Col, Row } from 'antd';
 import React from 'react';
 import './NewsBox.scss';
+import styled from 'styled-components';
+
+const StyleHeader = styled.h5`
+  color: ${(props) => props.theme.textColor};
+`;
+
+const StyleText = styled.p`
+  color: ${(props) => props.theme.textColor};
+`;
+
+const StyleAuthor = styled.small`
+  color: ${(props) => props.theme.textColor};
+`;
 function NewsBox(props) {
   const { title, author, urlToImage, content, url } = props;
   return (
@@ -17,10 +30,14 @@ function NewsBox(props) {
         </Col>
         <Col xs={18} md={18} className="main-content__content">
           <a href={url} target="_blank">
-            <h5 className="main-content__content-header">{title}</h5>
+            <StyleHeader className="main-content__content-header">
+              {title}
+            </StyleHeader>
           </a>
-          <p className="main-content__content-text">{content}</p>
-          <small>{author}</small>
+          <StyleText className="main-content__content-text">
+            {content}
+          </StyleText>
+          <StyleAuthor>{author}</StyleAuthor>
         </Col>
       </Row>
     </div>

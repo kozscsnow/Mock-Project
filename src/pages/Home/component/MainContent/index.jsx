@@ -12,8 +12,14 @@ import covidHistoryAPI from 'apis/covidHistoryAPI';
 import LineColumnChart from 'components/LineColumnChart';
 import GroupColumnChart from 'components/GroupColumnChart';
 import NewsBox from './components/NewsBox';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 
+const StyleText = styled.p`
+  color: ${(props) => props.theme.textColor};
+`;
 function MainContent(props) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const [infoCovidHistory, setInfoCovidHistory] = useState({});
   // Fetch Covid History
@@ -60,7 +66,7 @@ function MainContent(props) {
       <br />
 
       <div className="main-home__verify-news">
-        <p>VERIFY NEWS</p>
+        <StyleText>{t('home_main-content_news')}</StyleText>
         <div>
           <Button type="primary" className="main-home__verify-button">
             <LikeOutlined />
