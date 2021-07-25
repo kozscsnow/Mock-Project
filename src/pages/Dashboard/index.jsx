@@ -19,7 +19,11 @@ import InfoCovidBox from '../../components/InfoCovidBox';
 import TableCovid from '../../components/TableCovid';
 import { CovidInfoActions } from '../../redux/rootAction';
 import './Dashboard.scss';
+import styled from 'styled-components';
 
+const StyleOverview = styled.span`
+  color: ${(props) => props.theme.textColor};
+`;
 const { TabPane } = Tabs;
 
 const { RangePicker } = DatePicker;
@@ -34,87 +38,84 @@ function Dashboard(props) {
   const [isLocalLoading, setIsLocalLoading] = useState(true);
 
   // Fetch Covid  Countries
+  const fetchInfoCovidCountries = async () => {
+    const listInfoCovidCountries = await covidCountriesAPI.getAll();
+    setListInfoCovidCountries(listInfoCovidCountries);
+    dispatch(
+      CovidInfoActions.getListInfoCovidCountries(listInfoCovidCountries)
+    );
+    setIsLocalLoading(false);
+  };
   useEffect(() => {
     setIsLocalLoading(true);
-    const fetchInfoCovidCountries = async () => {
-      const listInfoCovidCountries = await covidCountriesAPI.getAll();
-      setListInfoCovidCountries(listInfoCovidCountries);
-      dispatch(
-        CovidInfoActions.getListInfoCovidCountries(listInfoCovidCountries)
-      );
-      setIsLocalLoading(false);
-    };
     fetchInfoCovidCountries();
   }, [dispatch]);
   // Fetch Covid All
+  const fetchCovidAll = async () => {
+    try {
+      const InfoCovidAll = await covidAllAPI.getAll();
+      setInfoCovidAll(InfoCovidAll);
+      dispatch(CovidInfoActions.getInfoCovidAll(InfoCovidAll));
+    } catch (error) {
+      alert(`
+      Something wrong !!!
+      Please try again or check your connection
+      `);
+    }
+    // dispatch(GlobalActions.setIsLoading(false));
+  };
   useEffect(() => {
     // dispatch(GlobalActions.setIsLoading(true));
-
-    const fetchCovidAll = async () => {
-      try {
-        const InfoCovidAll = await covidAllAPI.getAll();
-        setInfoCovidAll(InfoCovidAll);
-        dispatch(CovidInfoActions.getInfoCovidAll(InfoCovidAll));
-      } catch (error) {
-        alert(`
-        Something wrong !!!
-        Please try again or check your connection
-        `);
-      }
-      // dispatch(GlobalActions.setIsLoading(false));
-    };
     fetchCovidAll();
   }, [dispatch]);
   // Fetch Covid History
+
+  const fetCovidHistory = async () => {
+    const params = {
+      lastdays: 'all',
+    };
+    try {
+      const infoCovidHistory = await covidHistoryAPI.getAll(params);
+      setInfoCovidHistory(infoCovidHistory);
+    } catch (error) {
+      alert(`
+      Something wrong !!!
+      Please try again or check your connection
+      `);
+    }
+    // dispatch(GlobalActions.setIsLoading(false));
+  };
   useEffect(() => {
     // dispatch(GlobalActions.setIsLoading(true));
 
-    const fetCovidHistory = async () => {
-      const params = {
-        lastdays: 'all',
-      };
-      try {
-        const infoCovidHistory = await covidHistoryAPI.getAll(params);
-        setInfoCovidHistory(infoCovidHistory);
-      } catch (error) {
-        alert(`
-        Something wrong !!!
-        Please try again or check your connection
-        `);
-      }
-      // dispatch(GlobalActions.setIsLoading(false));
-    };
     fetCovidHistory();
   }, [dispatch]);
   // Fetch Covid Vaccine
+  const fetchCovidVaccine = async () => {
+    const params = {
+      lastdays: '1',
+    };
+    try {
+      const listInfoCovidVaccine = await covidVaccineAPI.getAll(params);
+      setListInfoCovidVaccine(listInfoCovidVaccine);
+    } catch (error) {
+      alert(`
+      Something wrong !!!
+      Please try again or check your connection
+      `);
+    }
+    // dispatch(GlobalActions.setIsLoading(false));
+  };
   useEffect(() => {
     // dispatch(GlobalActions.setIsLoading(true));
 
-    const fetchCovidVaccine = async () => {
-      const params = {
-        lastdays: '1',
-      };
-      try {
-        const listInfoCovidVaccine = await covidVaccineAPI.getAll(params);
-        setListInfoCovidVaccine(listInfoCovidVaccine);
-      } catch (error) {
-        alert(`
-        Something wrong !!!
-        Please try again or check your connection
-        `);
-      }
-      // dispatch(GlobalActions.setIsLoading(false));
-    };
     fetchCovidVaccine();
   }, [dispatch]);
-
   const disableFutureDates = (current) =>
     current && current > moment().endOf('day');
-
   const handleDateChange = (value, dateString) => {
     console.log(value, dateString);
   };
-
   const { cases, deaths, recovered } = infoCovidAll;
 
   return (
@@ -124,10 +125,10 @@ function Dashboard(props) {
         <Tabs defaultActiveKey="1">
           <TabPane
             tab={
-              <span>
+              <StyleOverview>
                 <FundViewOutlined />
                 {t('overview')}
-              </span>
+              </StyleOverview>
             }
             key="1"
           >
@@ -192,10 +193,10 @@ function Dashboard(props) {
           </TabPane>
           <TabPane
             tab={
-              <span>
+              <StyleOverview>
                 <TableOutlined />
                 {t('data_table')}
-              </span>
+              </StyleOverview>
             }
             key="2"
           >

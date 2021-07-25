@@ -21,6 +21,7 @@ const LightTheme = {
   titleColor: '#dc658b',
   linkColor: '#164c7e',
   iconColor: '#164c7e',
+  scrollColor: 'rgb(23, 162, 184)',
 };
 
 const DarkTheme = {
@@ -33,6 +34,7 @@ const DarkTheme = {
   buttonColor: '#b7e3fa',
   backgroundLogoColor: '#164c7e',
   inputColor: '#fff',
+  scrollColor: '#b7e3fa',
 };
 
 const themes = {
