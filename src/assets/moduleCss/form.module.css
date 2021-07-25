@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  margin-top: 20px;
   height: 100vh;
 }
 
@@ -103,6 +103,5 @@
     left: 0px;
     background-color: rgba(93, 121, 243, 0.8);
     clip-path: ellipse(50% 40% at 50% 95%);
-    z-index: -1;
   }
 }

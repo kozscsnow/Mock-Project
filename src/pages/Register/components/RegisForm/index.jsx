@@ -101,8 +101,8 @@ function RegisForm(props) {
                     <FastField
                       name="confirmPassword"
                       component={InputField}
-                      label={t('regis_confirm-your-user-name')}
-                      placeholder={t('regis_confirm-your-user-name')}
+                      label={t('regis_confirm-your-password')}
+                      placeholder={t('regis_confirm-your-password')}
                       type="password"
                     />
                     <div className="form-group">

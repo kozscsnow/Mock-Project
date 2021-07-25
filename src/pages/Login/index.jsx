@@ -9,6 +9,7 @@ import styles from './Login.module.css';
 import formStyles from '../../assets/moduleCss/form.module.css';
 import SocialMedia from './components/SocialMedia';
 import { useTranslation } from 'react-i18next';
+import './Login.scss';
 // import login_image from '../../assets/images/login-image.svg';
 
 // const history = createBrowserHistory();
@@ -74,7 +75,7 @@ function Login(props) {
   });
 
   return (
-    <div>
+    <div className="login__wrapper">
       <div className={formStyles.formContainer}>
         <div className={styles.imageContainer}>
           <img

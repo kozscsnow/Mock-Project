@@ -1,0 +1,10 @@
+.login {
+  &-form {
+    &__wrapper {
+      z-index: 1;
+    }
+  }
+}
+.text-danger {
+  color: red;
+}

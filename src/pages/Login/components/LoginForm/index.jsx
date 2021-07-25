@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import styles from '../../../../assets/moduleCss/form.module.css';
+import './LoginForm.scss';
 function LoginForm(props) {
   const {
     onLoginFormSubmit,
@@ -13,7 +14,7 @@ function LoginForm(props) {
   } = props;
   const { t } = useTranslation();
   return (
-    <div>
+    <div className="login-form__wrapper">
       <Form className={`${styles.form}`} onSubmit={onLoginFormSubmit}>
         <FormGroup className={`${styles.formGroup}`}>
           <Label id="form-id" htmlFor="form-id" className={styles.label}>
