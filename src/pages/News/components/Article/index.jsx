@@ -1,7 +1,18 @@
 import { Col, Row } from 'antd';
 import WrapperArticleItem from 'HOCs/WrapperArticleItem';
 import React from 'react';
+import styled from 'styled-components';
 import './Article.scss';
+
+const StyleText = styled.p`
+  color: ${(props) => props.theme.textColor};
+`;
+const StyleTitle = styled.h3`
+  color: #bdc3c7;
+`;
+const StyleTag = styled.small`
+  color: ${(props) => props.theme.textColor};
+`;
 const ArticleItem = (props) => {
   const { imageUrl, title, content, friendlyTime } = props;
   console.log(imageUrl, title, content);
@@ -13,10 +24,10 @@ const ArticleItem = (props) => {
         </div>
       </Col>
       <Col xs={16}>
-        <h3 className="article-news__title">{title}</h3>
+        <StyleTitle className="article-news__title">{title}</StyleTitle>
         <div className="mobileHidden">
-          <small>{friendlyTime}</small>
-          <p className="article-news__summary">{content}</p>
+          <StyleTag>{friendlyTime}</StyleTag>
+          <StyleText className="article-news__summary">{content}</StyleText>
         </div>
       </Col>
     </Row>

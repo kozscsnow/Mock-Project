@@ -108,4 +108,4 @@ function ColumnChart(props) {
   );
 }
 
-export default ColumnChart;
+export default React.memo(ColumnChart);

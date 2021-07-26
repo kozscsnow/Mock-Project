@@ -77,6 +77,7 @@ function Dashboard(props) {
     try {
       const infoCovidHistory = await covidHistoryAPI.getAll(params);
       setInfoCovidHistory(infoCovidHistory);
+      dispatch(CovidInfoActions.getInfoCovidHistory(infoCovidHistory));
     } catch (error) {
       alert(`
       Something wrong !!!
@@ -209,12 +210,6 @@ function Dashboard(props) {
             }
             key="2"
           >
-            {/* <Space direction="vertical" size={12}>
-              <RangePicker
-                disabledDate={(current) => disableFutureDates(current)}
-                onChange={handleDateChange}
-              />
-            </Space> */}
             <Row>
               <Col xs={24}>
                 <TableCovid

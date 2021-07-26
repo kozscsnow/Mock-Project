@@ -16,6 +16,9 @@ const covidInfoSlice = createSlice({
     getListInfoCovidCountries(state, action) {
       state.listInfoCovidCountries = action.payload;
     },
+    getInfoCovidHistory(state, action) {
+      state.infoCovidHistory = action.payload;
+    },
   },
 });
 

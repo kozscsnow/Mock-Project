@@ -96,4 +96,4 @@ function TableCovid(props) {
   );
 }
 
-export default TableCovid;
+export default React.memo(TableCovid);

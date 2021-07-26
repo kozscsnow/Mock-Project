@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
 import {
-  MenuOutlined,
+  MenuUnfoldOutlined,
   SearchOutlined,
   UserOutlined,
-  MenuUnfoldOutlined,
 } from '@ant-design/icons';
+import { Drawer } from 'antd';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
 import './HeaderNews.scss';
-import { Button, Drawer } from 'antd';
-import { CloseOutlined } from '@material-ui/icons';
+import styled from 'styled-components';
 
+const StyleHeader = styled.header`
+  background: ${(props) => props.theme.backgroundColor};
+`;
+
+const StyleLink = styled.a`
+  color: ${(props) => props.theme.linkColor};
+`;
+const StyleSearchOutlined = styled(SearchOutlined)`
+  color: ${(props) => props.theme.iconColor};
+`;
+const StyleUserOutlined = styled(UserOutlined)`
+  color: ${(props) => props.theme.iconColor};
+`;
+const StyleMenuUnfoldOutlined = styled(MenuUnfoldOutlined)`
+  color: ${(props) => props.theme.iconColor};
+`;
+const StyleDrawer = styled(Drawer)`
+  .ant-drawer-content {
+    background: ${(props) => props.theme.backgroundColor};
+  }
+`;
 function HeaderNews(props) {
   const history = useHistory();
   const [visible, setVisible] = useState(false);
@@ -20,15 +41,15 @@ function HeaderNews(props) {
     setVisible(false);
   };
   return (
-    <header className="header-news">
+    <StyleHeader className="header-news">
       <div className="header-news__menu mobileVisible mobile">
         <div>
-          <MenuUnfoldOutlined
+          <StyleMenuUnfoldOutlined
             onClick={showDrawer}
             className="header-news__menu-btn"
           />
         </div>
-        <Drawer
+        <StyleDrawer
           title="Chuyên mục"
           placement="left"
           closable={false}
@@ -41,58 +62,58 @@ function HeaderNews(props) {
           <nav className="header-news__nav">
             <ul className="header-news__nav-list">
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Xuất bản
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Sách
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Tác giả
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Xã hội
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Thế giơi
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Kinh doanh
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Công nghệ
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Thể thao
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Giải trí
-                </a>
+                </StyleLink>
               </li>
               <li className="header-news__nav-item">
-                <a href=" #" className="header-news__nav-link">
+                <StyleLink href=" #" className="header-news__nav-link">
                   Đời sống
-                </a>
+                </StyleLink>
               </li>
             </ul>
           </nav>
-        </Drawer>
+        </StyleDrawer>
       </div>
       <div className="header-news__logo">
         <img
@@ -105,63 +126,63 @@ function HeaderNews(props) {
         <nav className="header-news__nav">
           <ul className="header-news__nav-list">
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Xuất bản
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Sách
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Tác giả
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Xã hội
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Thế giới
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Kinh doanh
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Công nghệ
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Thể thao
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Giải trí
-              </a>
+              </StyleLink>
             </li>
             <li className="header-news__nav-item">
-              <a href=" #" className="header-news__nav-link">
+              <StyleLink href=" #" className="header-news__nav-link">
                 Đời sống
-              </a>
+              </StyleLink>
             </li>
           </ul>
         </nav>
       </div>
       <div className="header-news__user">
-        <SearchOutlined className="header-news__user-icon header-news__user-icon-search" />
-        <UserOutlined className="header-news__user-icon header-news__user-icon-user" />
+        <StyleSearchOutlined className="header-news__user-icon header-news__user-icon-search" />
+        <StyleUserOutlined className="header-news__user-icon header-news__user-icon-user" />
       </div>
-    </header>
+    </StyleHeader>
   );
 }
 

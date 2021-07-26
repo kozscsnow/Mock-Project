@@ -2,6 +2,11 @@ import React from 'react';
 import styles from './MainContent.module.css';
 import './MainContent.scss';
 import { List, Image, Row, Col } from 'antd';
+import styled from 'styled-components';
+
+const StyleText = styled.p`
+  color: ${(props) => props.theme.textColor};
+`;
 
 function MainContent(props) {
   return (
@@ -9,11 +14,15 @@ function MainContent(props) {
       <div className="mobileHidden">
         <div className="main-news__widget">
           <div className="main-news__widget-ticket">
-            <p className="main-news__widget-tag"># Dịch covid bùng phát</p>
-            <p className="main-news__widget-tag"># Covid - truy vết</p>
+            <p className="main-news__widget-tag">
+              # Dịch covid bùng phát
+            </p>
+            <p className="main-news__widget-tag">
+              # Covid - truy vết
+            </p>
           </div>
           <div className="main-news__widget-weather">
-            <p>TP. Hồ Chí Minh</p>
+            <StyleText>TP. Hồ Chí Minh</StyleText>
           </div>
         </div>
       </div>
@@ -30,10 +39,10 @@ function MainContent(props) {
               </Col>
 
               <Col xs={16} md={16} lg={12}>
-                <p className="main-news__intro-title">
+                <StyleText className="main-news__intro-title">
                   Phó thủ tướng: Tất cả địa phương kêu gọi người dân hạn chế ra
                   khỏi nhà
-                </p>
+                </StyleText>
               </Col>
             </Row>
             <Row className="main-news__intro-item">
@@ -45,10 +54,10 @@ function MainContent(props) {
                 />
               </Col>
               <Col xs={16} md={16} lg={12}>
-                <p className="main-news__intro-title">
+                <StyleText className="main-news__intro-title">
                   Thêm 3.321 ca mắc Covid-19 trong ngày 16/7, TP.HCM có 2.420
                   bệnh nhân
-                </p>
+                </StyleText>
               </Col>
             </Row>
             <Row className="main-news__intro-item">
@@ -60,9 +69,9 @@ function MainContent(props) {
                 />
               </Col>
               <Col xs={16} md={16} lg={12}>
-                <p className="main-news__intro-title">
+                <StyleText className="main-news__intro-title">
                   Vì sao số ca tử vong vì Covid-19 tại TP.HCM tăng?
-                </p>
+                </StyleText>
               </Col>
             </Row>
             <Row className="main-news__intro-item">
@@ -74,10 +83,10 @@ function MainContent(props) {
                 />
               </Col>
               <Col xs={16} md={16} lg={12}>
-                <p className="main-news__intro-title">
+                <StyleText className="main-news__intro-title">
                   Nhạc sĩ Nguyễn Văn Chung mua ghế massage Elipsport ủng hộ quỹ
                   vaccine
-                </p>
+                </StyleText>
               </Col>
             </Row>
             <Row className="main-news__intro-item">
@@ -89,9 +98,9 @@ function MainContent(props) {
                 />
               </Col>
               <Col xs={16} md={16} lg={12}>
-                <p className="main-news__intro-title">
+                <StyleText className="main-news__intro-title">
                   Tử tù nhiễm Covid-19 xin đi ngay khi thấy mình trên tivi
-                </p>
+                </StyleText>
               </Col>
             </Row>
           </Col>
@@ -107,15 +116,15 @@ function MainContent(props) {
                     />
                   </Col>
                   <Col lg={24}>
-                    <p className="main-news__intro-title center">
+                    <StyleText className="main-news__intro-title center">
                       Phó thủ tướng: Tất cả địa phương kêu gọi người dân hạn chế
                       ra khỏi nhà
-                    </p>
-                    <p className="main-news__intro-content">
+                    </StyleText>
+                    <StyleText className="main-news__intro-content">
                       Ban Chỉ đạo phòng, chống dịch Covid-19 quốc gia sẽ báo cáo
                       Thủ tướng, Chính phủ để có chỉ đạo với tinh thần nâng cao
                       cảnh giác, chuẩn bị cho tình huống xấu hơn.
-                    </p>
+                    </StyleText>
                   </Col>
                 </Row>
               </Col>
@@ -129,10 +138,10 @@ function MainContent(props) {
                     />
                   </Col>
                   <Col xs={16} md={16} lg={12}>
-                    <p className="main-news__intro-title">
+                    <StyleText className="main-news__intro-title">
                       Doanh nghiệp TP.HCM kiến nghị chỉ xét nghiệm 1 lần cho
                       công nhân
-                    </p>
+                    </StyleText>
                   </Col>
                 </Row>
                 <Row className="main-news__intro-item">
@@ -144,9 +153,9 @@ function MainContent(props) {
                     />
                   </Col>
                   <Col xs={16} md={16} lg={12}>
-                    <p className="main-news__intro-title">
+                    <StyleText className="main-news__intro-title">
                       Bộ manga lập kỷ lục mới cho truyện tranh Nhật Bản
-                    </p>
+                    </StyleText>
                   </Col>
                 </Row>
                 <Row className="main-news__intro-item">
@@ -158,10 +167,10 @@ function MainContent(props) {
                     />
                   </Col>
                   <Col xs={16} md={16} lg={12}>
-                    <p className="main-news__intro-title">
+                    <StyleText className="main-news__intro-title">
                       TP.HCM gấp rút xây mới 2 bệnh viện dã chiến với 5.800
                       giường
-                    </p>
+                    </StyleText>
                   </Col>
                 </Row>
               </Col>
