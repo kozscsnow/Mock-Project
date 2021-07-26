@@ -121,7 +121,7 @@ function Dashboard(props) {
   return (
     <div>
       {/* <HeaderDashboard listInfoCovidCountries={listInfoCovidCountries} /> */}
-      <content>
+      <div>
         <Tabs defaultActiveKey="1">
           <TabPane
             tab={
@@ -164,13 +164,22 @@ function Dashboard(props) {
             </Row>
             <Row>
               <Col xs={24} lg={8}>
-                <ColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
+                <ColumnChart
+                  infoCovidHistory={infoCovidHistory}
+                  type={'cases'}
+                />
               </Col>
               <Col xs={24} lg={8}>
-                <ColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
+                <ColumnChart
+                  infoCovidHistory={infoCovidHistory}
+                  type={'recovered'}
+                />
               </Col>
               <Col xs={24} lg={8}>
-                <ColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
+                <ColumnChart
+                  infoCovidHistory={infoCovidHistory}
+                  type={'deaths'}
+                />
               </Col>
             </Row>
 
@@ -216,7 +225,7 @@ function Dashboard(props) {
             </Row>
           </TabPane>
         </Tabs>
-      </content>
+      </div>
     </div>
   );
 }

@@ -1,22 +1,16 @@
+import { Layout } from 'antd';
+import covidAllAPI from 'apis/covidAllAPI';
+import ScrollToTopButton from 'components/ScrollToTopButton';
+import IntroHome from 'pages/Home/component/IntroHome';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import HeaderHome from './component/HeaderHome';
+import styled from 'styled-components';
 import { GlobalActions } from '../../redux/rootAction';
-import { Breadcrumb, Layout, Menu } from 'antd';
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import SidebarHome from '../../components/SidebarHome';
-import './Home.scss';
-import IntroHome from 'pages/Home/component/IntroHome';
+import FooterHome from './component/FooterHome/indejx';
+import HeaderHome from './component/HeaderHome';
 import MainContent from './component/MainContent';
 import NewsHome from './component/NewsHome';
-import covidAllAPI from 'apis/covidAllAPI';
-import FooterHome from './component/FooterHome/indejx';
-import ScrollToTopButton from 'components/ScrollToTopButton';
-import styled from 'styled-components';
+import './Home.scss';
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.pageBackground};
   transition: 0.3s ease;

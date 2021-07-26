@@ -100,7 +100,6 @@ const generateDataOption = (infoCovidHistory) => {
 function LineChart(props) {
   const { infoCovidHistory } = props;
   const [options, setOptions] = useState({});
-  console.log(infoCovidHistory);
   // useEffect(() => {
   //   if (infoCovidHistory) {
   //     setOptions(generateDataOption(infoCovidHistory));
@@ -117,4 +116,4 @@ function LineChart(props) {
   );
 }
 
-export default LineChart;
+export default React.memo(LineChart);

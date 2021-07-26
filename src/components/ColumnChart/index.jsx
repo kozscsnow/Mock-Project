@@ -3,7 +3,42 @@ import Highcharts from 'highcharts';
 
 import React from 'react';
 import moment from 'moment';
-const generateDataOption = (infoCovidHistory) => {
+import { useTranslation } from 'react-i18next';
+const filterTitleTypeOfChart = (type, t) => {
+  if (type === 'cases') return `${t('column-chart_title-cases')}`;
+  if (type === 'recovered') return `${t('column-chart_title-recovered')}`;
+  if (type === 'deaths') return `${t('column-chart_title-deaths')}`;
+};
+
+const filterDataTypeOfChart = (
+  type,
+  t,
+  listCases,
+  listRecovered,
+  listDeaths
+) => {
+  if (type === 'cases')
+    return {
+      name: `${t('cases')}`,
+      data: [...listCases],
+    };
+  if (type === 'recovered')
+    return {
+      name: `${t('recovered')}`,
+      data: [...listRecovered],
+    };
+  if (type === 'deaths')
+    return {
+      name: `${t('deaths')}`,
+      data: [...listDeaths],
+    };
+};
+const filterColorTypeOfChart = (type) => {
+  if (type === 'cases') return ['#FF4757'];
+  if (type === 'recovered') return ['#70A1FF'];
+  if (type === 'deaths') return ['#FFA502'];
+};
+const generateDataOption = (infoCovidHistory, type, t) => {
   if (
     infoCovidHistory.cases &&
     infoCovidHistory.deaths &&
@@ -23,10 +58,10 @@ const generateDataOption = (infoCovidHistory) => {
         type: 'column',
       },
       title: {
-        text: 'Monthly Average Rainfall',
+        text: filterTitleTypeOfChart(type, t),
       },
       subtitle: {
-        text: 'Source: WorldClimate.com',
+        text: 'Covid Info All',
       },
       xAxis: {
         categories: [...categories],
@@ -35,10 +70,10 @@ const generateDataOption = (infoCovidHistory) => {
       yAxis: {
         min: 0,
         title: {
-          text: 'Rainfall (mm)',
+          text: `${t('column-chart_title-horizontal')}`,
         },
-        colors: ['#FF4757', '#70A1FF', '#FFA502'],
       },
+      colors: filterColorTypeOfChart(type),
       tooltip: {
         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
         pointFormat:
@@ -55,30 +90,19 @@ const generateDataOption = (infoCovidHistory) => {
         },
       },
       series: [
-        {
-          name: 'Số ca mắc',
-          data: [...listCases],
-        },
-        {
-          name: 'Số ca khỏi',
-          data: [...listRecovered],
-        },
-        {
-          name: 'Số ca tử vong',
-          data: [...listDeaths],
-        },
+        filterDataTypeOfChart(type, t, listCases, listRecovered, listDeaths),
       ],
     };
   }
 };
 function ColumnChart(props) {
-  const { infoCovidHistory } = props;
+  const { t } = useTranslation();
+  const { infoCovidHistory, type = 'cases' } = props;
   return (
     <div>
       <HighchartsReact
         highcharts={Highcharts}
-        options={generateDataOption(infoCovidHistory)}
-        // constructorType={'mapChart'}
+        options={generateDataOption(infoCovidHistory, type, t)}
       />
     </div>
   );

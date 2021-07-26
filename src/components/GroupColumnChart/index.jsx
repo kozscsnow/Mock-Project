@@ -88,4 +88,4 @@ function GroupColumnChart(props) {
   );
 }
 
-export default GroupColumnChart;
+export default React.memo(GroupColumnChart);
