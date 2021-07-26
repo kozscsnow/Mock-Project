@@ -62,6 +62,9 @@
     "column-chart_title-deaths":"Global Deaths",
     "column-chart_title-horizontal":"Cases",
 
+    "line-chart_title-cases":"Global Info Covid",
+    "line-chart_sub-title-cases":"Global Cases",
+    "line-chart_title-horizontal":"Cases",
 
     "group-column-chart_title": "Group Column Chart",
     "line-column-chart_title": "Line and Column Chart",

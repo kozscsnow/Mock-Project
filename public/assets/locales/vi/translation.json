@@ -62,7 +62,11 @@
     "column-chart_title-recovered":"Số ca hồi phục toàn thế giới",
     "column-chart_title-deaths":"Số ca chết toàn thế giới",
     "column-chart_title-horizontal":"Số ca",
-    "":"",
+
+    "line-chart_title-cases":"Toàn thế giới",
+    "line-chart_sub-title-cases":"Số ca toàn thế giới",
+    "line-chart_title-horizontal":"Số ca",
+
     "group-column-chart_title": "Biểu đồ nhóm",
     "line-column-chart_title": "Biểu đồ đường và cột",
     "line-column-chart_sub-title": "Dữ liệu covid toàn thế giới",
