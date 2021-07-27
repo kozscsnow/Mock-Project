@@ -7,17 +7,15 @@ import styled from 'styled-components';
 
 const StyleCol = styled(Col)`
   margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .ant-card.ant-card-bordered.ant-card-hoverable{
+    width: 100%;
+  }
+}
 `;
 
-const StyleCircularProgressCases = styled(CircularProgress)`
-  color: #e53e3e;
-`;
-const StyleCircularProgressRecovered = styled(CircularProgress)`
-  color: #38a169;
-`;
-const StyleCircularProgressDeaths = styled(CircularProgress)`
-  color: #718096;
-`;
 function InfoCovidBox(props) {
   const { t } = useTranslation();
   const { cases, deaths, recovered, isLocalLoading } = props;
@@ -29,7 +27,7 @@ function InfoCovidBox(props) {
         <Row gutter={[8, 8]}>
           <StyleCol xs={24} md={8}>
             {isLocalLoading ? (
-              <StyleCircularProgressCases />
+              <CircularProgress />
             ) : (
               <Card
                 hoverable={true}
@@ -55,7 +53,7 @@ function InfoCovidBox(props) {
           <br />
           <StyleCol xs={24} md={8}>
             {isLocalLoading ? (
-              <StyleCircularProgressRecovered />
+              <CircularProgress />
             ) : (
               <Card
                 hoverable={true}
@@ -80,7 +78,7 @@ function InfoCovidBox(props) {
           <br />
           <StyleCol xs={24} md={8}>
             {isLocalLoading ? (
-              <StyleCircularProgressDeaths />
+              <CircularProgress />
             ) : (
               <Card
                 hoverable={true}

@@ -19,24 +19,27 @@ function NewsBox(props) {
   return (
     <div className="border-box news-box">
       <Row className="" justify="center">
-        <Col xs={18} md={6} className="main-content__thumbnail-news">
-          <a href={url} target="_blank">
+        <Col xs={18} md={6} className="news-home__thumbnail-news">
+          <a
+            href={url}
+            target="_blank"
+            rel="noreferrer"
+            className="news-home__thumbnail-link"
+          >
             <img
               src={urlToImage}
               alt="thumbnail"
-              className="main-content__thumbnail-item"
+              className="news-home__thumbnail-item"
             />
           </a>
         </Col>
-        <Col xs={18} md={18} className="main-content__content">
+        <Col xs={18} md={18} className="news-home__content">
           <a href={url} target="_blank">
-            <StyleHeader className="main-content__content-header">
+            <StyleHeader className="news-home__content-header">
               {title}
             </StyleHeader>
           </a>
-          <StyleText className="main-content__content-text">
-            {content}
-          </StyleText>
+          <StyleText className="news-home__content-text">{content}</StyleText>
           <StyleAuthor>{author}</StyleAuthor>
         </Col>
       </Row>

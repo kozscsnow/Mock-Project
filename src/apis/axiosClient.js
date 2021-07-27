@@ -37,7 +37,7 @@ axiosClientCovid.interceptors.response.use(
 // --------------Axios Client News----------------
 const axiosClientNews = axios.create({
   // baseURL: 'https://newsapi.org/v2/',
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://json-server-news-api.herokuapp.com/api',
   header: {
     'Content-type': 'application/json',
   },

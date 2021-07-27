@@ -1,19 +1,14 @@
-import { Button, Col, InputNumber, Row } from 'antd';
-import React, { useEffect } from 'react';
-import ChartBox from './components/ChartBox';
 import { LikeOutlined } from '@ant-design/icons';
-import './MainContent.scss';
-import Form from 'antd/lib/form/Form';
-import { Input } from '@material-ui/core';
+import { Button, Col, Row } from 'antd';
+import covidHistoryAPI from 'apis/covidHistoryAPI';
+import GroupColumnChart from 'components/GroupColumnChart';
+import LineColumnChart from 'components/LineColumnChart';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { GlobalActions } from 'redux/rootAction';
-import { useState } from 'react';
-import covidHistoryAPI from 'apis/covidHistoryAPI';
-import LineColumnChart from 'components/LineColumnChart';
-import GroupColumnChart from 'components/GroupColumnChart';
-import NewsBox from './components/NewsBox';
-import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import './MainContent.scss';
 
 const StyleText = styled.p`
   color: ${(props) => props.theme.textColor};
