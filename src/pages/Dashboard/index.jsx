@@ -53,9 +53,9 @@ function Dashboard(props) {
   // Fetch Covid All
   const fetchCovidAll = async () => {
     try {
-      const InfoCovidAll = await covidAllAPI.getAll();
-      setInfoCovidAll(InfoCovidAll);
-      dispatch(CovidInfoActions.getInfoCovidAll(InfoCovidAll));
+      const infoCovidAll = await covidAllAPI.getAll();
+      setInfoCovidAll(infoCovidAll);
+      dispatch(CovidInfoActions.getInfoCovidAll(infoCovidAll));
     } catch (error) {
       alert(`
       Something wrong !!!

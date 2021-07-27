@@ -5,6 +5,7 @@ import './IntroHome.scss';
 import { Progress } from 'antd';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
+import CountUp from 'react-countup';
 
 const StyleOverview = styled.h3`
   color: ${(props) => props.theme.textColor};
@@ -70,33 +71,39 @@ function IntroHome(props) {
                   <Col xs={24} lg={8}>
                     <div className="intro-home__info-item">
                       <h4 className="info-item__confirmed confirmed">
-                        {formatterNumber.format(cases)}
+                        {<CountUp end={cases} duration={1} separator="," />}
                       </h4>
                       <StyleText>{t('home_intro_confirmed')}</StyleText>
                       <small className="info-item__confirmed confirmed">
-                        +{formatterNumber.format(todayCases)}
+                        +<CountUp end={todayCases} duration={1} separator="," />
                       </small>
                     </div>
                   </Col>
                   <Col xs={24} lg={8}>
                     <div className="intro-home__info-item">
                       <h4 className="info-item__recovered recovered">
-                        {formatterNumber.format(recovered)}
+                        <CountUp end={recovered} duration={1} separator="," />
                       </h4>
                       <StyleText>{t('home_intro_recovered')}</StyleText>
                       <small className="info-item__confirmed recovered">
-                        +{formatterNumber.format(todayRecovered)}
+                        +
+                        <CountUp
+                          end={todayRecovered}
+                          duration={1}
+                          separator=","
+                        />
                       </small>
                     </div>
                   </Col>
                   <Col xs={24} lg={8}>
                     <div className="intro-home__info-item">
                       <h4 className="info-item__deaths deaths">
-                        {formatterNumber.format(deaths)}
+                        <CountUp end={deaths} duration={1} separator="," />
                       </h4>
                       <StyleText>{t('home_intro_deaths')}</StyleText>
                       <small className="info-item__deaths deaths">
-                        +{formatterNumber.format(todayDeaths)}
+                        +
+                        <CountUp end={todayDeaths} duration={1} separator="," />
                       </small>
                     </div>
                   </Col>
@@ -146,7 +153,11 @@ function IntroHome(props) {
               <div>
                 <h5>{t('home_intro_cases-per-one-million')}</h5>
                 <p className="text-large-size confirmed">
-                  {formatterNumber.format(casesPerOneMillion)}
+                  <CountUp
+                    end={casesPerOneMillion}
+                    duration={1}
+                    separator=","
+                  />
                 </p>
               </div>
             </StyleHomeChart>
@@ -158,7 +169,11 @@ function IntroHome(props) {
               <div>
                 <h5>{t('home_intro_recovered-per-one-million')}</h5>
                 <p className="text-large-size recovered">
-                  {formatterNumber.format(recoveredPerOneMillion)}
+                  <CountUp
+                    end={recoveredPerOneMillion}
+                    duration={1}
+                    separator=","
+                  />
                 </p>
               </div>
             </div>
@@ -170,7 +185,11 @@ function IntroHome(props) {
               <div>
                 <h5>{t('home_intro_deaths-per-one-million')}</h5>
                 <p className="text-large-size deaths">
-                  {formatterNumber.format(deathsPerOneMillion)}
+                  <CountUp
+                    end={deathsPerOneMillion}
+                    duration={1}
+                    separator=","
+                  />
                 </p>
               </div>
             </div>
