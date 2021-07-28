@@ -11,10 +11,10 @@ const StyleOverview = styled.h3`
   color: ${(props) => props.theme.textColor};
 `;
 const StyleTwitterOutlined = styled(TwitterOutlined)`
-  color: ${(props) => props.theme.iconColor}!;
+  color: ${(props) => props.theme.twitterIconColor};
 `;
 const StyleFacebookOutlined = styled(FacebookOutlined)`
-  color: ${(props) => props.theme.iconColor};
+  color: ${(props) => props.theme.facebookIconColor};
 `;
 const StyleText = styled.p`
   color: ${(props) => props.theme.textColor};
@@ -30,7 +30,6 @@ const StyleHomeChart = styled.div`
 function IntroHome(props) {
   const { t } = useTranslation();
   const { infoCovidAll } = props;
-  console.log({ infoCovidAll });
   const {
     cases,
     deaths,
@@ -56,14 +55,8 @@ function IntroHome(props) {
                 <StyleOverview>{t('home_intro_overview')}</StyleOverview>
                 <StyleText>
                   {t('home_intro_share')}:
-                  <StyleTwitterOutlined
-                    className="intro-home__info-header-icon"
-                    style={{ color: '#1890FF' }}
-                  />
-                  <StyleFacebookOutlined
-                    className="intro-home__info-header-icon"
-                    style={{ color: '#285091' }}
-                  />
+                  <StyleTwitterOutlined className="intro-home__info-header-icon" />
+                  <StyleFacebookOutlined className="intro-home__info-header-icon" />
                 </StyleText>
               </div>
               <div className="intro-home__info-content">
@@ -71,24 +64,39 @@ function IntroHome(props) {
                   <Col xs={24} lg={8}>
                     <div className="intro-home__info-item">
                       <h4 className="info-item__confirmed confirmed">
-                        {<CountUp end={cases} duration={1} separator="," />}
+                        {
+                          <CountUp
+                            end={cases ? cases : 0}
+                            duration={1}
+                            separator=","
+                          />
+                        }
                       </h4>
                       <StyleText>{t('home_intro_confirmed')}</StyleText>
                       <small className="info-item__confirmed confirmed">
-                        +<CountUp end={todayCases} duration={1} separator="," />
+                        +
+                        <CountUp
+                          end={todayCases ? todayCases : 0}
+                          duration={1}
+                          separator=","
+                        />
                       </small>
                     </div>
                   </Col>
                   <Col xs={24} lg={8}>
                     <div className="intro-home__info-item">
                       <h4 className="info-item__recovered recovered">
-                        <CountUp end={recovered} duration={1} separator="," />
+                        <CountUp
+                          end={recovered ? recovered : 0}
+                          duration={1}
+                          separator=","
+                        />
                       </h4>
                       <StyleText>{t('home_intro_recovered')}</StyleText>
                       <small className="info-item__confirmed recovered">
                         +
                         <CountUp
-                          end={todayRecovered}
+                          end={todayRecovered ? todayRecovered : 0}
                           duration={1}
                           separator=","
                         />
@@ -98,12 +106,20 @@ function IntroHome(props) {
                   <Col xs={24} lg={8}>
                     <div className="intro-home__info-item">
                       <h4 className="info-item__deaths deaths">
-                        <CountUp end={deaths} duration={1} separator="," />
+                        <CountUp
+                          end={deaths ? deaths : 0}
+                          duration={1}
+                          separator=","
+                        />
                       </h4>
                       <StyleText>{t('home_intro_deaths')}</StyleText>
                       <small className="info-item__deaths deaths">
                         +
-                        <CountUp end={todayDeaths} duration={1} separator="," />
+                        <CountUp
+                          end={todayDeaths ? todayDeaths : 0}
+                          duration={1}
+                          separator=","
+                        />
                       </small>
                     </div>
                   </Col>
@@ -154,7 +170,7 @@ function IntroHome(props) {
                 <h5>{t('home_intro_cases-per-one-million')}</h5>
                 <p className="text-large-size confirmed">
                   <CountUp
-                    end={casesPerOneMillion}
+                    end={casesPerOneMillion ? casesPerOneMillion : 0}
                     duration={1}
                     separator=","
                   />
@@ -170,7 +186,7 @@ function IntroHome(props) {
                 <h5>{t('home_intro_recovered-per-one-million')}</h5>
                 <p className="text-large-size recovered">
                   <CountUp
-                    end={recoveredPerOneMillion}
+                    end={recoveredPerOneMillion ? recoveredPerOneMillion : 0}
                     duration={1}
                     separator=","
                   />
@@ -186,7 +202,7 @@ function IntroHome(props) {
                 <h5>{t('home_intro_deaths-per-one-million')}</h5>
                 <p className="text-large-size deaths">
                   <CountUp
-                    end={deathsPerOneMillion}
+                    end={deathsPerOneMillion ? deathsPerOneMillion : 0}
                     duration={1}
                     separator=","
                   />

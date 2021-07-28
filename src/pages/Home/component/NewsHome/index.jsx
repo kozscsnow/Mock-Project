@@ -38,7 +38,6 @@ function NewsHome(props) {
         const listNewsData = await newsAPI.getAll();
         setListNewsData(listNewsData);
         dispatch(GlobalActions.setIsLoading(false));
-        console.log(listNewsData);
       } catch (error) {
         // message.error('Something Wrong !!! Please check your Connection');
         setIsError(true);

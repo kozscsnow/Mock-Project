@@ -1,4 +1,7 @@
 .header-home {
+  &__logo {
+    cursor: pointer;
+  }
   &__wrapper {
     display: flex;
     justify-content: space-between;
@@ -19,6 +22,7 @@
     font-weight: 700;
 
     color: #108885;
+    border-bottom: 4px transparent solid;
   }
   &__link:hover {
     border-bottom: 4px #108885 solid;

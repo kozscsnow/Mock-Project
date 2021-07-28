@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { GlobalActions } from '../../redux/rootAction';
-import FooterHome from './component/FooterHome/indejx';
+import FooterHome from './component/FooterHome';
 import HeaderHome from './component/HeaderHome';
 import MainContent from './component/MainContent';
 import NewsHome from './component/NewsHome';
@@ -16,7 +16,6 @@ const Wrapper = styled.div`
   transition: 0.3s ease;
 `;
 
-const { Header, Content, Footer, Sider } = Layout;
 function HomePage(props) {
   const dispatch = useDispatch();
   const [infoCovidAll, setInfoCovidAll] = useState({});

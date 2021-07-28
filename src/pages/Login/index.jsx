@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import formStyles from '../../assets/moduleCss/form.module.css';
 import { GlobalActions } from '../../redux/rootAction';
 import LoginForm from './components/LoginForm';
-// import './LoginPage.css';
-import styles from './Login.module.css';
-import formStyles from '../../assets/moduleCss/form.module.css';
 import SocialMedia from './components/SocialMedia';
-import { useTranslation } from 'react-i18next';
+import styles from './Login.module.css';
 import './Login.scss';
-// import login_image from '../../assets/images/login-image.svg';
 
-// const history = createBrowserHistory();
 function Login(props) {
   const history = useHistory();
   const [username, setUsername] = useState('');
@@ -49,7 +46,6 @@ function Login(props) {
     let isFormValid = validate();
     if (isFormValid) {
       history.push('/');
-      dispatch(GlobalActions.setIsLoggedIn(true));
       localStorage.setItem('isLoggedIn', true);
       //Clear errorMessage
       setErrorMessage('');
@@ -58,11 +54,9 @@ function Login(props) {
 
   const handleGetUsername = (e) => {
     setUsername(e.target.value);
-    // localStorage.setItem('username', e.target.value);
   };
   const handleGetPassword = (e) => {
     setPassword(e.target.value);
-    // localStorage.setItem('password', e.target.value);
   };
   //Fake Loading
   useEffect(() => {

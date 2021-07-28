@@ -21,6 +21,8 @@ const LightTheme = {
   titleColor: '#dc658b',
   linkColor: '#164c7e',
   iconColor: '#164c7e',
+  twitterIconColor: '#1C9CEA',
+  facebookIconColor: '#1877F2',
   scrollColor: 'rgb(23, 162, 184)',
 };
 
@@ -31,6 +33,8 @@ const DarkTheme = {
   textColor: '#fff',
   linkColor: '#b7e3fa',
   iconColor: '#b7e3fa',
+  twitterIconColor: '#b7e3fa',
+  facebookIconColor: '#b7e3fa',
   buttonColor: '#b7e3fa',
   backgroundLogoColor: '#164c7e',
   inputColor: '#fff',
@@ -56,7 +60,8 @@ function App() {
           <Route path="/news" component={News} />
           <AuthRoute path="/login" component={Login} />
           <AuthRoute path="/register" component={Register} />
-          <Route path="/dashboard" component={Dashboard} />
+          {/* <Route path="/dashboard" component={Dashboard} /> */}
+          <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route
             path="/countries/:countryName"
             component={DetailInfoCovidCountry}
