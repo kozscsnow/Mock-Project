@@ -15,7 +15,6 @@ const StyleTag = styled.small`
 `;
 const ArticleItem = (props) => {
   const { imageUrl, title, content, friendlyTime } = props;
-  console.log(imageUrl, title, content);
   return (
     <Row gutter={{ xs: 8, md: 16, lg: 24 }} className="article-news__item">
       <Col xs={8}>

@@ -1,14 +1,13 @@
-import React from 'react';
-
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import './CountriesSearchInput.scss';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
 
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux';
+
 
 // const StyleAutocomplete = styled(Autocomplete)`
 //   color: ${(props) => props.theme.inputColor};

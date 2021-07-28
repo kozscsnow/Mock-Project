@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
-import HighchartsReact from 'highcharts-react-official';
-import Highcharts from 'highcharts';
-import highchartsMap from 'highcharts/modules/map';
 import Chart from 'react-google-charts';
 import { useTranslation } from 'react-i18next';
+
 
 const options = {
   colors: 'red',

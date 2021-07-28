@@ -61,7 +61,7 @@ const generateDataOption = (infoCovidHistory, type, t) => {
         text: filterTitleTypeOfChart(type, t),
       },
       subtitle: {
-        text: 'Covid Info All',
+        text: `${t('column-chart_sub-title')}`,
       },
       xAxis: {
         categories: [...categories],

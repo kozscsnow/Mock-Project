@@ -1,4 +1,6 @@
+import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import styled, { ThemeProvider } from 'styled-components';
 import './App.scss';
 import AuthRoute from './HOCs/AuthRoute';
 import PrivateRoute from './HOCs/PrivateRoute';
@@ -9,41 +11,10 @@ import Login from './pages/Login';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { createTheme } from '@material-ui/core/styles';
-import { useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
-import styled from 'styled-components';
-
-const LightTheme = {
-  pageBackground: 'white',
-  titleColor: '#dc658b',
-  linkColor: '#164c7e',
-  iconColor: '#164c7e',
-  twitterIconColor: '#1C9CEA',
-  facebookIconColor: '#1877F2',
-  scrollColor: 'rgb(23, 162, 184)',
-};
-
-const DarkTheme = {
-  pageBackground: '#164c7e',
-  backgroundColor: '#164c7e',
-  titleColor: 'lightpink',
-  textColor: '#fff',
-  linkColor: '#b7e3fa',
-  iconColor: '#b7e3fa',
-  twitterIconColor: '#b7e3fa',
-  facebookIconColor: '#b7e3fa',
-  buttonColor: '#b7e3fa',
-  backgroundLogoColor: '#164c7e',
-  inputColor: '#fff',
-  scrollColor: '#b7e3fa',
-};
-
+import { dark, light } from './themes';
 const themes = {
-  light: LightTheme,
-  dark: DarkTheme,
+  dark: dark,
+  light: light,
 };
 
 const Wrapper = styled.div`
@@ -60,7 +31,6 @@ function App() {
           <Route path="/news" component={News} />
           <AuthRoute path="/login" component={Login} />
           <AuthRoute path="/register" component={Register} />
-          {/* <Route path="/dashboard" component={Dashboard} /> */}
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route
             path="/countries/:countryName"

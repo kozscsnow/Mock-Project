@@ -31,7 +31,9 @@ function ContentCarousel(props) {
             style={makeStyle(
               'https://znews-photo.zadn.vn/w360/Uploaded/oplukaa/2021_07_17/thumb.jpg'
             )}
-          ></h3>
+          >
+            Những cuốn sách giúp bạn hiểu về nghệ thuật
+          </h3>
           <StyleText className="content-carousel__content">
             Những cuốn sách giúp bạn hiểu về nghệ thuật
           </StyleText>
@@ -42,7 +44,9 @@ function ContentCarousel(props) {
             style={makeStyle(
               'https://znews-photo.zadn.vn/w360/Uploaded/qoswae/2021_07_17/nightwatchdisplay.jpg'
             )}
-          ></h3>
+          >
+            Khôi phục bức tranh nổi tiếng bằng AI
+          </h3>
           <StyleText className="content-carousel__content">
             Khôi phục bức tranh nổi tiếng bằng AI
           </StyleText>
@@ -53,7 +57,9 @@ function ContentCarousel(props) {
             style={makeStyle(
               'https://znews-photo.zadn.vn/w360/Uploaded/oplukaa/2021_07_16/thumb_Carroll.jpg'
             )}
-          ></h3>
+          >
+            Tuổi thơ của Lewis Carroll
+          </h3>
           <StyleText className="content-carousel__content">
             Tuổi thơ của Lewis Carroll
           </StyleText>
@@ -64,7 +70,10 @@ function ContentCarousel(props) {
             style={makeStyle(
               'https://znews-photo.zadn.vn/w360/Uploaded/yfrsy/2021_07_16/chan_troi.jpg'
             )}
-          ></h3>
+          >
+            {' '}
+            Tuổi trẻ nào đã khuất chân mây
+          </h3>
           <StyleText className="content-carousel__content">
             Tuổi trẻ nào đã khuất chân mây
           </StyleText>

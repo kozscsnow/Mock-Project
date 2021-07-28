@@ -1,17 +1,11 @@
-import React, { useEffect } from 'react';
-import { message, Pagination } from 'antd';
-
-import { usePagination } from '@material-ui/lab/Pagination';
-import { makeStyles } from '@material-ui/core/styles';
-import { useState } from 'react';
-import { List, Alert, Space } from 'antd';
-import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
-import NewsBox from './components/NewsBox';
+import { Alert, List } from 'antd';
+import newsAPI from 'apis/newsAPI';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { GlobalActions } from 'redux/rootAction';
-import newsAPI from 'apis/newsAPI';
-import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
+import NewsBox from './components/NewsBox';
+
 
 const StyleAlert = styled(Alert)`
   position: fixed;

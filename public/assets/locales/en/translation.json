@@ -57,7 +57,8 @@
 
     "dashboard_header_input_search-country": "Search Country",
 
-    "column-chart_title-cases":"Global Cases",
+    "column-chart_title-cases":"Global Cases Confirmed",
+    "column-chart_sub-title":"All Cases",
     "column-chart_title-recovered":"Global Recovered",
     "column-chart_title-deaths":"Global Deaths",
     "column-chart_title-horizontal":"Cases",

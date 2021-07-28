@@ -1,8 +1,8 @@
-import React from 'react';
-import { Card, Col, Row, Spin } from 'antd';
-import { useTranslation } from 'react-i18next';
 import { CircularProgress } from '@material-ui/core';
+import { Card, Col, Row } from 'antd';
+import React from 'react';
 import CountUp from 'react-countup';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const StyleCol = styled(Col)`
@@ -20,7 +20,6 @@ function InfoCovidBox(props) {
   const { t } = useTranslation();
   const { cases, deaths, recovered, isLocalLoading } = props;
 
-  const formatNumber = Intl.NumberFormat('en');
   return (
     <>
       <div className="site-card-wrapper">

@@ -1,14 +1,13 @@
 import {
   MenuUnfoldOutlined,
   SearchOutlined,
-  UserOutlined,
+  UserOutlined
 } from '@ant-design/icons';
 import { Drawer } from 'antd';
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router';
-import './HeaderNews.scss';
 import styled from 'styled-components';
+import './HeaderNews.scss';
 
 const StyleHeader = styled.header`
   background: ${(props) => props.theme.backgroundColor};

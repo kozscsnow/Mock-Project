@@ -1,19 +1,18 @@
 import 'antd/dist/antd.css';
 import { createBrowserHistory } from 'history';
 import i18n from 'i18next';
-import React, { useMemo } from 'react';
-import ReactDOM from 'react-dom';
-import { initReactI18next, useTranslation } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { initReactI18next } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import GlobalLoading from './components/GlobalLoading';
 import './index.css';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
+
 
 i18n
   .use(initReactI18next)

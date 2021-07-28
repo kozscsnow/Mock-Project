@@ -1,24 +1,16 @@
 import { FastField, Form, Formik } from 'formik';
-import React, { useRef } from 'react';
-import InputField from '../../../../custom-fields/InputField';
-import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
-import styles from '../../../../assets/moduleCss/form.module.css';
-import regisFormStyles from './RegisForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  FormRegisterActions,
-  GlobalActions,
-} from '../../../../redux/rootAction';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import * as Yup from 'yup';
+import styles from '../../../../assets/moduleCss/form.module.css';
+import InputField from '../../../../custom-fields/InputField';
+import { FormRegisterActions } from '../../../../redux/rootAction';
+import regisFormStyles from './RegisForm.module.css';
 
 function RegisForm(props) {
   const { t } = useTranslation();
   const { onRegisSuccess } = props;
-  const storeAccountRef = useRef([]);
-  const storeAccount = useSelector(
-    (state) => state.FormRegisterReducer.storeAccount
-  );
   const dispatch = useDispatch();
 
   const initialValues = {
@@ -45,7 +37,6 @@ function RegisForm(props) {
     const { username, password } = values;
 
     dispatch(FormRegisterActions.getRegisterAccount({ username, password }));
-    console.log(storeAccount);
     // storeAccountRef.current.push({ username, password });
     // console.log(storeAccountRef.current);
     // storeAccount.push({ username, password });

@@ -58,7 +58,8 @@
 
     "dashboard_header_input_search-country": "Tìm kiếm đất nước",
 
-    "column-chart_title-cases":"Số ca nhiễm toàn thế giới",
+    "column-chart_title-cases":"Số ca nhiễm được ghi nhận",
+    "column-chart_sub-title":"Tổng số ca",
     "column-chart_title-recovered":"Số ca hồi phục toàn thế giới",
     "column-chart_title-deaths":"Số ca chết toàn thế giới",
     "column-chart_title-horizontal":"Số ca",

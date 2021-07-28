@@ -1,7 +1,6 @@
-import React from 'react';
-import { FormGroup, Input, Label, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { ErrorMessage } from 'formik';
+import React from 'react';
+import { FormGroup, Input, Label } from 'reactstrap';
 import styles from '../../assets/moduleCss/form.module.css';
 import './InputField.scss';
 

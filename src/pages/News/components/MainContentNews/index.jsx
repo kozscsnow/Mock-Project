@@ -1,8 +1,7 @@
+import { Col, Row } from 'antd';
 import React from 'react';
-import styles from './MainContent.module.css';
-import './MainContent.scss';
-import { List, Image, Row, Col } from 'antd';
 import styled from 'styled-components';
+import './MainContent.scss';
 
 const StyleText = styled.p`
   color: ${(props) => props.theme.textColor};
@@ -14,12 +13,8 @@ function MainContent(props) {
       <div className="mobileHidden">
         <div className="main-news__widget">
           <div className="main-news__widget-ticket">
-            <p className="main-news__widget-tag">
-              # Dịch covid bùng phát
-            </p>
-            <p className="main-news__widget-tag">
-              # Covid - truy vết
-            </p>
+            <p className="main-news__widget-tag"># Dịch covid bùng phát</p>
+            <p className="main-news__widget-tag"># Covid - truy vết</p>
           </div>
           <div className="main-news__widget-weather">
             <StyleText>TP. Hồ Chí Minh</StyleText>
@@ -33,7 +28,7 @@ function MainContent(props) {
               <Col xs={8} md={8} lg={12}>
                 <img
                   src="https://znews-photo.zadn.vn/w210/Uploaded/ovhpaob/2021_07_15/gian_cach_sg_cover.jpeg"
-                  alt="image"
+                  alt="thumbnail-news"
                   className="main-news__intro-thumbnail"
                 />
               </Col>
@@ -49,7 +44,7 @@ function MainContent(props) {
               <Col xs={8} md={8} lg={12}>
                 <img
                   src="https://znews-photo.zadn.vn/w210/Uploaded/znanug/2021_07_13/DSC_0668_1.jpg"
-                  alt="image"
+                  alt="thumbnail-news"
                   className="main-news__intro-thumbnail"
                 />
               </Col>
@@ -64,7 +59,7 @@ function MainContent(props) {
               <Col xs={8} md={8} lg={12}>
                 <img
                   src="https://znews-photo.zadn.vn/w210/Uploaded/aobohun/2021_07_16/DSC_0186.jpg"
-                  alt="image"
+                  alt="thumbnail-news"
                   className="main-news__intro-thumbnail"
                 />
               </Col>
@@ -78,7 +73,7 @@ function MainContent(props) {
               <Col xs={8} md={8} lg={12}>
                 <img
                   src="https://adtima-media.zascdn.me/2021/07/31ad0fcd-cd4c-4570-8818-f90b3af226d5.jpg"
-                  alt="image"
+                  alt="thumbnail-news"
                   className="main-news__intro-thumbnail"
                 />
               </Col>
@@ -93,7 +88,7 @@ function MainContent(props) {
               <Col xs={8} md={8} lg={12}>
                 <img
                   src="https://znews-photo.zadn.vn/w210/Uploaded/zxgorz/2021_07_16/bia_bia.jpg"
-                  alt="image"
+                  alt="thumbnail-news"
                   className="main-news__intro-thumbnail"
                 />
               </Col>
@@ -111,7 +106,7 @@ function MainContent(props) {
                   <Col lg={24}>
                     <img
                       src="https://znews-photo.zadn.vn/w960/Uploaded/ovhpaob/2021_07_15/gian_cach_sg_cover.jpeg"
-                      alt="image"
+                      alt="thumbnail-news"
                       className="main-news__intro-thumbnail center"
                     />
                   </Col>
@@ -133,7 +128,7 @@ function MainContent(props) {
                   <Col xs={8} md={8} lg={12}>
                     <img
                       src="https://znews-photo.zadn.vn/w480/Uploaded/bfjysesfzyr/2021_06_24/bac_ning_6.jpg"
-                      alt="image"
+                      alt="thumbnail-news"
                       className="main-news__intro-thumbnail"
                     />
                   </Col>
@@ -148,7 +143,7 @@ function MainContent(props) {
                   <Col xs={8} md={8} lg={12}>
                     <img
                       src="https://znews-photo.zadn.vn/w480/Uploaded/piqbzcvo/2021_07_14/Takao_Saitou.jpg"
-                      alt="image"
+                      alt="thumbnail-news"
                       className="main-news__intro-thumbnail"
                     />
                   </Col>
@@ -162,7 +157,7 @@ function MainContent(props) {
                   <Col xs={8} md={8} lg={12}>
                     <img
                       src="https://znews-photo.zadn.vn/w480/Uploaded/jopobun/2021_07_16/bvdachien.jpg"
-                      alt="image"
+                      alt="thumbnail-news"
                       className="main-news__intro-thumbnail"
                     />
                   </Col>

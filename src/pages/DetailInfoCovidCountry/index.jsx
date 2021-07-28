@@ -1,23 +1,17 @@
-import { Skeleton } from 'antd';
+import Slider from '@material-ui/core/Slider';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import covidHistoryDateAPI from 'apis/covidHistoryDateAPI';
 import ColumnChart from 'components/ColumnChart';
 import InfoCovidBox from 'components/InfoCovidBox';
-import LocalLoading from 'components/LocalLoading';
 import PieChart from 'components/PieChart';
 import WrapperDashboard from 'HOCs/WrapperDashboard';
-import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import covidCountriesAPI from '../../apis/covidCoutriesAPI';
-import { GlobalActions } from '../../redux/rootAction';
 import CovidOverViewBox from './components/CovidOverViewBox';
-import TableInfoCovidDetail from './components/TableInfoCovidDetail';
-import TableInfoCovid from './components/TableInfoCovidDetail';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
-import _ from 'lodash';
+import styled from 'styled-components';
 
 const PrettoSlider = withStyles({
   root: {
@@ -49,6 +43,9 @@ const PrettoSlider = withStyles({
   },
 })(Slider);
 
+const StyleTypography = styled(Typography)`
+  color: ${(props) => props.theme.textColor};
+`;
 function DetailInfoCovidCountry(props) {
   // const [cases, setCases] = useState(0);
   // const [deaths, setDeaths] = useState(0);
@@ -87,15 +84,6 @@ function DetailInfoCovidCountry(props) {
     fetchInfoCovidCountriesFromDay();
   }, [dispatch, countryName, date]);
 
-  // if (infoCovidCountryFromDay) {
-  //   listCases = Object.values(infoCovidCountryFromDay.cases);
-  //   listDeaths = Object.values(infoCovidCountryFromDay.deaths);
-  //   listRecovered = Object.values(infoCovidCountryFromDay.recovered);
-  //   listDate = Object.keys(infoCovidCountryFromDay.cases);
-  //   listDateFormated = listDate.map((item) =>
-  //     moment(item).format('DD/MM/YYYY')
-  //   );
-  // }
   const {
     country,
     cases,
@@ -111,11 +99,6 @@ function DetailInfoCovidCountry(props) {
   } = infoCovidCountry;
   return (
     <div>
-      {/* {isLocalLoading ? (
-        <Skeleton />
-      ) : (
-        <InfoCovidBox infoCovidAll={infoCovidCountry} />
-      )} */}
       <CovidOverViewBox
         active={active}
         tests={tests}
@@ -136,13 +119,8 @@ function DetailInfoCovidCountry(props) {
         recovered={recovered}
         type={`${countryName}`}
       />
-      {/* <TableInfoCovidDetail
-        listCases={listCases}
-        listDeaths={listDeaths}
-        listRecovered={listRecovered}
-        listDateFormated={listDateFormated}
-      /> */}
-      <Typography gutterBottom>Filter Day</Typography>
+      <br />
+      <StyleTypography gutterBottom>Filter Day</StyleTypography>
       <PrettoSlider
         valueLabelDisplay="auto"
         aria-label="pretto slider"

@@ -9,7 +9,15 @@
       justify-content: space-between;
       align-items: center;
       text-align: center;
+      &-icon {
+        cursor: pointer;
+      }
+      img {
+        margin-bottom: 4px;
+      }
       p {
+        padding: 0px 10px;
+
         font-size: 16px;
       }
     }

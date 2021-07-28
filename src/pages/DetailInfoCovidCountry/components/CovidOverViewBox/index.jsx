@@ -1,9 +1,21 @@
+import { FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
 import { Col, Row } from 'antd';
-import React, { useState } from 'react';
-import { TwitterOutlined, FacebookOutlined } from '@ant-design/icons';
-import './CovidOverViewBox.scss';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import './CovidOverViewBox.scss';
+import styled from 'styled-components';
 
+const StyleTwitterOutlined = styled(TwitterOutlined)`
+  color: ${(props) => props.theme.twitterIconColor};
+  margin: 0px 4px;
+`;
+const StyleFacebookOutlined = styled(FacebookOutlined)`
+  color: ${(props) => props.theme.facebookIconColor};
+  margin: 0px 4px;
+`;
+const StyleText = styled.p`
+  color: ${(props) => props.theme.textColor};
+`;
 function CovidOverViewBox(props) {
   // const { infoCovidAll } = props;
   //   const [country, setCountry] = useState('');
@@ -38,12 +50,15 @@ function CovidOverViewBox(props) {
               <div className="covid-overview-box__info-header">
                 <h3>
                   <img src={countryInfo?.flag} alt="flag country" />
-                  <span> {country}</span> {t('overview')}
+                  <StyleText>
+                    {country} {t('overview')}
+                  </StyleText>
                 </h3>
-                <p>
-                  {t('share')}: <TwitterOutlined style={{ color: '#1890FF' }} />
-                  <FacebookOutlined style={{ color: '#285091' }} />
-                </p>
+                <StyleText>
+                  {t('share')}:{' '}
+                  <StyleTwitterOutlined className="covid-overview-box__info-header-icon" />
+                  <StyleFacebookOutlined className="covid-overview-box__info-header-icon" />
+                </StyleText>
               </div>
 
               <Row
@@ -55,7 +70,7 @@ function CovidOverViewBox(props) {
                     <h4 className="info-item__confirmed confirmed">
                       {formatterNumber.format(cases)}
                     </h4>
-                    <p>{t('confirmed')}</p>
+                    <StyleText>{t('confirmed')}</StyleText>
                     <small className="info-item__confirmed confirmed">
                       {t('today_cases')}
                     </small>
@@ -69,7 +84,7 @@ function CovidOverViewBox(props) {
                     <h4 className="info-item__recovered recovered">
                       {formatterNumber.format(recovered)}
                     </h4>
-                    <p>{t('recovered')}</p>
+                    <StyleText>{t('recovered')}</StyleText>
                     <small className="info-item__confirmed recovered">
                       {t('today_recovered')}
                     </small>
@@ -83,7 +98,7 @@ function CovidOverViewBox(props) {
                     <h4 className="info-item__deaths deaths">
                       {formatterNumber.format(deaths)}
                     </h4>
-                    <p> {t('deaths')}</p>
+                    <StyleText> {t('deaths')}</StyleText>
                     <small className="info-item__confirmed deaths">
                       {t('today_deaths')}
                     </small>
