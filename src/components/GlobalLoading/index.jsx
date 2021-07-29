@@ -1,8 +1,7 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import styles from './GlobalLoading.module.css';
 // import { Roller } from 'react-awesome-spinners';
 import { Spin } from 'antd';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function GlobalLoading({ children }) {
   const isLoading = useSelector((state) => state.GlobalReducer.isLoading);

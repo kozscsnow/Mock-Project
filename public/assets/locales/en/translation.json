@@ -53,7 +53,20 @@
     "home_intro_cases-per-one-million": "Cases Per One Million",
     "home_intro_recovered-per-one-million": "Recovered Per One Million",
     "home_intro_deaths-per-one-million": "Deaths Per One Million",
+    "home_main-content_news": "VERIFY NEWS",
+
     "dashboard_header_input_search-country": "Search Country",
+
+    "column-chart_title-cases":"Global Cases Confirmed",
+    "column-chart_sub-title":"All Cases",
+    "column-chart_title-recovered":"Global Recovered",
+    "column-chart_title-deaths":"Global Deaths",
+    "column-chart_title-horizontal":"Cases",
+
+    "line-chart_title-cases":"Global Info Covid",
+    "line-chart_sub-title-cases":"Global Cases",
+    "line-chart_title-horizontal":"Cases",
+
     "group-column-chart_title": "Group Column Chart",
     "line-column-chart_title": "Line and Column Chart",
     "line-column-chart_sub-title": "Covid 19 All Data",

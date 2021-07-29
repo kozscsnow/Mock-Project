@@ -1,11 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Qahiri&display=swap');
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-body {
-  overflow: auto;
-}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -13,6 +13,7 @@ html {
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: transparent;
+  overflow: auto;
 }
 
 @-ms-viewport {
@@ -133,4 +134,10 @@ img {
   .container {
     max-width: 1140px;
   }
+}
+
+.App {
+  overflow: auto;
+
+
 }

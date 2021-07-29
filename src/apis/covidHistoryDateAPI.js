@@ -1,14 +1,14 @@
 import { axiosClientCovid } from './axiosClient';
 
-const urlParam = 'historical?lastdays=1';
+const urlParam = 'historical';
 const covidHistoryDateAPI = {
   getAll(params) {
     const url = `/${urlParam}`;
     return axiosClientCovid.get(url, { params });
   },
-  get(id) {
-    const url = `/${urlParam}/${id}`;
-    return axiosClientCovid.get(url);
+  get(country, params) {
+    const url = `/${urlParam}/${country}`;
+    return axiosClientCovid.get(url, { params });
   },
   add(data) {
     const url = `/${urlParam}`;

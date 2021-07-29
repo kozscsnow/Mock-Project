@@ -11,7 +11,6 @@ const generateDataOption = (infoCovidHistory, t) => {
     infoCovidHistory.recovered
   ) {
     const listCases = Object.values(infoCovidHistory.cases);
-    const listDeaths = Object.values(infoCovidHistory.deaths);
     const listRecovered = Object.values(infoCovidHistory.recovered);
     const listDate = Object.keys(infoCovidHistory.cases);
     const listDateFormated = listDate.map((item) =>
@@ -76,7 +75,7 @@ const generateDataOption = (infoCovidHistory, t) => {
   }
 };
 function GroupColumnChart(props) {
-  const { infoCovidHistory, type } = props;
+  const { infoCovidHistory } = props;
   const { t } = useTranslation();
   return (
     <div>
@@ -88,4 +87,4 @@ function GroupColumnChart(props) {
   );
 }
 
-export default GroupColumnChart;
+export default React.memo(GroupColumnChart);

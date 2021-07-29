@@ -1,4 +1,4 @@
-import DARK from './dark.js';
-import LIGHT from './light.js';
+import dark from './dark.js';
+import light from './light.js';
 
-export { DARK, LIGHT };
+export { dark, light };

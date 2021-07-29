@@ -106,7 +106,6 @@ const generateDataOption = (infoCovidHistory, t) => {
 function LineColumnChart(props) {
   const { t } = useTranslation();
   const { infoCovidHistory } = props;
-  console.log(infoCovidHistory);
   return (
     <div>
       <HighchartsReact
@@ -117,4 +116,4 @@ function LineColumnChart(props) {
   );
 }
 
-export default LineColumnChart;
+export default React.memo(LineColumnChart);

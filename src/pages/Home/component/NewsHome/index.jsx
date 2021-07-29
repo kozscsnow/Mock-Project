@@ -1,19 +1,28 @@
-import React, { useEffect } from 'react';
-import { Pagination } from 'antd';
-
-import { usePagination } from '@material-ui/lab/Pagination';
-import { makeStyles } from '@material-ui/core/styles';
-import { useState } from 'react';
-import { List, Avatar, Space } from 'antd';
-import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';
-import NewsBox from '../MainContent/components/NewsBox';
+import { Alert, List } from 'antd';
+import newsAPI from 'apis/newsAPI';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { GlobalActions } from 'redux/rootAction';
-import newsAPI from 'apis/newsAPI';
-import { v4 as uuidv4 } from 'uuid';
+import styled from 'styled-components';
+import NewsBox from './components/NewsBox';
+
+
+const StyleAlert = styled(Alert)`
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 10;
+  @media screen and (min-width: 576px) {
+    width: 50%;
+    top: 0px;
+    left: 25%;
+  }
+`;
 
 function NewsHome(props) {
   const [listNewsData, setListNewsData] = useState([]);
+  const [isError, setIsError] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,12 +32,9 @@ function NewsHome(props) {
         const listNewsData = await newsAPI.getAll();
         setListNewsData(listNewsData);
         dispatch(GlobalActions.setIsLoading(false));
-        console.log(listNewsData);
       } catch (error) {
-        alert(`
-      Something wrong !!!
-      Please try again or check your connection
-      `);
+        // message.error('Something Wrong !!! Please check your Connection');
+        setIsError(true);
       }
     };
     fetchNewsData();
@@ -47,14 +53,18 @@ function NewsHome(props) {
         'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
     });
   }
-  const IconText = ({ icon, text }) => (
-    <Space>
-      {React.createElement(icon)}
-      {text}
-    </Space>
-  );
+
   return (
-    <div>
+    <div className="news-home__container">
+      {isError && (
+        <StyleAlert
+          message="Error"
+          description="Something Wrong !!! Please check your connection and try again"
+          type="error"
+          showIcon
+          closable
+        />
+      )}
       <List
         itemLayout="vertical"
         size="large"

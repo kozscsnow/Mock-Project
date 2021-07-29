@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
-const generateDataOption = (infoCovidHistory) => {
+const generateDataOption = (infoCovidHistory, t) => {
   if (
     infoCovidHistory.cases &&
     infoCovidHistory.deaths &&
@@ -21,17 +22,17 @@ const generateDataOption = (infoCovidHistory) => {
     const categories = [...listDateFormated];
     return {
       title: {
-        text: 'Toàn thế giới',
+        text: `${t('line-chart_title-cases')}`,
       },
 
       subtitle: {
-        text: 'Số ca toàn thế giới',
+        text: `${t('line-chart_sub-title-cases')}`,
       },
 
       yAxis: {
         min: 0,
         title: {
-          text: 'Số ca nhiễm',
+          text: `${t('line-chart_title-horizontal')}`,
         },
       },
 
@@ -64,15 +65,15 @@ const generateDataOption = (infoCovidHistory) => {
 
       series: [
         {
-          name: 'Số ca nhiễm',
+          name: `${t('cases')}`,
           data: [...listCases],
         },
         {
-          name: 'Số ca hồi phục',
+          name: `${t('recovered')}`,
           data: [...listRecovered],
         },
         {
-          name: 'Số ca tử vong',
+          name: `${t('deaths')}`,
           data: [...listDeaths],
         },
       ],
@@ -98,9 +99,9 @@ const generateDataOption = (infoCovidHistory) => {
 };
 
 function LineChart(props) {
+  const { t } = useTranslation();
   const { infoCovidHistory } = props;
   const [options, setOptions] = useState({});
-  console.log(infoCovidHistory);
   // useEffect(() => {
   //   if (infoCovidHistory) {
   //     setOptions(generateDataOption(infoCovidHistory));
@@ -110,11 +111,11 @@ function LineChart(props) {
     <div>
       <HighchartsReact
         highcharts={Highcharts}
-        options={generateDataOption(infoCovidHistory)}
+        options={generateDataOption(infoCovidHistory, t)}
         // constructorType={'mapChart'}
       />
     </div>
   );
 }
 
-export default LineChart;
+export default React.memo(LineChart);

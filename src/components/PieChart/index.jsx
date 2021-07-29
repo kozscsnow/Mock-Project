@@ -1,7 +1,8 @@
 import React from 'react';
 import HighchartsReact from 'highcharts-react-official';
 import Highcharts from 'highcharts';
-const generateDataOption = (dataInfoCovid) => {
+import { useTranslation } from 'react-i18next';
+const generateDataOption = (dataInfoCovid, t) => {
   return {
     chart: {
       plotBackgroundColor: null,
@@ -37,17 +38,17 @@ const generateDataOption = (dataInfoCovid) => {
         colorByPoint: true,
         data: [
           {
-            name: 'Số ca mắc',
+            name: `${t('cases')}`,
             y: dataInfoCovid.cases,
             sliced: true,
             selected: true,
           },
           {
-            name: 'Số ca hồi phục',
+            name: `${t('recovered')}`,
             y: dataInfoCovid.recovered,
           },
           {
-            name: 'Số ca tử vong',
+            name: `${t('deaths')}`,
             y: dataInfoCovid.deaths,
           },
         ],
@@ -58,6 +59,7 @@ const generateDataOption = (dataInfoCovid) => {
 
 function PieChart(props) {
   const { cases, deaths, recovered, type } = props;
+  const { t } = useTranslation();
   const dataInfoCovid = {
     cases,
     deaths,
@@ -68,11 +70,10 @@ function PieChart(props) {
     <div>
       <HighchartsReact
         highcharts={Highcharts}
-        options={generateDataOption(dataInfoCovid)}
-        // constructorType={'mapChart'}
+        options={generateDataOption(dataInfoCovid, t)}
       />
     </div>
   );
 }
 
-export default PieChart;
+export default React.memo(PieChart);

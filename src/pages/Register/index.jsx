@@ -7,6 +7,7 @@ import SuccessRegisBox from './components/SuccessRegisBox';
 import RegisterStyles from './Register.module.css';
 import styles from '../../assets/moduleCss/form.module.css';
 import { useTranslation } from 'react-i18next';
+import './Register.scss';
 
 function Register(props) {
   const dispatch = useDispatch();
@@ -28,11 +29,21 @@ function Register(props) {
   };
 
   return (
-    <>
-      <div>
-        {/* <SuccessRegisBox /> */}
-        {/* <button onClick={handleButtonLoginClick}>Log in</button> */}
+    <div className="register__wrapper">
+      <img
+        src="./images/register-image.svg"
+        alt="register"
+        className="register__image-main"
+      />
+      {/* <div className="register__image-blob">
+        <img
+          src="./images/register-blob-1.svg"
+          alt="register"
+          className="register__image-blob--1"
+        />
+      </div> */}
 
+      <div className="register__content">
         {isRegisSuccess ? (
           <SuccessRegisBox onRegisSuccess={handleRegisSuccess} />
         ) : (
@@ -44,7 +55,7 @@ function Register(props) {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

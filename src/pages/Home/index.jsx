@@ -1,23 +1,21 @@
+import { Layout } from 'antd';
+import covidAllAPI from 'apis/covidAllAPI';
+import ScrollToTopButton from 'components/ScrollToTopButton';
+import IntroHome from 'pages/Home/component/IntroHome';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import HeaderHome from './component/HeaderHome';
+import styled from 'styled-components';
 import { GlobalActions } from '../../redux/rootAction';
-import { Breadcrumb, Layout, Menu } from 'antd';
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
-import SidebarHome from '../../components/SidebarHome';
-import './Home.scss';
-import IntroHome from 'pages/Home/component/IntroHome';
+import FooterHome from './component/FooterHome';
+import HeaderHome from './component/HeaderHome';
 import MainContent from './component/MainContent';
 import NewsHome from './component/NewsHome';
-import covidAllAPI from 'apis/covidAllAPI';
-import FooterHome from './component/FooterHome/indejx';
-import ScrollToTopButton from 'components/ScrollToTopButton';
+import './Home.scss';
+const Wrapper = styled.div`
+  background-color: ${(props) => props.theme.pageBackground};
+  transition: 0.3s ease;
+`;
 
-const { Header, Content, Footer, Sider } = Layout;
 function HomePage(props) {
   const dispatch = useDispatch();
   const [infoCovidAll, setInfoCovidAll] = useState({});
@@ -41,18 +39,18 @@ function HomePage(props) {
     fetchCovidAll();
   }, [dispatch]);
   return (
-    <div className="container">
+    <Wrapper className="container">
       <Layout className="main-layout">
         <HeaderHome />
-        <div className="home-body">
+        <Wrapper className="home-body">
           <IntroHome infoCovidAll={infoCovidAll} />
           <MainContent />
           <NewsHome />
-        </div>
+        </Wrapper>
         <FooterHome />
       </Layout>
       <ScrollToTopButton />
-    </div>
+    </Wrapper>
   );
 }
 

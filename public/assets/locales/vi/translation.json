@@ -53,12 +53,25 @@
     "home_intro_cases-per-one-million": "Số ca nhiễm trên một triệu người",
     "home_intro_recovered-per-one-million": "Số hồi phục trên một triệu người",
     "home_intro_deaths-per-one-million": "Số ca chết trên một triệu người",
+    "home_main-content_news": "TIN MỚI",
+
 
     "dashboard_header_input_search-country": "Tìm kiếm đất nước",
+
+    "column-chart_title-cases":"Số ca nhiễm được ghi nhận",
+    "column-chart_sub-title":"Tổng số ca",
+    "column-chart_title-recovered":"Số ca hồi phục được ghi nhận",
+    "column-chart_title-deaths":"Số ca chết được ghi nhận",
+    "column-chart_title-horizontal":"Số ca",
+
+    "line-chart_title-cases":"Toàn thế giới",
+    "line-chart_sub-title-cases":"Số ca toàn thế giới",
+    "line-chart_title-horizontal":"Số ca",
+
     "group-column-chart_title": "Biểu đồ nhóm",
     "line-column-chart_title": "Biểu đồ đường và cột",
     "line-column-chart_sub-title": "Dữ liệu covid toàn thế giới",
-    "header-dashboard_title": "Bảng hống kê (COVID-19) ",
+    "header-dashboard_title": "Bảng thống kê (COVID-19) ",
     "welcome_message": "Xin chào",
     "days_since_release": "Ngày {{number_day}} "
 }

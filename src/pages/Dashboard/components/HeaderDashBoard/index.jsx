@@ -9,7 +9,21 @@ import {
 import { useHistory } from 'react-router';
 import CountriesSearchInput from '../ContriesSearchInput';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 
+const StyleImg = styled.img`
+  background: ${(props) => props.theme.backgroundLogoColor};
+`;
+
+const StyleCloseCircleOutlined = styled(CloseCircleOutlined)`
+  color: ${(props) => props.theme.iconColor};
+`;
+const StyleSearchOutlined = styled(SearchOutlined)`
+  color: ${(props) => props.theme.iconColor};
+`;
+const StyleText = styled.p`
+  color: ${(props) => props.theme.textColor};
+`;
 function HeaderDashboard(props) {
   const { t } = useTranslation();
   const { listInfoCovidCountries } = props;
@@ -23,7 +37,7 @@ function HeaderDashboard(props) {
       <header className="header-dashboard">
         <div className="header-dashboard__content">
           <div className="header-dashboard__logo">
-            <img
+            <StyleImg
               src="https://camo.githubusercontent.com/48d099290b4cb2d7937bcd96e8497cf1845b54a810a6432c70cf944b60b40c77/68747470733a2f2f7261776769742e636f6d2f676f72616e67616a69632f72656163742d69636f6e732f6d61737465722f72656163742d69636f6e732e737667"
               onClick={() => history.push('/')}
             />
@@ -33,13 +47,13 @@ function HeaderDashboard(props) {
               <CountriesSearchInput
                 listInfoCovidCountries={listInfoCovidCountries}
               />
-              <CloseCircleOutlined
+              <StyleCloseCircleOutlined
                 onClick={handleSearchClick}
                 className="header-dashboard__icon"
               />
             </>
           ) : (
-            <SearchOutlined
+            <StyleSearchOutlined
               onClick={handleSearchClick}
               className="header-dashboard__icon"
             />
@@ -59,9 +73,9 @@ function HeaderDashboard(props) {
         </div>
 
         <div className="header-dashboard__nav">
-          <p className="header-dashboard__text">
+          <StyleText className="header-dashboard__text">
             {t('header-dashboard_title')}
-          </p>
+          </StyleText>
         </div>
       </header>
     </div>

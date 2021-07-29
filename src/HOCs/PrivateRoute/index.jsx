@@ -1,9 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
 function PrivateRoute({ component: Component, ...rest }) {
-  const isLoggedIn = useSelector((state) => state.GlobalReducer.isLoggedIn);
+  // const isLoggedIn = useSelector((state) => state.GlobalReducer.isLoggedIn);
 
   const checkLoggedIn = () => {
     // let usernameLocalStorage = localStorage.getItem('username');
@@ -12,11 +11,10 @@ function PrivateRoute({ component: Component, ...rest }) {
     //   return true;
     // }
     // return false;
-    // const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
     return isLoggedIn;
   };
 
-  console.log(checkLoggedIn());
   return (
     <Route
       {...rest}
