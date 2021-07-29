@@ -12,6 +12,7 @@ import { useParams } from 'react-router';
 import covidCountriesAPI from '../../apis/covidCoutriesAPI';
 import CovidOverViewBox from './components/CovidOverViewBox';
 import styled from 'styled-components';
+import './DetailInfoCovidCountry.scss';
 
 const PrettoSlider = withStyles({
   root: {
@@ -46,6 +47,7 @@ const PrettoSlider = withStyles({
 const StyleTypography = styled(Typography)`
   color: ${(props) => props.theme.textColor};
 `;
+
 function DetailInfoCovidCountry(props) {
   // const [cases, setCases] = useState(0);
   // const [deaths, setDeaths] = useState(0);
@@ -60,16 +62,14 @@ function DetailInfoCovidCountry(props) {
   const handleFilterDayChange = (event, value) => {
     setDate(value);
   };
-  // let listCases = [];
-  // let listDeaths = [];
-  // let listRecovered = [];
-  // let listDate = [];
-  // let listDateFormated = [];
+  // fetch data covid countries
   const fetchInfoCovidCountries = async () => {
     const infoCovidCountry = await covidCountriesAPI.get(countryName);
     setInfoCovidCountry(infoCovidCountry);
   };
+  // fetch data covid by day
   const fetchInfoCovidCountriesFromDay = async () => {
+    setIsLocalLoading(true);
     let params = {
       lastdays: date,
     };
@@ -78,6 +78,7 @@ function DetailInfoCovidCountry(props) {
       params
     );
     setInfoCovidCountryFromDay(infoCovidCountryFromDay.timeline);
+    setIsLocalLoading(false);
   };
   useEffect(() => {
     fetchInfoCovidCountries();
@@ -98,7 +99,7 @@ function DetailInfoCovidCountry(props) {
     undefined,
   } = infoCovidCountry;
   return (
-    <div>
+    <div className="detail-info-covid-country__container">
       <CovidOverViewBox
         active={active}
         tests={tests}
@@ -111,6 +112,7 @@ function DetailInfoCovidCountry(props) {
         todayDeaths={todayDeaths}
         todayRecovered={todayRecovered}
         countryInfo={countryInfo}
+        isLocalLoading={isLocalLoading}
       />
       <InfoCovidBox cases={cases} deaths={deaths} recovered={recovered} />
       <PieChart
@@ -120,20 +122,30 @@ function DetailInfoCovidCountry(props) {
         type={`${countryName}`}
       />
       <br />
-      <StyleTypography gutterBottom>Filter Day</StyleTypography>
-      <PrettoSlider
-        valueLabelDisplay="auto"
-        aria-label="pretto slider"
-        defaultValue={0}
-        onChangeCommitted={handleFilterDayChange}
+      <div className="detail-info-covid-country__pretto-slider">
+        <StyleTypography gutterBottom>Filter Day</StyleTypography>
+        <PrettoSlider
+          valueLabelDisplay="auto"
+          aria-label="pretto slider"
+          defaultValue={0}
+          onChangeCommitted={handleFilterDayChange}
+        />
+      </div>
+      <ColumnChart
+        infoCovidHistory={infoCovidCountryFromDay}
+        type={'cases'}
+        isLocalLoading={isLocalLoading}
       />
-
-      <ColumnChart infoCovidHistory={infoCovidCountryFromDay} type={'cases'} />
       <ColumnChart
         infoCovidHistory={infoCovidCountryFromDay}
         type={'recovered'}
+        isLocalLoading={isLocalLoading}
       />
-      <ColumnChart infoCovidHistory={infoCovidCountryFromDay} type={'deaths'} />
+      <ColumnChart
+        infoCovidHistory={infoCovidCountryFromDay}
+        type={'deaths'}
+        isLocalLoading={isLocalLoading}
+      />
     </div>
   );
 }

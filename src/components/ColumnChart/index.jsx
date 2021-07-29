@@ -4,6 +4,11 @@ import Highcharts from 'highcharts';
 import React from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
+import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import styled from 'styled-components';
+import './ColumnChart.scss';
+
 const filterTitleTypeOfChart = (type, t) => {
   if (type === 'cases') return `${t('column-chart_title-cases')}`;
   if (type === 'recovered') return `${t('column-chart_title-recovered')}`;
@@ -95,15 +100,31 @@ const generateDataOption = (infoCovidHistory, type, t) => {
     };
   }
 };
+
+const StyleLoadingOutlined = styled(LoadingOutlined)`
+  font-size: 60px;
+  color: ${(props) => props.theme.iconColor};
+`;
+const StyleSpin = styled(Spin)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+`;
 function ColumnChart(props) {
   const { t } = useTranslation();
-  const { infoCovidHistory, type = 'cases' } = props;
+  const { infoCovidHistory, type = 'cases', isLocalLoading } = props;
   return (
-    <div>
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={generateDataOption(infoCovidHistory, type, t)}
-      />
+    <div className="column-chart__container">
+      {isLocalLoading ? (
+        <StyleSpin indicator={<StyleLoadingOutlined />} />
+      ) : (
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={generateDataOption(infoCovidHistory, type, t)}
+        />
+      )}
     </div>
   );
 }

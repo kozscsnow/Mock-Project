@@ -9,6 +9,7 @@
       justify-content: space-between;
       align-items: center;
       text-align: center;
+
       &-icon {
         cursor: pointer;
       }
@@ -49,4 +50,14 @@
 }
 .deaths {
   color: rgb(155, 155, 155);
+}
+
+@media screen and (min-width: 768px) {
+  .covid-overview-box {
+    &__info-header {
+      p {
+        font-size: 24px;
+      }
+    }
+  }
 }

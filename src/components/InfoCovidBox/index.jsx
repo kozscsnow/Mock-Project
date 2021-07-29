@@ -16,6 +16,11 @@ const StyleCol = styled(Col)`
 }
 `;
 
+InfoCovidBox.defaultProps = {
+  cases: 0,
+  deaths: 0,
+  recovered: 0,
+};
 function InfoCovidBox(props) {
   const { t } = useTranslation();
   const { cases, deaths, recovered, isLocalLoading } = props;

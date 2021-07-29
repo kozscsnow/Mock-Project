@@ -10,7 +10,7 @@ const StyleArrowUpwardIcon = styled(ArrowUpwardIcon)`
 function ScrollToTopButton(props) {
   return (
     <div>
-      <ScrollToTop showUnder={50} style={{ right: '6vw' }}>
+      <ScrollToTop showUnder={50} style={{ right: '2vw' }}>
         <StyleArrowUpwardIcon
           style={{
             fontSize: 50,

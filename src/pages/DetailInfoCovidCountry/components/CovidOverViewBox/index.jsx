@@ -1,9 +1,10 @@
 import { FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
-import { Col, Row } from 'antd';
+import { Col, Row, Spin } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import './CovidOverViewBox.scss';
 import styled from 'styled-components';
+import CountUp from 'react-countup';
 
 const StyleTwitterOutlined = styled(TwitterOutlined)`
   color: ${(props) => props.theme.twitterIconColor};
@@ -16,17 +17,20 @@ const StyleFacebookOutlined = styled(FacebookOutlined)`
 const StyleText = styled.p`
   color: ${(props) => props.theme.textColor};
 `;
+const StyleSpin = styled(Spin)`
+  display: flex;
+  align-items: center;
+  height: 200px;
+`;
+CovidOverViewBox.defaultProps = {
+  cases: 0,
+  deaths: 0,
+  recovered: 0,
+  todayCases: 0,
+  todayDeaths: 0,
+  todayRecovered: 0,
+};
 function CovidOverViewBox(props) {
-  // const { infoCovidAll } = props;
-  //   const [country, setCountry] = useState('');
-  //   const [cases, setCases] = useState(0);
-  //   const [deaths, setDeaths] = useState(0);
-  //   const [recovered, setRecovered] = useState(0);
-  //   const [todayCases, setTodayCases] = useState(0);
-  //   const [todayDeaths, setTodayDeaths] = useState(0);
-  //   const [todayRecovered, setTodayRecovered] = useState(0);
-  // const [flag, setFlag] = useState('');
-
   const {
     country,
     cases,
@@ -36,9 +40,8 @@ function CovidOverViewBox(props) {
     todayDeaths,
     todayRecovered,
     countryInfo,
+    isLocalLoading,
   } = props;
-  // const { flag } = countryInfo;
-  // console.log(countryInfo);
   const formatterNumber = new Intl.NumberFormat('en');
   const { t } = useTranslation();
   return (
@@ -48,14 +51,19 @@ function CovidOverViewBox(props) {
           <div className="border-box">
             <div className="covid-overview-box__info">
               <div className="covid-overview-box__info-header">
-                <h3>
-                  <img src={countryInfo?.flag} alt="flag country" />
-                  <StyleText>
-                    {country} {t('overview')}
-                  </StyleText>
-                </h3>
+                {isLocalLoading ? (
+                  <StyleSpin />
+                ) : (
+                  <h3>
+                    <img src={countryInfo?.flag} alt="flag country" />
+                    <StyleText className="covid-overview-box__info-header-country-name">
+                      {country} {t('overview')}
+                    </StyleText>
+                  </h3>
+                )}
+
                 <StyleText>
-                  {t('share')}:{' '}
+                  {t('share')}:
                   <StyleTwitterOutlined className="covid-overview-box__info-header-icon" />
                   <StyleFacebookOutlined className="covid-overview-box__info-header-icon" />
                 </StyleText>
@@ -68,7 +76,7 @@ function CovidOverViewBox(props) {
                 <Col xs={24} md={16} lg={8}>
                   <div className="covid-overview-box__info-item">
                     <h4 className="info-item__confirmed confirmed">
-                      {formatterNumber.format(cases)}
+                      <CountUp end={cases} duration={2} separator="," />
                     </h4>
                     <StyleText>{t('confirmed')}</StyleText>
                     <small className="info-item__confirmed confirmed">
@@ -82,7 +90,7 @@ function CovidOverViewBox(props) {
                 <Col xs={24} md={16} lg={8}>
                   <div className="covid-overview-box__info-item">
                     <h4 className="info-item__recovered recovered">
-                      {formatterNumber.format(recovered)}
+                      <CountUp end={recovered} duration={2} separator="," />
                     </h4>
                     <StyleText>{t('recovered')}</StyleText>
                     <small className="info-item__confirmed recovered">
@@ -96,7 +104,7 @@ function CovidOverViewBox(props) {
                 <Col xs={24} md={16} lg={8}>
                   <div className="covid-overview-box__info-item">
                     <h4 className="info-item__deaths deaths">
-                      {formatterNumber.format(deaths)}
+                      <CountUp end={deaths} duration={2} separator="," />
                     </h4>
                     <StyleText> {t('deaths')}</StyleText>
                     <small className="info-item__confirmed deaths">

@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { GlobalActions } from '../../../../redux/rootAction';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
 import './HeaderHome.scss';
 
 const Wrapper = styled.div`
@@ -47,6 +49,11 @@ const StyleText = styled.span`
 `;
 const StyleLogoutOutlined = styled(LogoutOutlined)`
   color: ${(props) => props.theme.iconColor};
+`;
+const StyleMenu = styled(Menu)`
+  min-width: 60px;
+
+  text-align: center;
 `;
 
 function HeaderHome(props) {
@@ -109,10 +116,10 @@ function HeaderHome(props) {
   };
 
   const menu = (
-    <Menu>
+    <StyleMenu>
       <Menu.Item onClick={() => i18next.changeLanguage('en')}>En</Menu.Item>
       <Menu.Item onClick={() => i18next.changeLanguage('vi')}>Vi</Menu.Item>
-    </Menu>
+    </StyleMenu>
   );
   return (
     <Wrapper className="header-home__wrapper">
@@ -148,8 +155,12 @@ function HeaderHome(props) {
       </div>
 
       <Switch
-        checkedChildren="Dark"
-        unCheckedChildren="Light"
+        checkedChildren={
+          <Brightness4Icon fontSize="small" style={{ display: 'flex' }} />
+        }
+        unCheckedChildren={
+          <Brightness7Icon fontSize="small" style={{ display: 'flex' }} />
+        }
         onChange={handleThemeChange}
         checked={themeStore === 'dark'}
       />

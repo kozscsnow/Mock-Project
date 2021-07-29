@@ -27,7 +27,6 @@
       overflow: hidden;
     }
     &-text {
-      height: 92px;
       display: -webkit-box;
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
@@ -54,6 +53,22 @@
     &__content {
       &-header {
         text-align: left;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .news-home {
+    &__thumbnail {
+      &-item {
+        height: 100%;
+      }
+    }
+    &__content {
+      &-text {
+        -webkit-line-clamp: 8;
+        
       }
     }
   }
