@@ -1,5 +1,5 @@
 import { FundViewOutlined, TableOutlined } from '@ant-design/icons';
-import { Col, DatePicker, Row, Skeleton, Tabs } from 'antd';
+import { Col, DatePicker, Row, Skeleton, Tabs, Typography } from 'antd';
 import covidVaccineAPI from 'apis/covidVaccineAPI';
 import ColumnChart from 'components/ColumnChart';
 import GroupColumnChart from 'components/GroupColumnChart';
@@ -24,6 +24,7 @@ import styled from 'styled-components';
 const StyleOverview = styled.span`
   color: ${(props) => props.theme.textColor};
 `;
+
 const { TabPane } = Tabs;
 
 const { RangePicker } = DatePicker;
@@ -88,7 +89,6 @@ function Dashboard(props) {
   };
   useEffect(() => {
     // dispatch(GlobalActions.setIsLoading(true));
-
     fetCovidHistory();
   }, [dispatch]);
   // Fetch Covid Vaccine
