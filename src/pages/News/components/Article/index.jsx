@@ -8,7 +8,7 @@ const StyleText = styled.p`
   color: ${(props) => props.theme.textColor};
 `;
 const StyleTitle = styled.h3`
-  color: #bdc3c7;
+  color: ${(props) => props.theme.textColor};
 `;
 const StyleTag = styled.small`
   color: ${(props) => props.theme.textColor};

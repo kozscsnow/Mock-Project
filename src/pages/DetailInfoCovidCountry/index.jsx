@@ -67,6 +67,9 @@ function DetailInfoCovidCountry(props) {
     const infoCovidCountry = await covidCountriesAPI.get(countryName);
     setInfoCovidCountry(infoCovidCountry);
   };
+  useEffect(() => {
+    fetchInfoCovidCountries();
+  }, [dispatch, countryName]);
   // fetch data covid by day
   const fetchInfoCovidCountriesFromDay = async () => {
     setIsLocalLoading(true);
@@ -81,9 +84,8 @@ function DetailInfoCovidCountry(props) {
     setIsLocalLoading(false);
   };
   useEffect(() => {
-    fetchInfoCovidCountries();
     fetchInfoCovidCountriesFromDay();
-  }, [dispatch, countryName, date]);
+  }, [date, countryName]);
 
   const {
     country,

@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import covidAllAPI from 'apis/covidAllAPI';
 import WrapperPage from 'HOCs/WrapperPage';
 import IntroHome from 'pages/Home/component/IntroHome';
@@ -22,10 +23,9 @@ function HomePage(props) {
       const InfoCovidAll = await covidAllAPI.getAll();
       setInfoCovidAll(InfoCovidAll);
     } catch (error) {
-      alert(`
-    Something wrong !!!
-    Please try again or check your connection
-    `);
+      message.warning(
+        'Something wrong !!! Please try again or check your connection'
+      );
     }
   };
   useEffect(() => {

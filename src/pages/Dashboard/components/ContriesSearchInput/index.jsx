@@ -7,8 +7,6 @@ import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import './CountriesSearchInput.scss';
 
-
-
 // const StyleAutocomplete = styled(Autocomplete)`
 //   color: ${(props) => props.theme.inputColor};
 // `;

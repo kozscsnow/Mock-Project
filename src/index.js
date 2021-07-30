@@ -1,18 +1,20 @@
+import { Spin } from 'antd';
 import 'antd/dist/antd.css';
+import GlobalLoading from 'components/GlobalLoading';
 import { createBrowserHistory } from 'history';
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { initReactI18next } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import styled from 'styled-components';
 import App from './App';
 import './index.css';
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
-
 
 i18n
   .use(initReactI18next)
@@ -28,21 +30,27 @@ i18n
     backend: {
       loadPath: '/assets/locales/{{lng}}/translation.json',
     },
-    react: {
-      useSuspense: false,
-    },
   });
 
 const history = createBrowserHistory();
 
+const StyleSpin = styled(Spin)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
+
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter history={history}>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Suspense fallback={<StyleSpin />}>
+    <React.StrictMode>
+      <Provider store={store}>
+        <BrowserRouter history={history}>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </React.StrictMode>
+  </Suspense>,
   document.getElementById('root')
 );
 

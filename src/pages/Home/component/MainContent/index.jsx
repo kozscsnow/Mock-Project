@@ -1,5 +1,5 @@
 import { LikeOutlined } from '@ant-design/icons';
-import { Button, Col, Row } from 'antd';
+import { Button, Col, message, Row } from 'antd';
 import covidHistoryAPI from 'apis/covidHistoryAPI';
 import GroupColumnChart from 'components/GroupColumnChart';
 import LineColumnChart from 'components/LineColumnChart';
@@ -18,24 +18,22 @@ function MainContent(props) {
   const dispatch = useDispatch();
   const [infoCovidHistory, setInfoCovidHistory] = useState({});
   // Fetch Covid History
+  const fetCovidHistory = async () => {
+    const params = {
+      lastdays: 'all',
+    };
+    try {
+      const infoCovidHistory = await covidHistoryAPI.getAll(params);
+      setInfoCovidHistory(infoCovidHistory);
+    } catch (error) {
+      message.warning(
+        'Something wrong !!! Please try again or check your connection'
+      );
+    }
+    dispatch(GlobalActions.setIsLoading(false));
+  };
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
-
-    const fetCovidHistory = async () => {
-      const params = {
-        lastdays: 'all',
-      };
-      try {
-        const infoCovidHistory = await covidHistoryAPI.getAll(params);
-        setInfoCovidHistory(infoCovidHistory);
-      } catch (error) {
-        alert(`
-        Something wrong !!!
-        Please try again or check your connection
-        `);
-      }
-      dispatch(GlobalActions.setIsLoading(false));
-    };
     fetCovidHistory();
   }, [dispatch]);
   return (
