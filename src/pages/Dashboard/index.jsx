@@ -1,5 +1,5 @@
 import { FundViewOutlined, TableOutlined } from '@ant-design/icons';
-import { Col, DatePicker, Row, Skeleton, Tabs, Typography } from 'antd';
+import { Col, DatePicker, Row, Skeleton, Tabs } from 'antd';
 import covidVaccineAPI from 'apis/covidVaccineAPI';
 import ColumnChart from 'components/ColumnChart';
 import GroupColumnChart from 'components/GroupColumnChart';
@@ -12,6 +12,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 import covidAllAPI from '../../apis/covidAllAPI';
 import covidCountriesAPI from '../../apis/covidCoutriesAPI';
 import covidHistoryAPI from '../../apis/covidHistoryAPI';
@@ -19,7 +20,6 @@ import InfoCovidBox from '../../components/InfoCovidBox';
 import TableCovid from '../../components/TableCovid';
 import { CovidInfoActions } from '../../redux/rootAction';
 import './Dashboard.scss';
-import styled from 'styled-components';
 
 const StyleOverview = styled.span`
   color: ${(props) => props.theme.textColor};

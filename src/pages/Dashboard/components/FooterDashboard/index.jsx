@@ -2,9 +2,6 @@ import React from 'react';
 import './FooterDashboard.scss';
 import styled from 'styled-components';
 
-const StyleText = styled.p`
-  color: ${(props) => props.theme.textColor};
-`;
 function FooterDashboard(props) {
   return (
     <footer className="footer-dashboard">
@@ -15,9 +12,6 @@ function FooterDashboard(props) {
             alt="logo-footer"
           />
         </div>
-        <StyleText className="footer-dashboard__text">
-          nguyen nhat khanh
-        </StyleText>
       </div>
     </footer>
   );

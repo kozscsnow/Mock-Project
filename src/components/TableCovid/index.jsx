@@ -5,8 +5,16 @@ import { v4 as uuidv4 } from 'uuid';
 import styled from 'styled-components';
 
 const StyleTable = styled(Table)`
-  .ant-table-container {
+  td,
+  .ant-table-thead th {
     background: ${(props) => props.theme.backgroundColor};
+    color: ${(props) => props.theme.textColor};
+    cursor: pointer;
+  }
+  .ant-table-thead th:hover,
+  tr:hover td {
+    color: ${(props) => props.theme.textHoverColor};
+    transition: 0.3s;
   }
 `;
 
@@ -93,7 +101,7 @@ function TableCovid(props) {
   function onChange(pagination, filters, sorter, extra) {}
   return (
     <div>
-      <Table
+      <StyleTable
         scroll={{ x: true }}
         columns={columns}
         dataSource={DataCovidAll}

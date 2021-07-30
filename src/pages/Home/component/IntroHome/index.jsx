@@ -27,6 +27,18 @@ const StyleProgress = styled(Progress)`
 const StyleHomeChart = styled.div`
   background: ${(props) => props.theme.backgroundColor};
 `;
+
+IntroHome.defaultProps = {
+  cases: 0,
+  deaths: 0,
+  recovered: 0,
+  todayCases: 0,
+  todayDeaths: 0,
+  todayRecovered: 0,
+  casesPerOneMillion: 0,
+  recoveredPerOneMillion: 0,
+  deathsPerOneMillion: 0,
+};
 function IntroHome(props) {
   const { t } = useTranslation();
   const { infoCovidAll } = props;

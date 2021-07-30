@@ -9,9 +9,9 @@ import WrapperDashboard from 'HOCs/WrapperDashboard';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
+import styled from 'styled-components';
 import covidCountriesAPI from '../../apis/covidCoutriesAPI';
 import CovidOverViewBox from './components/CovidOverViewBox';
-import styled from 'styled-components';
 import './DetailInfoCovidCountry.scss';
 
 const PrettoSlider = withStyles({

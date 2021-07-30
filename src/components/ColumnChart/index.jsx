@@ -93,6 +93,23 @@ const generateDataOption = (infoCovidHistory, type, t) => {
           pointPadding: 0.2,
           borderWidth: 0,
         },
+        series: {
+          events: {
+            legendItemClick: function (bla) {
+              console.log(this);
+              if (this.visible) {
+                var count = 0;
+                for (var index in this.chart.series) {
+                  if (this.chart.series[index].visible) {
+                    count = count + 1;
+                    if (count > 1) break;
+                  }
+                }
+                if (count === 1) return false;
+              }
+            },
+          },
+        },
       },
       series: [
         filterDataTypeOfChart(type, t, listCases, listRecovered, listDeaths),

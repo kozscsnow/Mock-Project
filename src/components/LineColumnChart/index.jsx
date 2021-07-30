@@ -81,6 +81,24 @@ const generateDataOption = (infoCovidHistory, t) => {
           Highcharts.defaultOptions.legend.backgroundColor || // theme
           'rgba(255,255,255,0.25)',
       },
+      plotOption: {
+        series: {
+          events: {
+            legendItemClick: function (bla) {
+              if (this.visible) {
+                var count = 0;
+                for (var index in this.chart.series) {
+                  if (this.chart.series[index].visible) {
+                    count = count + 1;
+                    if (count > 1) break;
+                  }
+                }
+                if (count === 1) return false;
+              }
+            },
+          },
+        },
+      },
       series: [
         {
           name: `${t('recovered')}`,
