@@ -1,10 +1,11 @@
 import LoadingSpin from 'components/LoadingSpin';
+import PendingDevelopment from 'components/PendingDevelopment';
 import React from 'react';
 
 function Alert(props) {
   return (
     <div>
-      <LoadingSpin height={'100px'} />
+      <PendingDevelopment />
     </div>
   );
 }

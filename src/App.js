@@ -1,9 +1,12 @@
+import Analytics from 'pages/Analytics';
+import Contact from 'pages/Contact';
 import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import './App.scss';
 import AuthRoute from './HOCs/AuthRoute';
 import PrivateRoute from './HOCs/PrivateRoute';
+import Alert from './pages/Alert';
 import Dashboard from './pages/Dashboard';
 import DetailInfoCovidCountry from './pages/DetailInfoCovidCountry';
 import Home from './pages/Home';
@@ -11,11 +14,8 @@ import Login from './pages/Login';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
-import Alert from './pages/Alert';
+import About from './pages/About';
 import { dark, light } from './themes';
-import Analytics from 'pages/Analytics';
-import About from 'components/About';
-import Contact from 'pages/Contact';
 const themes = {
   dark: dark,
   light: light,

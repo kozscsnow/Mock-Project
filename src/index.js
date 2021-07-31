@@ -1,6 +1,4 @@
-import { Spin } from 'antd';
 import 'antd/dist/antd.css';
-import GlobalLoading from 'components/GlobalLoading';
 import LoadingSpin from 'components/LoadingSpin';
 import { createBrowserHistory } from 'history';
 import i18n from 'i18next';
@@ -11,7 +9,6 @@ import ReactDOM from 'react-dom';
 import { initReactI18next } from 'react-i18next';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import styled, { createGlobalStyle } from 'styled-components';
 import App from './App';
 import './index.css';
 import store from './redux/store';

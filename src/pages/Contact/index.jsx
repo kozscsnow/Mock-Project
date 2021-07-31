@@ -1,7 +1,12 @@
+import PendingDevelopment from 'components/PendingDevelopment';
 import React from 'react';
 
 function Contact(props) {
-  return <div>Contact</div>;
+  return (
+    <div>
+      <PendingDevelopment />
+    </div>
+  );
 }
 
 export default Contact;

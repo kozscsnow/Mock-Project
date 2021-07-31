@@ -1,7 +1,12 @@
+import PendingDevelopment from 'components/PendingDevelopment';
 import React from 'react';
 
 function About(props) {
-  return <div>About</div>;
+  return (
+    <div>
+      <PendingDevelopment />
+    </div>
+  );
 }
 
 export default About;
