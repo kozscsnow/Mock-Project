@@ -34,7 +34,7 @@ function NewsBox(props) {
           </a>
         </Col>
         <Col xs={18} md={18} className="news-home__content">
-          <a href={url} target="_blank">
+          <a href={url} target="_blank" rel="noreferrer">
             <StyleHeader className="news-home__content-header">
               {title}
             </StyleHeader>

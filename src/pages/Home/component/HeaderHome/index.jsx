@@ -23,7 +23,7 @@ import './HeaderHome.scss';
 
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.pageBackground};
-  transition: 0.3s ease;
+  transition: 0.3s;
 `;
 const StyleLink = styled(Link)`
   color: ${(props) => props.theme.linkColor};

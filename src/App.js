@@ -11,18 +11,20 @@ import Login from './pages/Login';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
+import Alert from './pages/Alert';
 import { dark, light } from './themes';
+import Analytics from 'pages/Analytics';
+import About from 'components/About';
+import Contact from 'pages/Contact';
 const themes = {
   dark: dark,
   light: light,
 };
 
-const Wrapper = styled.div`
-  background: ${(props) => props.theme.backgroundColor};
-`;
 const GlobalStyle = createGlobalStyle`
   body {
     background: ${(props) => props.theme.backgroundColor};
+    transition: 0.3s;
   }
 `;
 function App() {
@@ -30,23 +32,25 @@ function App() {
   // render
   return (
     <ThemeProvider theme={themes[theme]}>
-      {/* <GlobalStyle /> */}
-      <Wrapper className="App">
+      <GlobalStyle />
+      <div className="App">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/news" component={News} />
           <AuthRoute path="/login" component={Login} />
           <AuthRoute path="/register" component={Register} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/alert" component={Alert} />
+          <PrivateRoute path="/analytics" component={Analytics} />
           <Route
             path="/countries/:countryName"
             component={DetailInfoCovidCountry}
           />
-          <Route path="/test/:hello" component={NotFound} />
-
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>
-      </Wrapper>
+      </div>
     </ThemeProvider>
   );
 }

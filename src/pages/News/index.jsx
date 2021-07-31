@@ -1,3 +1,4 @@
+import ScrollToTopButton from 'components/ScrollToTopButton';
 import React from 'react';
 import Article from './components/Article';
 import ContentCarousel from './components/ContentCarousel';
@@ -17,6 +18,7 @@ function News(props) {
         <MultimediaNews />
         <ContentCarousel />
         <Article />
+        <ScrollToTopButton />
       </div>
     </div>
   );

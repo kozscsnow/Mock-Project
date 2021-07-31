@@ -8,6 +8,7 @@ const TextStyle = styled.p`
 
 const Wrapper = styled.div`
   background: ${(props) => props.theme.backgroundColor};
+  transition: 0.3s;
 `;
 function FooterHome(props) {
   return (

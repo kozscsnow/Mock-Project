@@ -8,20 +8,18 @@ import styled from 'styled-components';
 import MainContent from './component/MainContent';
 import NewsHome from './component/NewsHome';
 import './Home.scss';
-const Wrapper = styled.div`
-  background-color: ${(props) => props.theme.pageBackground};
-  transition: 0.3s ease;
-`;
 
 function HomePage(props) {
   const dispatch = useDispatch();
   const [infoCovidAll, setInfoCovidAll] = useState({});
+  const [isLocalLoading, setIsLocalLoading] = useState(true);
 
   // Fetch Covid All
   const fetchCovidAll = async () => {
     try {
       const InfoCovidAll = await covidAllAPI.getAll();
       setInfoCovidAll(InfoCovidAll);
+      setIsLocalLoading(false);
     } catch (error) {
       message.warning(
         'Something wrong !!! Please try again or check your connection'
@@ -29,14 +27,15 @@ function HomePage(props) {
     }
   };
   useEffect(() => {
+    setIsLocalLoading(true);
     fetchCovidAll();
   }, [dispatch]);
   return (
-    <Wrapper className="home-body container">
-      <IntroHome infoCovidAll={infoCovidAll} />
+    <div className="home-body container">
+      <IntroHome infoCovidAll={infoCovidAll} isLocalLoading={isLocalLoading} />
       <MainContent />
       <NewsHome />
-    </Wrapper>
+    </div>
   );
 }
 

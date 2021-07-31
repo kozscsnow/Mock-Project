@@ -1,6 +1,7 @@
 import { Spin } from 'antd';
 import 'antd/dist/antd.css';
 import GlobalLoading from 'components/GlobalLoading';
+import LoadingSpin from 'components/LoadingSpin';
 import { createBrowserHistory } from 'history';
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -34,24 +35,11 @@ i18n
 
 const history = createBrowserHistory();
 
-const StyleSpin = styled(Spin)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-`;
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background: ${(props) => props.theme.backgroundColor};
-  }
-`;
 ReactDOM.render(
-  <Suspense fallback={<StyleSpin />}>
+  <Suspense fallback={<LoadingSpin height={'100vh'} />}>
     <React.StrictMode>
       <Provider store={store}>
         <Router history={history}>
-          <GlobalStyle />
           <App />
         </Router>
       </Provider>

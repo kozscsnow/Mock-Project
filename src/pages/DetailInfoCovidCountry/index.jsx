@@ -49,15 +49,11 @@ const StyleTypography = styled(Typography)`
 `;
 
 function DetailInfoCovidCountry(props) {
-  // const [cases, setCases] = useState(0);
-  // const [deaths, setDeaths] = useState(0);
-  // const [recovered, setRecovered] = useState(0);
   const [infoCovidCountry, setInfoCovidCountry] = useState('');
   const [infoCovidCountryFromDay, setInfoCovidCountryFromDay] = useState('');
   const { countryName } = useParams();
   const [date, setDate] = useState('100');
   const [isLocalLoading, setIsLocalLoading] = useState(true);
-  const dispatch = useDispatch();
 
   const handleFilterDayChange = (event, value) => {
     setDate(value);
@@ -69,7 +65,7 @@ function DetailInfoCovidCountry(props) {
   };
   useEffect(() => {
     fetchInfoCovidCountries();
-  }, [dispatch, countryName]);
+  }, [countryName]);
   // fetch data covid by day
   const fetchInfoCovidCountriesFromDay = async () => {
     setIsLocalLoading(true);

@@ -2,29 +2,25 @@ import {
   GlobalOutlined,
   LogoutOutlined,
   MenuFoldOutlined,
-  UserOutlined,
+  UserOutlined
 } from '@ant-design/icons';
 import Grow from '@material-ui/core/Grow';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
 import { Anchor, Button, Drawer, Dropdown, Menu, Switch } from 'antd';
 import i18next from 'i18next';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import styled from 'styled-components';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
-import Brightness7Icon from '@material-ui/icons/Brightness7';
-import './HeaderPage.scss';
 import { GlobalActions } from 'redux/rootAction';
+import styled from 'styled-components';
+import './HeaderPage.scss';
 
-const Wrapper = styled.div`
-  background-color: ${(props) => props.theme.pageBackground};
-  transition: 0.3s ease;
-`;
 const StyleLink = styled(Link)`
   color: ${(props) => props.theme.linkColor};
   &:hover {
@@ -122,7 +118,7 @@ function HeaderPage(props) {
     </StyleMenu>
   );
   return (
-    <Wrapper className="header-page__wrapper">
+    <div className="header-page__wrapper">
       <div className="header-page__logo">
         <img
           src="./images/logo/reactjs-icon.svg"
@@ -315,7 +311,7 @@ function HeaderPage(props) {
           </StyleDrawer>
         </div>
       </div>
-    </Wrapper>
+    </div>
   );
 }
 
