@@ -9,8 +9,8 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { initReactI18next } from 'react-i18next';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import { BrowserRouter as Router } from 'react-router-dom';
+import styled, { createGlobalStyle } from 'styled-components';
 import App from './App';
 import './index.css';
 import store from './redux/store';
@@ -41,20 +41,23 @@ const StyleSpin = styled(Spin)`
   height: 100vh;
 `;
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${(props) => props.theme.backgroundColor};
+  }
+`;
 ReactDOM.render(
   <Suspense fallback={<StyleSpin />}>
     <React.StrictMode>
       <Provider store={store}>
-        <BrowserRouter history={history}>
+        <Router history={history}>
+          <GlobalStyle />
           <App />
-        </BrowserRouter>
+        </Router>
       </Provider>
     </React.StrictMode>
   </Suspense>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `;
 function FooterHome(props) {
   return (
-    <Wrapper className="footer-home__container">
+    <Wrapper className="footer-home__container container">
       <img src="./images/logo/reactjs-icon.svg" alt="" />
       <TextStyle>Nguyen Nhat Khanh</TextStyle>
     </Wrapper>

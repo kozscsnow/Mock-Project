@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import './App.scss';
 import AuthRoute from './HOCs/AuthRoute';
 import PrivateRoute from './HOCs/PrivateRoute';
@@ -20,11 +20,17 @@ const themes = {
 const Wrapper = styled.div`
   background: ${(props) => props.theme.backgroundColor};
 `;
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: ${(props) => props.theme.backgroundColor};
+  }
+`;
 function App() {
   const theme = useSelector((state) => state.GlobalReducer.theme);
   // render
   return (
     <ThemeProvider theme={themes[theme]}>
+      {/* <GlobalStyle /> */}
       <Wrapper className="App">
         <Switch>
           <Route exact path="/" component={Home} />
