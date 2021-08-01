@@ -3,6 +3,7 @@
     "language": "Ngôn ngữ",
     "overview": "Thống kê",
     "share": "Chia sẻ",
+    "setting":"Cài đặt",
     "data_table": "Bảng Thống Kê",
     "confirmed": "Tổng nhiễm",
     "cases": "Ca nhiễm",
@@ -56,7 +57,7 @@
     "home_main-content_news": "TIN MỚI",
 
 
-    "dashboard_header_input_search-country": "Tìm kiếm đất nước",
+    "dashboard_header_input_search-country": "Đất nước",
 
     "column-chart_title-cases":"Số ca nhiễm được ghi nhận",
     "column-chart_sub-title":"Tổng số ca",

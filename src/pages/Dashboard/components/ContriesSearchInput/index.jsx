@@ -22,7 +22,9 @@ function CountriesSearchInput(props) {
     return { country, urlFlag: flag };
   });
   const handleSelectInputChange = (event, value) => {
-    history.push(`/countries/${value}`);
+    if (value) {
+      history.push(`/countries/${value}`);
+    }
   };
   const darkTheme = createTheme({
     palette: {
@@ -30,27 +32,25 @@ function CountriesSearchInput(props) {
     },
   });
   return (
-    <div className="header-dashboard__input">
-      <ThemeProvider theme={darkTheme}>
-        <Autocomplete
-          className="header-dashboard__input-list"
-          fullWidth={true}
-          onChange={handleSelectInputChange}
-          id="countries"
-          size="small"
-          freeSolo
-          options={listCountriesData.map((country) => country.country)}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label={t('dashboard_header_input_search-country')}
-              margin="normal"
-              variant="outlined"
-            />
-          )}
-        />
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <Autocomplete
+        className="header-dashboard__input-list"
+        fullWidth={true}
+        onChange={handleSelectInputChange}
+        id="countries"
+        size="small"
+        freeSolo
+        options={listCountriesData.map((country) => country?.country)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label={t('dashboard_header_input_search-country')}
+            margin="normal"
+            variant="outlined"
+          />
+        )}
+      />
+    </ThemeProvider>
   );
 }
 
