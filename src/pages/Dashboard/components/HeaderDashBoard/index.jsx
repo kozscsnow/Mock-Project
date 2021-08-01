@@ -40,14 +40,9 @@ function HeaderDashboard(props) {
   const { t } = useTranslation();
   const { listInfoCovidCountries } = props;
   const [isSearchClick, setIsSearchClick] = useState(false);
-  const [visible, setVisible] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   const themeStore = useSelector((state) => state.GlobalReducer.theme);
-
-  const showDrawer = () => {
-    setVisible(true);
-  };
 
   const handleSearchClick = (params) => {
     setIsSearchClick(!isSearchClick);
@@ -110,18 +105,12 @@ function HeaderDashboard(props) {
               className="header-dashboard__contact-icon"
               style={{ color: 'rgb(0, 216, 255)', margin: '4px' }}
             />
-            {/* <SettingOutlined
-              onClick={showDrawer}
-              className="header-dashboard__contact-icon"
-              style={{ color: 'rgb(0, 216, 255)', margin: '4px' }}
-            /> */}
             <Dropdown
               overlay={menu}
               trigger={['click']}
               placement="bottomCenter"
             >
               <SettingOutlined
-                onClick={showDrawer}
                 className="header-dashboard__contact-icon"
                 style={{ color: 'rgb(0, 216, 255)', margin: '4px' }}
               />
