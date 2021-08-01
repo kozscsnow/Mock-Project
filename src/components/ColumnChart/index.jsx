@@ -96,7 +96,6 @@ const generateDataOption = (infoCovidHistory, type, t) => {
         series: {
           events: {
             legendItemClick: function (bla) {
-              console.log(this);
               if (this.visible) {
                 var count = 0;
                 for (var index in this.chart.series) {

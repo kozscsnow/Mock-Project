@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import Highcharts from 'highcharts';
 // import HighChartsReact from 'highcharts-react-official';
 import HighchartsReact from 'highcharts-react-official';
-import Highcharts from 'highcharts';
 import moment from 'moment';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 const generateDataOption = (infoCovidHistory, t) => {
@@ -24,18 +24,15 @@ const generateDataOption = (infoCovidHistory, t) => {
       title: {
         text: `${t('line-chart_title-cases')}`,
       },
-
       subtitle: {
         text: `${t('line-chart_sub-title-cases')}`,
       },
-
       yAxis: {
         min: 0,
         title: {
           text: `${t('line-chart_title-horizontal')}`,
         },
       },
-
       xAxis: {
         categories: categories,
       },
@@ -55,7 +52,6 @@ const generateDataOption = (infoCovidHistory, t) => {
         shared: true,
         useHTML: true,
       },
-
       plotOptions: {
         column: {
           pointPadding: 0.2,
@@ -78,7 +74,6 @@ const generateDataOption = (infoCovidHistory, t) => {
           },
         },
       },
-
       series: [
         {
           name: `${t('cases')}`,
@@ -93,7 +88,6 @@ const generateDataOption = (infoCovidHistory, t) => {
           data: [...listDeaths],
         },
       ],
-
       responsive: {
         rules: [
           {
@@ -117,18 +111,11 @@ const generateDataOption = (infoCovidHistory, t) => {
 function LineChart(props) {
   const { t } = useTranslation();
   const { infoCovidHistory } = props;
-  const [options, setOptions] = useState({});
-  // useEffect(() => {
-  //   if (infoCovidHistory) {
-  //     setOptions(generateDataOption(infoCovidHistory));
-  //   }
-  // }, [infoCovidHistory]);
   return (
     <div>
       <HighchartsReact
         highcharts={Highcharts}
         options={generateDataOption(infoCovidHistory, t)}
-        // constructorType={'mapChart'}
       />
     </div>
   );

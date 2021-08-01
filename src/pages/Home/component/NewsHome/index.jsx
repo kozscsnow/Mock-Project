@@ -58,9 +58,7 @@ function NewsHome(props) {
         itemLayout="vertical"
         size="large"
         pagination={{
-          onChange: (page) => {
-            console.log(page);
-          },
+          onChange: (page) => {},
           pageSize: 5,
         }}
         dataSource={listNewsData}

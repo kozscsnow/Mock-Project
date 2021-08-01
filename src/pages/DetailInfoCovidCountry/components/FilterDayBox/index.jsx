@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Typography, withStyles } from '@material-ui/core';
 import Slider from '@material-ui/core/Slider';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 FilterDayBox.propTypes = {};
 
@@ -40,13 +39,18 @@ const PrettoSlider = withStyles({
 })(Slider);
 
 function FilterDayBox(props) {
-  const [date, setDate] = useState('100');
+  const { onFilterDayChange } = props;
+  const [date, setDate] = useState(0);
   const handleFilterDayChange = (event, value) => {
+    if (!onFilterDayChange) return;
     setDate(value);
+    onFilterDayChange(value);
   };
   return (
     <div className="detail-info-covid-country__pretto-slider">
-      <StyleTypography gutterBottom>Filter Day</StyleTypography>
+      <StyleTypography gutterBottom>
+        Filter <span>{date}</span> Day
+      </StyleTypography>
       <PrettoSlider
         valueLabelDisplay="auto"
         aria-label="pretto slider"

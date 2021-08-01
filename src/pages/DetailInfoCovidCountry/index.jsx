@@ -1,52 +1,16 @@
-import Slider from '@material-ui/core/Slider';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import covidHistoryDateAPI from 'apis/covidHistoryDateAPI';
 import ColumnChart from 'components/ColumnChart';
 import InfoCovidBox from 'components/InfoCovidBox';
 import PieChart from 'components/PieChart';
 import WrapperDashboard from 'HOCs/WrapperDashboard';
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
-import styled from 'styled-components';
 import covidCountriesAPI from '../../apis/covidCoutriesAPI';
 import CovidOverViewBox from './components/CovidOverViewBox';
+import FilterDayBox from './components/FilterDayBox';
 import './DetailInfoCovidCountry.scss';
-
-const PrettoSlider = withStyles({
-  root: {
-    color: '#52af77',
-    height: 8,
-  },
-  thumb: {
-    height: 24,
-    width: 24,
-    backgroundColor: '#fff',
-    border: '2px solid currentColor',
-    marginTop: -8,
-    marginLeft: -12,
-    '&:focus, &:hover, &$active': {
-      boxShadow: 'inherit',
-    },
-  },
-  active: {},
-  valueLabel: {
-    left: 'calc(-50% + 4px)',
-  },
-  track: {
-    height: 8,
-    borderRadius: 4,
-  },
-  rail: {
-    height: 8,
-    borderRadius: 4,
-  },
-})(Slider);
-
-const StyleTypography = styled(Typography)`
-  color: ${(props) => props.theme.textColor};
-`;
+import { Anchor } from 'antd';
+const { Link } = Anchor;
 
 function DetailInfoCovidCountry(props) {
   const [infoCovidCountry, setInfoCovidCountry] = useState('');
@@ -55,8 +19,8 @@ function DetailInfoCovidCountry(props) {
   const [date, setDate] = useState('100');
   const [isLocalLoading, setIsLocalLoading] = useState(true);
 
-  const handleFilterDayChange = (event, value) => {
-    setDate(value);
+  const handleFilterDayChange = (date) => {
+    setDate(date);
   };
   // fetch data covid countries
   const fetchInfoCovidCountries = async () => {
@@ -120,15 +84,10 @@ function DetailInfoCovidCountry(props) {
         type={`${countryName}`}
       />
       <br />
-      <div className="detail-info-covid-country__pretto-slider">
-        <StyleTypography gutterBottom>Filter Day</StyleTypography>
-        <PrettoSlider
-          valueLabelDisplay="auto"
-          aria-label="pretto slider"
-          defaultValue={0}
-          onChangeCommitted={handleFilterDayChange}
-        />
-      </div>
+      <FilterDayBox
+        onFilterDayChange={handleFilterDayChange}
+        setDate={setDate}
+      />
       <ColumnChart
         infoCovidHistory={infoCovidCountryFromDay}
         type={'cases'}

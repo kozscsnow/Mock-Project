@@ -5,6 +5,8 @@ import {
   AliwangwangOutlined,
   SearchOutlined,
   CloseCircleOutlined,
+  SettingOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import { useHistory } from 'react-router';
 import CountriesSearchInput from '../ContriesSearchInput';
@@ -64,8 +66,15 @@ function HeaderDashboard(props) {
               className="header-dashboard__contact-icon"
               style={{ color: 'rgb(0, 216, 255)', margin: '4px' }}
             />
-
             <AliwangwangOutlined
+              className="header-dashboard__contact-icon"
+              style={{ color: 'rgb(0, 216, 255)', margin: '4px' }}
+            />
+            <UserOutlined
+              className="header-dashboard__contact-icon"
+              style={{ color: 'rgb(0, 216, 255)', margin: '4px' }}
+            />
+            <SettingOutlined
               className="header-dashboard__contact-icon"
               style={{ color: 'rgb(0, 216, 255)', margin: '4px' }}
             />

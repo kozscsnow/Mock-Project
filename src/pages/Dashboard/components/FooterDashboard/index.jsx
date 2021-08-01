@@ -1,6 +1,5 @@
 import React from 'react';
 import './FooterDashboard.scss';
-import styled from 'styled-components';
 
 function FooterDashboard(props) {
   return (

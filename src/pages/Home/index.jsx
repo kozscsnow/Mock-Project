@@ -4,7 +4,6 @@ import WrapperPage from 'HOCs/WrapperPage';
 import IntroHome from 'pages/Home/component/IntroHome';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
 import MainContent from './component/MainContent';
 import NewsHome from './component/NewsHome';
 import './Home.scss';

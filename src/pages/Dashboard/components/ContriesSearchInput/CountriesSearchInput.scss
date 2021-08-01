@@ -3,5 +3,21 @@
     .MuiFormControl-marginNormal {
       margin: 0px;
     }
+    &__name-country {
+      margin: 0px;
+      padding: 0px;
+    }
+  }
+  &__input-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    // background: #000;
+  }
+  &__input-flag {
+    width: 30px;
+    margin: 0px;
+    padding: 0px;
   }
 }

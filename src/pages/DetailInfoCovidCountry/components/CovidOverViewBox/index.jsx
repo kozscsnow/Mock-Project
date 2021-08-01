@@ -121,4 +121,4 @@ function CovidOverViewBox(props) {
   );
 }
 
-export default CovidOverViewBox;
+export default React.memo(CovidOverViewBox);
