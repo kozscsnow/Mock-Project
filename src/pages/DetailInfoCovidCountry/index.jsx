@@ -46,7 +46,6 @@ function DetailInfoCovidCountry(props) {
   useEffect(() => {
     fetchInfoCovidCountriesFromDay();
   }, [date, countryName]);
-
   const {
     country,
     cases,

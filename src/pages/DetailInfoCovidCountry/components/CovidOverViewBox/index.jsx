@@ -58,14 +58,12 @@ function CovidOverViewBox(props) {
                     </StyleText>
                   </h3>
                 )}
-
                 <StyleText>
                   {t('share')}:
                   <StyleTwitterOutlined className="covid-overview-box__info-header-icon" />
                   <StyleFacebookOutlined className="covid-overview-box__info-header-icon" />
                 </StyleText>
               </div>
-
               <Row
                 gutter={[48, 48]}
                 className="covid-overview-box__info-content"

@@ -20,6 +20,9 @@
     "today_deaths": "Today Deaths",
     "country": "Đất nước",
 
+    "pending_development_tittle":"Cảnh báo !!!",
+    "pending_development_sub-tittle":"Xin lỗi, bạn không có đủ quyền để truy cập trang này",
+
     "login": "Đăng Nhập",
     "login_user-name": "Tài Khoản",
     "login_password": "Mật Khẩu",

@@ -22,7 +22,6 @@ import './Dashboard.scss';
 const StyleOverview = styled.span`
   color: ${(props) => props.theme.textColor};
 `;
-
 const { TabPane } = Tabs;
 
 function Dashboard(props) {
@@ -57,14 +56,11 @@ function Dashboard(props) {
         'Something wrong !!! Please try again or check your connection'
       );
     }
-    // dispatch(GlobalActions.setIsLoading(false));
   };
   useEffect(() => {
-    // dispatch(GlobalActions.setIsLoading(true));
     fetchCovidAll();
   }, [dispatch]);
   // Fetch Covid History
-
   const fetCovidHistory = async () => {
     const params = {
       lastdays: 'all',
@@ -78,13 +74,10 @@ function Dashboard(props) {
         'Something wrong !!! Please try again or check your connection'
       );
     }
-    // dispatch(GlobalActions.setIsLoading(false));
   };
   useEffect(() => {
-    // dispatch(GlobalActions.setIsLoading(true));
     fetCovidHistory();
   }, [dispatch]);
-
   const { cases, deaths, recovered } = infoCovidAll;
 
   return (
@@ -106,7 +99,6 @@ function Dashboard(props) {
               recovered={recovered}
               isLocalLoading={isLocalLoading}
             />
-
             <Row>
               <Col xs={24} lg={24}>
                 {isLocalLoading ? (
@@ -116,7 +108,6 @@ function Dashboard(props) {
                 )}
               </Col>
             </Row>
-
             <Row>
               <Col xs={24} lg={12}>
                 <LineChart infoCovidHistory={infoCovidHistory} type={'all'} />
@@ -150,7 +141,6 @@ function Dashboard(props) {
                 />
               </Col>
             </Row>
-
             <Row className="mobileHidden">
               <Col xs={24} lg={24}>
                 <LineColumnChart

@@ -56,7 +56,6 @@ const generateDataOption = (infoCovidHistory, type, t) => {
     const listDateFormated = listDate.map((item) =>
       moment(item).format('DD/MM/YYYY')
     );
-
     const categories = [...listDateFormated];
     return {
       chart: {

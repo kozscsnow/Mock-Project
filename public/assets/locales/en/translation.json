@@ -20,6 +20,9 @@
     "today_deaths": "Today Deaths",
     "country": "Country",
 
+    "pending_development_tittle":"Some thing wrong !!!",
+    "pending_development_sub-tittle":"Sorry, you are not authorized to access this page.",
+
     "login": "Login",
     "login_user-name": "User Name",
     "login_password": "Password",
