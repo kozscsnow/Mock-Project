@@ -38,6 +38,21 @@ function RegisForm(props) {
     dispatch(FormRegisterActions.getRegisterAccount({ username, password }));
     localStorage.setItem('username', username);
     localStorage.setItem('password', password);
+    const listAccounts = JSON.parse(
+      localStorage.getItem('listAccountsStorage')
+    );
+    if (listAccounts) {
+      const newListAccounts = [...listAccounts, { username, password }];
+      localStorage.setItem(
+        'listAccountsStorage',
+        JSON.stringify(newListAccounts)
+      );
+    } else {
+      localStorage.setItem(
+        'listAccountsStorage',
+        JSON.stringify([{ username, password }])
+      );
+    }
     onRegisSuccess();
   };
   return (

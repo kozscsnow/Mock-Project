@@ -57,7 +57,6 @@ function MainContent(props) {
         </Col>
       </Row>
       <br />
-
       <div className="main-home__verify-news">
         <StyleText>{t('home_main-content_news')}</StyleText>
         <div>

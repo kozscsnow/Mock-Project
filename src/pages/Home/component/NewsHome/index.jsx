@@ -22,7 +22,6 @@ const StyleAlert = styled(Alert)`
 function NewsHome(props) {
   const [listNewsData, setListNewsData] = useState([]);
   const [isError, setIsError] = useState(false);
-
   const dispatch = useDispatch();
 
   const fetchNewsData = async () => {
@@ -39,10 +38,8 @@ function NewsHome(props) {
   };
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
-
     fetchNewsData();
   }, [dispatch]);
-
   return (
     <div className="news-home__container">
       {isError && (
