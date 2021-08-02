@@ -121,7 +121,6 @@ function HeaderDashboard(props) {
             <MenuMobile />
           </div>
         </div>
-
         <div className="header-dashboard__nav">
           <StyleText className="header-dashboard__text">
             {t('header-dashboard_title')}
