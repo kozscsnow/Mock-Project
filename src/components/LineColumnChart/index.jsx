@@ -10,7 +10,6 @@ const generateDataOption = (infoCovidHistory, t) => {
     infoCovidHistory.recovered
   ) {
     const listCases = Object.values(infoCovidHistory.cases);
-    const listDeaths = Object.values(infoCovidHistory.deaths);
     const listRecovered = Object.values(infoCovidHistory.recovered);
     const listDate = Object.keys(infoCovidHistory.cases);
     const listDateFormated = listDate.map((item) =>
@@ -81,7 +80,10 @@ const generateDataOption = (infoCovidHistory, t) => {
           Highcharts.defaultOptions.legend.backgroundColor || // theme
           'rgba(255,255,255,0.25)',
       },
-      plotOption: {
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+        },
         series: {
           events: {
             legendItemClick: function (bla) {

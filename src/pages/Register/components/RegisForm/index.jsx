@@ -35,15 +35,7 @@ function RegisForm(props) {
 
   const handleFormRegisSubmit = (values) => {
     const { username, password } = values;
-
     dispatch(FormRegisterActions.getRegisterAccount({ username, password }));
-    // storeAccountRef.current.push({ username, password });
-    // console.log(storeAccountRef.current);
-    // storeAccount.push({ username, password });
-    // localStorage.setItem(
-    //   'storeAccount',
-    //   JSON.stringify(storeAccountRef.current)
-    // );
     localStorage.setItem('username', username);
     localStorage.setItem('password', password);
     onRegisSuccess();
@@ -53,18 +45,12 @@ function RegisForm(props) {
       <div className={regisFormStyles.regisContainer}>
         <div className="form regis-form">
           <div className="form-group form-group-id">
-            {/* {storeAccount}
-            <button onClick={() => dispatch(FormRegisterActions.increase(1))}>
-              click
-            </button> */}
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={handleFormRegisSubmit}
             >
               {(formikProps) => {
-                // const { values, errors, touched } = formikProps;
-                // console.log({ values, errors, touched });
                 return (
                   <Form className={`${styles.form}`}>
                     <h3 className="text-light">

@@ -9,6 +9,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
 import { Anchor, Button, Drawer, Dropdown, Menu, Switch } from 'antd';
 import i18next from 'i18next';
 import React, { useEffect, useRef, useState } from 'react';
@@ -17,8 +19,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { GlobalActions } from '../../../../redux/rootAction';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
-import Brightness7Icon from '@material-ui/icons/Brightness7';
 import './HeaderHome.scss';
 
 const Wrapper = styled.div`
