@@ -26,54 +26,45 @@ function ContentCarousel(props) {
       <StyleTitle className="content-carousel__header">BOOK</StyleTitle>
       <Carousel autoplay effect="fade" dotPosition="top">
         <div>
-          <h3
+          <div
             className="content-carousel__title"
             style={makeStyle(
               'https://znews-photo.zadn.vn/w360/Uploaded/oplukaa/2021_07_17/thumb.jpg'
             )}
-          >
-            Những cuốn sách giúp bạn hiểu về nghệ thuật
-          </h3>
+          ></div>
           <StyleText className="content-carousel__content">
             Những cuốn sách giúp bạn hiểu về nghệ thuật
           </StyleText>
         </div>
         <div>
-          <h3
+          <div
             className="content-carousel__title"
             style={makeStyle(
               'https://znews-photo.zadn.vn/w360/Uploaded/qoswae/2021_07_17/nightwatchdisplay.jpg'
             )}
-          >
-            Khôi phục bức tranh nổi tiếng bằng AI
-          </h3>
+          ></div>
           <StyleText className="content-carousel__content">
             Khôi phục bức tranh nổi tiếng bằng AI
           </StyleText>
         </div>
         <div>
-          <h3
+          <div
             className="content-carousel__title"
             style={makeStyle(
               'https://znews-photo.zadn.vn/w360/Uploaded/oplukaa/2021_07_16/thumb_Carroll.jpg'
             )}
-          >
-            Tuổi thơ của Lewis Carroll
-          </h3>
+          ></div>
           <StyleText className="content-carousel__content">
             Tuổi thơ của Lewis Carroll
           </StyleText>
         </div>
         <div>
-          <h3
+          <div
             className="content-carousel__title"
             style={makeStyle(
               'https://znews-photo.zadn.vn/w360/Uploaded/yfrsy/2021_07_16/chan_troi.jpg'
             )}
-          >
-            {' '}
-            Tuổi trẻ nào đã khuất chân mây
-          </h3>
+          ></div>
           <StyleText className="content-carousel__content">
             Tuổi trẻ nào đã khuất chân mây
           </StyleText>

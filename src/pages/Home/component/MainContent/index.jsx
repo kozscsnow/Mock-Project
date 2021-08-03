@@ -1,5 +1,5 @@
 import { LikeOutlined } from '@ant-design/icons';
-import { Button, Col, Row } from 'antd';
+import { Button, Col, message, Row } from 'antd';
 import covidHistoryAPI from 'apis/covidHistoryAPI';
 import GroupColumnChart from 'components/GroupColumnChart';
 import LineColumnChart from 'components/LineColumnChart';
@@ -18,31 +18,29 @@ function MainContent(props) {
   const dispatch = useDispatch();
   const [infoCovidHistory, setInfoCovidHistory] = useState({});
   // Fetch Covid History
+  const fetCovidHistory = async () => {
+    const params = {
+      lastdays: 'all',
+    };
+    try {
+      const infoCovidHistory = await covidHistoryAPI.getAll(params);
+      setInfoCovidHistory(infoCovidHistory);
+    } catch (error) {
+      message.warning(
+        'Something wrong !!! Please try again or check your connection'
+      );
+    }
+    dispatch(GlobalActions.setIsLoading(false));
+  };
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
-
-    const fetCovidHistory = async () => {
-      const params = {
-        lastdays: 'all',
-      };
-      try {
-        const infoCovidHistory = await covidHistoryAPI.getAll(params);
-        setInfoCovidHistory(infoCovidHistory);
-      } catch (error) {
-        alert(`
-        Something wrong !!!
-        Please try again or check your connection
-        `);
-      }
-      dispatch(GlobalActions.setIsLoading(false));
-    };
     fetCovidHistory();
   }, [dispatch]);
   return (
     <div className="main-content__container">
       <Row gutter={[16, 16]}>
         <Col xs={24}>
-          <div className="border-box">
+          <div className="border-box ">
             <GroupColumnChart
               infoCovidHistory={infoCovidHistory}
               type={'all'}
@@ -53,13 +51,12 @@ function MainContent(props) {
       <br />
       <Row gutter={[16, 16]} className="mobileHidden">
         <Col xs={24}>
-          <div className="border-box">
+          <div className="border-box ">
             <LineColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
           </div>
         </Col>
       </Row>
       <br />
-
       <div className="main-home__verify-news">
         <StyleText>{t('home_main-content_news')}</StyleText>
         <div>

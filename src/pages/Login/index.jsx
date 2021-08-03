@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import formStyles from '../../assets/moduleCss/form.module.css';
-import { GlobalActions } from '../../redux/rootAction';
 import LoginForm from './components/LoginForm';
 import SocialMedia from './components/SocialMedia';
 import styles from './Login.module.css';
@@ -17,30 +15,27 @@ function Login(props) {
   const [errorMessage, setErrorMessage] = useState('');
   const { t } = useTranslation();
 
-  const dispatch = useDispatch();
-
   const validate = () => {
     let errorMessage = '';
-    let usernameLocalStorage = localStorage.getItem('username');
-    let passwordLocalStorage = localStorage.getItem('password');
-
+    let listAccountsStorage = JSON.parse(
+      localStorage.getItem('listAccountsStorage')
+    );
     if (username === 'admin' && password === 'admin') {
       return true;
     }
-    if (
-      username !== usernameLocalStorage ||
-      password !== passwordLocalStorage
-    ) {
+    if (listAccountsStorage) {
+      const checkAccount = listAccountsStorage.some((account) => {
+        return username === account.username && password === account.password;
+      });
+      if (checkAccount) return checkAccount;
       errorMessage = 'Your User or Password is Invalid';
-    }
-    if (errorMessage) {
       setErrorMessage(errorMessage);
       return false;
     }
-
-    return true;
+    errorMessage = 'Your User or Password is Invalid';
+    setErrorMessage(errorMessage);
+    return false;
   };
-
   const handleLoginFormSubmit = (e) => {
     e.preventDefault();
     let isFormValid = validate();
@@ -51,23 +46,12 @@ function Login(props) {
       setErrorMessage('');
     }
   };
-
   const handleGetUsername = (e) => {
     setUsername(e.target.value);
   };
   const handleGetPassword = (e) => {
     setPassword(e.target.value);
   };
-  //Fake Loading
-  useEffect(() => {
-    const loadingFake = setTimeout(() => {
-      dispatch(GlobalActions.setIsLoading(false));
-    }, 500);
-    return () => {
-      clearTimeout(loadingFake);
-    };
-  });
-
   return (
     <div className="login__wrapper">
       <div className={formStyles.formContainer}>

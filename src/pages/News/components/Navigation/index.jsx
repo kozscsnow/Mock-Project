@@ -7,16 +7,16 @@ function Navigation(props) {
     <nav className={styles.navContainer}>
       <ul className={styles.navList}>
         <li className={styles.navItem}>
-          <a href="#">HOT</a>
+          <a href=" #">HOT</a>
         </li>
         <li className={styles.navItem}>
-          <a href="#">VIDEO</a>
+          <a href=" #">VIDEO</a>
         </li>
         <li className={styles.navItem}>
-          <a href="#">UPDATE</a>
+          <a href=" #">UPDATE</a>
         </li>
         <li className={styles.navItem}>
-          <a href="#">STYLES</a>
+          <a href=" #">STYLES</a>
         </li>
       </ul>
       <MenuOutlined className={styles.icon} />

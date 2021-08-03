@@ -6,6 +6,7 @@ import { Progress } from 'antd';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import CountUp from 'react-countup';
+import LoadingSpin from 'components/LoadingSpin';
 
 const StyleOverview = styled.h3`
   color: ${(props) => props.theme.textColor};
@@ -24,12 +25,24 @@ const StyleProgress = styled(Progress)`
     color: ${(props) => props.theme.textColor};
   }
 `;
-const StyleHomeChart = styled.div`
-  background: ${(props) => props.theme.backgroundColor};
-`;
+// const StyleHomeChart = styled.div`
+//   background: ${(props) => props.theme.backgroundColor};
+// `;
+
+IntroHome.defaultProps = {
+  cases: 0,
+  deaths: 0,
+  recovered: 0,
+  todayCases: 0,
+  todayDeaths: 0,
+  todayRecovered: 0,
+  casesPerOneMillion: 0,
+  recoveredPerOneMillion: 0,
+  deathsPerOneMillion: 0,
+};
 function IntroHome(props) {
   const { t } = useTranslation();
-  const { infoCovidAll } = props;
+  const { infoCovidAll, isLocalLoading } = props;
   const {
     cases,
     deaths,
@@ -41,8 +54,6 @@ function IntroHome(props) {
     recoveredPerOneMillion,
     deathsPerOneMillion,
   } = infoCovidAll;
-
-  const formatterNumber = new Intl.NumberFormat('en');
   let percentDeaths = parseFloat((deaths / cases) * 100).toFixed(2);
   let percentRecovered = parseFloat((recovered / cases) * 100).toFixed(2);
   return (
@@ -132,13 +143,17 @@ function IntroHome(props) {
           <div className="border-box">
             <div className="intro-home__chart">
               <div>
-                <StyleProgress
-                  type="circle"
-                  percent={percentDeaths}
-                  strokeColor={{
-                    '100%': '#9B9B9B',
-                  }}
-                />
+                {isLocalLoading ? (
+                  <LoadingSpin />
+                ) : (
+                  <StyleProgress
+                    type="circle"
+                    percent={percentDeaths}
+                    strokeColor={{
+                      '100%': '#9B9B9B',
+                    }}
+                  />
+                )}
               </div>
               <StyleText>{t('home_intro_fatality-rate')}</StyleText>
             </div>
@@ -148,13 +163,17 @@ function IntroHome(props) {
           <div className="border-box">
             <div className="intro-home__chart">
               <div>
-                <StyleProgress
-                  type="circle"
-                  percent={percentRecovered}
-                  strokeColor={{
-                    '100%': '#00E1FF',
-                  }}
-                />
+                {isLocalLoading ? (
+                  <LoadingSpin />
+                ) : (
+                  <StyleProgress
+                    type="circle"
+                    percent={percentRecovered}
+                    strokeColor={{
+                      '100%': '#00E1FF',
+                    }}
+                  />
+                )}
               </div>
               <StyleText>{t('home_intro_recover-rate')}</StyleText>
             </div>
@@ -164,8 +183,8 @@ function IntroHome(props) {
       <br />
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box">
-            <StyleHomeChart className="intro-home__chart background-img">
+          <div className="border-box ">
+            <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_cases-per-one-million')}</h5>
                 <p className="text-large-size confirmed">
@@ -176,11 +195,11 @@ function IntroHome(props) {
                   />
                 </p>
               </div>
-            </StyleHomeChart>
+            </div>
           </div>
         </Col>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box">
+          <div className="border-box ">
             <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_recovered-per-one-million')}</h5>
@@ -196,7 +215,7 @@ function IntroHome(props) {
           </div>
         </Col>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box">
+          <div className="border-box ">
             <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_deaths-per-one-million')}</h5>

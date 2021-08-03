@@ -1,21 +1,9 @@
-import { Result, Button } from 'antd';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { Button, Result } from 'antd';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { GlobalActions } from '../../../../redux/rootAction';
 import './SuccessRegisBox.css';
 function SuccessRegisBox(props) {
   const { onRegisSuccess } = props;
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(GlobalActions.setIsLoading(true));
-    const loadingFake = setTimeout(() => {
-      dispatch(GlobalActions.setIsLoading(false));
-    }, 500);
-    return () => {
-      clearTimeout(loadingFake);
-    };
-  });
 
   const handleBtnRegisClick = () => {
     if (!onRegisSuccess) return;

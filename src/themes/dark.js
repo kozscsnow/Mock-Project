@@ -11,6 +11,8 @@ const darkTheme = {
   backgroundLogoColor: '#164c7e',
   inputColor: '#fff',
   scrollColor: '#b7e3fa',
+  textHoverColor: '#000',
+  backgroundHoverColor: 'yellow',
 };
 
 export default darkTheme;

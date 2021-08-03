@@ -2,6 +2,21 @@ import { Table } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
+import styled from 'styled-components';
+
+const StyleTable = styled(Table)`
+  td,
+  .ant-table-thead th {
+    background: ${(props) => props.theme.backgroundColor};
+    color: ${(props) => props.theme.textColor};
+    cursor: pointer;
+  }
+  .ant-table-thead th:hover,
+  tr:hover td {
+    color: ${(props) => props.theme.textHoverColor};
+    transition: 0.3s;
+  }
+`;
 
 function TableCovid(props) {
   const { t } = useTranslation();
@@ -62,6 +77,7 @@ function TableCovid(props) {
       dataIndex: 'active',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.active - b.active,
+      responsive: ['md'],
       width: 150,
     },
     {
@@ -69,6 +85,7 @@ function TableCovid(props) {
       dataIndex: 'critical',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.critical - b.critical,
+      responsive: ['md'],
       width: 150,
     },
     {
@@ -76,6 +93,7 @@ function TableCovid(props) {
       dataIndex: 'tests',
       defaultSortOrder: 'descend',
       sorter: (a, b) => a.tests - b.tests,
+      responsive: ['md'],
       width: 150,
     },
   ];
@@ -83,14 +101,14 @@ function TableCovid(props) {
   function onChange(pagination, filters, sorter, extra) {}
   return (
     <div>
-      <Table
+      <StyleTable
         scroll={{ x: true }}
         columns={columns}
         dataSource={DataCovidAll}
         onChange={onChange}
         loading={isLocalLoading}
         pagination={{ position: ['bottomLeft'], responsive: true }}
-        sticky
+        sticky={true}
       />
     </div>
   );

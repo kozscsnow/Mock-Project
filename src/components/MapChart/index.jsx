@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Chart from 'react-google-charts';
 import { useTranslation } from 'react-i18next';
 
-
 const options = {
   colors: 'red',
   tooltip: { textStyle: { color: '#000' } },

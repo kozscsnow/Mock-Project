@@ -9,6 +9,10 @@ cd build
 
 cp index.html 200.html
 
+# delete .map file in build folder
+
+find -name *.map -delete
+
 # Start deploy Surge
 
 surge . mock-project.surge.sh

@@ -1,25 +1,15 @@
-import React, { useState } from 'react';
-import { Layout, Menu, Button } from 'antd';
 import {
   AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  PieChartOutlined,
   DesktopOutlined,
-  ContainerOutlined,
   MailOutlined,
 } from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
+import React from 'react';
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
 function SidebarHome(props) {
-  const [collapsed, setCollapsed] = useState(false);
-
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-
   return (
     <Sider>
       <Menu

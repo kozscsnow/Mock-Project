@@ -52,17 +52,6 @@ function InputField(props) {
             {errors[name]}
           </small>
         )}
-        {/* <ErrorMessage name={name} /> */}
-        {/* {label && <Label for={name}>{label}</Label>}
-          <Input
-            name={name}
-            id={name}
-            onChange={onChange}
-            value={value}
-            onBlur={onBlur}
-            placeholder={placeholder}
-            disabled={disabled}
-          /> */}
       </FormGroup>
     </div>
   );

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import ColumnChart from 'components/ColumnChart';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import covidHistoryDateAPI from 'apis/covidHistoryDateAPI';
+import ColumnChart from 'components/ColumnChart';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
 const PrettoSlider = withStyles({
@@ -39,7 +38,6 @@ const PrettoSlider = withStyles({
 
 function DetailColumnChart(props) {
   const { countryName } = useParams();
-
   const [date, setDate] = useState('100');
   const [infoCovidCountryFromDay, setInfoCovidCountryFromDay] = useState('');
 
@@ -53,11 +51,9 @@ function DetailColumnChart(props) {
     );
     setInfoCovidCountryFromDay(infoCovidCountryFromDay.timeline);
   };
-
   useEffect(() => {
     fetchInfoCovidCountriesFromDay();
   }, []);
-
   const handleFilterDayChange = (event, value) => {
     setDate(value);
   };
@@ -70,7 +66,6 @@ function DetailColumnChart(props) {
         defaultValue={0}
         onChangeCommitted={handleFilterDayChange}
       />
-
       <ColumnChart infoCovidHistory={infoCovidCountryFromDay} type={'cases'} />
       <ColumnChart
         infoCovidHistory={infoCovidCountryFromDay}

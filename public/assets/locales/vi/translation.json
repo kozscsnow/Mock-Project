@@ -3,6 +3,7 @@
     "language": "Ngôn ngữ",
     "overview": "Thống kê",
     "share": "Chia sẻ",
+    "setting":"Cài đặt",
     "data_table": "Bảng Thống Kê",
     "confirmed": "Tổng nhiễm",
     "cases": "Ca nhiễm",
@@ -18,6 +19,9 @@
     "today_recovered": "Today Recovered",
     "today_deaths": "Today Deaths",
     "country": "Đất nước",
+
+    "pending_development_tittle":"Cảnh báo !!!",
+    "pending_development_sub-tittle":"Xin lỗi, bạn không có đủ quyền để truy cập trang này",
 
     "login": "Đăng Nhập",
     "login_user-name": "Tài Khoản",
@@ -51,12 +55,12 @@
     "home_intro_fatality-rate": "Tỉ lệ chết",
     "home_intro_recover-rate": "Tỉ lệ hồi phục",
     "home_intro_cases-per-one-million": "Số ca nhiễm trên một triệu người",
-    "home_intro_recovered-per-one-million": "Số hồi phục trên một triệu người",
+    "home_intro_recovered-per-one-million": "Số ca hồi phục trên một triệu người",
     "home_intro_deaths-per-one-million": "Số ca chết trên một triệu người",
     "home_main-content_news": "TIN MỚI",
 
 
-    "dashboard_header_input_search-country": "Tìm kiếm đất nước",
+    "dashboard_header_input_search-country": "Đất nước",
 
     "column-chart_title-cases":"Số ca nhiễm được ghi nhận",
     "column-chart_sub-title":"Tổng số ca",

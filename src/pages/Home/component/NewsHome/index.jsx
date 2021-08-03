@@ -1,11 +1,10 @@
-import { Alert, List } from 'antd';
+import { Alert, List, message } from 'antd';
 import newsAPI from 'apis/newsAPI';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { GlobalActions } from 'redux/rootAction';
 import styled from 'styled-components';
 import NewsBox from './components/NewsBox';
-
 
 const StyleAlert = styled(Alert)`
   position: fixed;
@@ -23,37 +22,24 @@ const StyleAlert = styled(Alert)`
 function NewsHome(props) {
   const [listNewsData, setListNewsData] = useState([]);
   const [isError, setIsError] = useState(false);
-
   const dispatch = useDispatch();
+
+  const fetchNewsData = async () => {
+    try {
+      const listNewsData = await newsAPI.getAll();
+      setListNewsData(listNewsData);
+      dispatch(GlobalActions.setIsLoading(false));
+    } catch (error) {
+      message.warning(
+        'Something wrong !!! Please try again or check your connection'
+      );
+      setIsError(true);
+    }
+  };
   useEffect(() => {
     dispatch(GlobalActions.setIsLoading(true));
-    const fetchNewsData = async () => {
-      try {
-        const listNewsData = await newsAPI.getAll();
-        setListNewsData(listNewsData);
-        dispatch(GlobalActions.setIsLoading(false));
-      } catch (error) {
-        // message.error('Something Wrong !!! Please check your Connection');
-        setIsError(true);
-      }
-    };
     fetchNewsData();
   }, [dispatch]);
-
-  const listData = [];
-  for (let i = 0; i < 23; i++) {
-    listData.push({
-      href: 'http://ant.design',
-      title: `ant design part ${i}`,
-      avatar:
-        'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-      description:
-        'Ant Design, a design language for background applications, is refined by Ant UED Team.',
-      content:
-        'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.',
-    });
-  }
-
   return (
     <div className="news-home__container">
       {isError && (
@@ -69,9 +55,7 @@ function NewsHome(props) {
         itemLayout="vertical"
         size="large"
         pagination={{
-          onChange: (page) => {
-            console.log(page);
-          },
+          onChange: (page) => {},
           pageSize: 5,
         }}
         dataSource={listNewsData}

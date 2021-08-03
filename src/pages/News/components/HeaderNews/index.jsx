@@ -1,7 +1,7 @@
 import {
   MenuUnfoldOutlined,
   SearchOutlined,
-  UserOutlined
+  UserOutlined,
 } from '@ant-design/icons';
 import { Drawer } from 'antd';
 import React, { useState } from 'react';

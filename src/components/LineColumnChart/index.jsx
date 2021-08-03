@@ -10,7 +10,6 @@ const generateDataOption = (infoCovidHistory, t) => {
     infoCovidHistory.recovered
   ) {
     const listCases = Object.values(infoCovidHistory.cases);
-    const listDeaths = Object.values(infoCovidHistory.deaths);
     const listRecovered = Object.values(infoCovidHistory.recovered);
     const listDate = Object.keys(infoCovidHistory.cases);
     const listDateFormated = listDate.map((item) =>
@@ -80,6 +79,27 @@ const generateDataOption = (infoCovidHistory, t) => {
         backgroundColor:
           Highcharts.defaultOptions.legend.backgroundColor || // theme
           'rgba(255,255,255,0.25)',
+      },
+      plotOptions: {
+        column: {
+          stacking: 'normal',
+        },
+        series: {
+          events: {
+            legendItemClick: function (bla) {
+              if (this.visible) {
+                var count = 0;
+                for (var index in this.chart.series) {
+                  if (this.chart.series[index].visible) {
+                    count = count + 1;
+                    if (count > 1) break;
+                  }
+                }
+                if (count === 1) return false;
+              }
+            },
+          },
+        },
       },
       series: [
         {

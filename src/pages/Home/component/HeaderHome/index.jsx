@@ -9,6 +9,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import Paper from '@material-ui/core/Paper';
 import Popper from '@material-ui/core/Popper';
+import Brightness4Icon from '@material-ui/icons/Brightness4';
+import Brightness7Icon from '@material-ui/icons/Brightness7';
 import { Anchor, Button, Drawer, Dropdown, Menu, Switch } from 'antd';
 import i18next from 'i18next';
 import React, { useEffect, useRef, useState } from 'react';
@@ -17,13 +19,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { GlobalActions } from '../../../../redux/rootAction';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
-import Brightness7Icon from '@material-ui/icons/Brightness7';
 import './HeaderHome.scss';
 
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.pageBackground};
-  transition: 0.3s ease;
+  transition: 0.3s;
 `;
 const StyleLink = styled(Link)`
   color: ${(props) => props.theme.linkColor};
@@ -32,10 +32,10 @@ const StyleLink = styled(Link)`
     border-bottom: #13a8a8 4px solid;
   }
 `;
+
 const StyleGlobalOutlined = styled(GlobalOutlined)`
   color: ${(props) => props.theme.iconColor};
 `;
-
 const StyleDrawer = styled(Drawer)`
   .ant-drawer-wrapper-body {
     background-color: ${(props) => props.theme.pageBackground};
@@ -60,20 +60,15 @@ function HeaderHome(props) {
   const { t } = useTranslation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const history = useHistory();
-
   const dispatch = useDispatch();
-  // const isLoggedIn = useSelector((state) => state.GlobalReducer.isLoggedIn);
   const isLoggedInLocalStorage = localStorage.getItem('isLoggedIn');
   useEffect(() => {
     if (isLoggedInLocalStorage) {
       setIsLoggedIn(true);
     }
   }, [isLoggedInLocalStorage]);
-
   const themeStore = useSelector((state) => state.GlobalReducer.theme);
   const handleLogout = () => {
-    // dispatch(GlobalActions.setIsLoggedIn(false));
-    // dispatch(GlobalActions.resetStoreRedux());
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
   };
@@ -89,7 +84,6 @@ function HeaderHome(props) {
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
-
   const handleChangeLanguage = (language) => {
     i18next.changeLanguage(language);
     setOpen(false);
@@ -99,22 +93,17 @@ function HeaderHome(props) {
       event.preventDefault();
       setOpen(false);
     }
-  }
-
-  // return focus to the button when we transitioned from !open -> open
+  } // return focus to the button when we transitioned from !open -> open
   const prevOpen = useRef(open);
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
-
     prevOpen.current = open;
   }, [open]);
-
   const handleThemeChange = () => {
     dispatch(GlobalActions.setTheme(themeStore === 'light' ? 'dark' : 'light'));
   };
-
   const menu = (
     <StyleMenu>
       <Menu.Item onClick={() => i18next.changeLanguage('en')}>En</Menu.Item>
@@ -130,7 +119,6 @@ function HeaderHome(props) {
           onClick={() => history.push('/')}
         />
       </div>
-
       <div className="mobileHidden">
         <Anchor className="header-home__nav">
           <StyleLink to="/news" className="header-home__link">
@@ -153,7 +141,6 @@ function HeaderHome(props) {
           </StyleLink>
         </Anchor>
       </div>
-
       <Switch
         checkedChildren={
           <Brightness4Icon fontSize="small" style={{ display: 'flex' }} />
@@ -164,10 +151,8 @@ function HeaderHome(props) {
         onChange={handleThemeChange}
         checked={themeStore === 'dark'}
       />
-
       <div className="mobileHidden">
         <div className="header-home__user">
-          {/* <GlobalOutlined onClick={handleClick} /> */}
           <Dropdown
             overlay={menu}
             arrow
@@ -209,7 +194,6 @@ function HeaderHome(props) {
           )}
         </div>
       </div>
-
       <div className="mobileVisible ">
         <div className="header-home__user-mobile">
           <Button
@@ -249,7 +233,6 @@ function HeaderHome(props) {
                       Vi
                     </MenuItem>
                   </MenuList>
-                  {/* </ClickAwayListener> */}
                 </Paper>
               </Grow>
             )}
@@ -284,7 +267,6 @@ function HeaderHome(props) {
                 {t('home_header_contact')}
               </StyleLink>
             </Anchor>
-
             <div className="header-home__user">
               {isLoggedIn ? (
                 <>
@@ -318,5 +300,4 @@ function HeaderHome(props) {
     </Wrapper>
   );
 }
-
 export default HeaderHome;

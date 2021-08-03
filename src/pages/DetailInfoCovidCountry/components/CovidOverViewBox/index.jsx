@@ -1,10 +1,11 @@
 import { FacebookOutlined, TwitterOutlined } from '@ant-design/icons';
-import { Col, Row, Spin } from 'antd';
+import { Col, Row } from 'antd';
+import LoadingSpin from 'components/LoadingSpin';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import './CovidOverViewBox.scss';
-import styled from 'styled-components';
 import CountUp from 'react-countup';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+import './CovidOverViewBox.scss';
 
 const StyleTwitterOutlined = styled(TwitterOutlined)`
   color: ${(props) => props.theme.twitterIconColor};
@@ -17,11 +18,7 @@ const StyleFacebookOutlined = styled(FacebookOutlined)`
 const StyleText = styled.p`
   color: ${(props) => props.theme.textColor};
 `;
-const StyleSpin = styled(Spin)`
-  display: flex;
-  align-items: center;
-  height: 200px;
-`;
+
 CovidOverViewBox.defaultProps = {
   cases: 0,
   deaths: 0,
@@ -52,7 +49,7 @@ function CovidOverViewBox(props) {
             <div className="covid-overview-box__info">
               <div className="covid-overview-box__info-header">
                 {isLocalLoading ? (
-                  <StyleSpin />
+                  <LoadingSpin height={'200px'} />
                 ) : (
                   <h3>
                     <img src={countryInfo?.flag} alt="flag country" />
@@ -61,14 +58,12 @@ function CovidOverViewBox(props) {
                     </StyleText>
                   </h3>
                 )}
-
                 <StyleText>
                   {t('share')}:
                   <StyleTwitterOutlined className="covid-overview-box__info-header-icon" />
                   <StyleFacebookOutlined className="covid-overview-box__info-header-icon" />
                 </StyleText>
               </div>
-
               <Row
                 gutter={[48, 48]}
                 className="covid-overview-box__info-content"
@@ -124,4 +119,4 @@ function CovidOverViewBox(props) {
   );
 }
 
-export default CovidOverViewBox;
+export default React.memo(CovidOverViewBox);

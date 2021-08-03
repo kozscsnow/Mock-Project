@@ -3,6 +3,7 @@
     "language": "Language",
     "overview": "Overview",
     "share": "Share",
+    "setting":"Setting",
     "data_table": "Data Table",
     "confirmed": "Confirmed",
     "cases": "Cases",
@@ -18,6 +19,9 @@
     "today_recovered": "Today Recovered",
     "today_deaths": "Today Deaths",
     "country": "Country",
+
+    "pending_development_tittle":"Some thing wrong !!!",
+    "pending_development_sub-tittle":"Sorry, you are not authorized to access this page.",
 
     "login": "Login",
     "login_user-name": "User Name",

@@ -8,10 +8,11 @@ const TextStyle = styled.p`
 
 const Wrapper = styled.div`
   background: ${(props) => props.theme.backgroundColor};
+  transition: 0.3s;
 `;
 function FooterHome(props) {
   return (
-    <Wrapper className="footer-home__container">
+    <Wrapper className="footer-home__container container">
       <img src="./images/logo/reactjs-icon.svg" alt="" />
       <TextStyle>Nguyen Nhat Khanh</TextStyle>
     </Wrapper>
