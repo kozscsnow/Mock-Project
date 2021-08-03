@@ -25,9 +25,9 @@ const StyleProgress = styled(Progress)`
     color: ${(props) => props.theme.textColor};
   }
 `;
-const StyleHomeChart = styled.div`
-  background: ${(props) => props.theme.backgroundColor};
-`;
+// const StyleHomeChart = styled.div`
+//   background: ${(props) => props.theme.backgroundColor};
+// `;
 
 IntroHome.defaultProps = {
   cases: 0,
@@ -183,8 +183,8 @@ function IntroHome(props) {
       <br />
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box">
-            <StyleHomeChart className="intro-home__chart background-img">
+          <div className="border-box no-padding">
+            <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_cases-per-one-million')}</h5>
                 <p className="text-large-size confirmed">
@@ -195,11 +195,11 @@ function IntroHome(props) {
                   />
                 </p>
               </div>
-            </StyleHomeChart>
+            </div>
           </div>
         </Col>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box">
+          <div className="border-box no-padding">
             <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_recovered-per-one-million')}</h5>
@@ -215,7 +215,7 @@ function IntroHome(props) {
           </div>
         </Col>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box">
+          <div className="border-box no-padding">
             <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_deaths-per-one-million')}</h5>

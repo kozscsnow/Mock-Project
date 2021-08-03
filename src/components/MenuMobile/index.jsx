@@ -13,6 +13,16 @@ const StyleMenu = styled(Menu)`
   min-width: 60px;
 
   text-align: center;
+  background: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.textColor};
+  border: none;
+
+  .ant-menu-item:active.ant-menu-submenu-title:active {
+    background: ${(props) => props.theme.backgroundColor};
+  }
+  .ant-menu-item-selected .ant-menu:not(.ant-menu-horizontal) {
+    background: none;
+  }
 `;
 const StyleMenuFoldOutlined = styled(MenuFoldOutlined)`
   color: ${(props) => props.theme.iconColor};
@@ -20,6 +30,14 @@ const StyleMenuFoldOutlined = styled(MenuFoldOutlined)`
 `;
 const StyleDrawer = styled(Drawer)`
   color: ${(props) => props.theme.textColor};
+  .ant-drawer-body,
+  .ant-drawer-header,
+  .ant-drawer-title,
+  .ant-drawer-close {
+    border: none;
+    background: ${(props) => props.theme.backgroundColor};
+    color: ${(props) => props.theme.textColor};
+  }
 `;
 function MenuMobile(props) {
   const [visible, setVisible] = useState(false);
@@ -50,7 +68,7 @@ function MenuMobile(props) {
         style={{ textAlign: 'center' }}
       >
         <StyleMenu key="menu">
-          <Menu.Item key="menu item 1">
+          <li key="menu item 1">
             <Switch
               checkedChildren={
                 <Brightness4Icon fontSize="small" style={{ display: 'flex' }} />
@@ -61,7 +79,7 @@ function MenuMobile(props) {
               onChange={handleThemeChange}
               checked={themeStore === 'dark'}
             />
-          </Menu.Item>
+          </li>
           <Menu.Item
             key="menu item 2"
             onClick={() => i18next.changeLanguage('en')}

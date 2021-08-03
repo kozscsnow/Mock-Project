@@ -52,8 +52,12 @@ body {
 }
 .border-box {
   padding: 10px;
-  border: #ccc 1px solid;
+  border: #ccc 1.5px solid;
   border-radius: 6px;
+  overflow: hidden;
+}
+.border-box.no-padding {
+  padding: 0px;
 }
 
 @media screen and (max-width: 992px) {
