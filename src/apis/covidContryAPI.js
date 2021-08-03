@@ -1,6 +1,5 @@
 import { axiosClientCovid } from './axiosClient';
 
-const urlParam = 'countries';
 const covidContryAPI = {
   getAll(country, params) {
     const url = `/countries/${country}`;

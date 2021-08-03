@@ -2,7 +2,7 @@ import {
   GlobalOutlined,
   LogoutOutlined,
   MenuFoldOutlined,
-  UserOutlined
+  UserOutlined,
 } from '@ant-design/icons';
 import Grow from '@material-ui/core/Grow';
 import MenuItem from '@material-ui/core/MenuItem';

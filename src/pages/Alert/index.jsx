@@ -1,4 +1,3 @@
-import LoadingSpin from 'components/LoadingSpin';
 import PendingDevelopment from 'components/PendingDevelopment';
 import React from 'react';
 

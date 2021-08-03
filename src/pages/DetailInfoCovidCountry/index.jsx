@@ -9,8 +9,6 @@ import covidCountriesAPI from '../../apis/covidCoutriesAPI';
 import CovidOverViewBox from './components/CovidOverViewBox';
 import FilterDayBox from './components/FilterDayBox';
 import './DetailInfoCovidCountry.scss';
-import { Anchor } from 'antd';
-const { Link } = Anchor;
 
 function DetailInfoCovidCountry(props) {
   const [infoCovidCountry, setInfoCovidCountry] = useState('');
