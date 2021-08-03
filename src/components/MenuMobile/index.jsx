@@ -67,8 +67,8 @@ function MenuMobile(props) {
         key="right"
         style={{ textAlign: 'center' }}
       >
-        <StyleMenu key="menu">
-          <li key="menu item 1">
+        <StyleMenu key="menu" selectable={false}>
+          <Menu.Item key="menu item 1">
             <Switch
               checkedChildren={
                 <Brightness4Icon fontSize="small" style={{ display: 'flex' }} />
@@ -79,7 +79,7 @@ function MenuMobile(props) {
               onChange={handleThemeChange}
               checked={themeStore === 'dark'}
             />
-          </li>
+          </Menu.Item>
           <Menu.Item
             key="menu item 2"
             onClick={() => i18next.changeLanguage('en')}
