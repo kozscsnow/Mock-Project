@@ -40,7 +40,7 @@ function MainContent(props) {
     <div className="main-content__container">
       <Row gutter={[16, 16]}>
         <Col xs={24}>
-          <div className="border-box no-padding">
+          <div className="border-box ">
             <GroupColumnChart
               infoCovidHistory={infoCovidHistory}
               type={'all'}
@@ -51,7 +51,7 @@ function MainContent(props) {
       <br />
       <Row gutter={[16, 16]} className="mobileHidden">
         <Col xs={24}>
-          <div className="border-box no-padding">
+          <div className="border-box ">
             <LineColumnChart infoCovidHistory={infoCovidHistory} type={'all'} />
           </div>
         </Col>

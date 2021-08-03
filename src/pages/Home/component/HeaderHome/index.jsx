@@ -32,6 +32,7 @@ const StyleLink = styled(Link)`
     border-bottom: #13a8a8 4px solid;
   }
 `;
+
 const StyleGlobalOutlined = styled(GlobalOutlined)`
   color: ${(props) => props.theme.iconColor};
 `;

@@ -183,7 +183,7 @@ function IntroHome(props) {
       <br />
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box no-padding">
+          <div className="border-box ">
             <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_cases-per-one-million')}</h5>
@@ -199,7 +199,7 @@ function IntroHome(props) {
           </div>
         </Col>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box no-padding">
+          <div className="border-box ">
             <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_recovered-per-one-million')}</h5>
@@ -215,7 +215,7 @@ function IntroHome(props) {
           </div>
         </Col>
         <Col xs={24} sm={24} lg={8}>
-          <div className="border-box no-padding">
+          <div className="border-box ">
             <div className="intro-home__chart background-img">
               <div>
                 <h5>{t('home_intro_deaths-per-one-million')}</h5>
