@@ -108,6 +108,7 @@ function Dashboard(props) {
                 )}
               </Col>
             </Row>
+            <br />
             <Row>
               <Col xs={24} lg={12}>
                 <LineChart infoCovidHistory={infoCovidHistory} type={'all'} />
@@ -121,6 +122,7 @@ function Dashboard(props) {
                 />
               </Col>
             </Row>
+            <br />
             <Row>
               <Col xs={24} lg={8}>
                 <ColumnChart
@@ -141,6 +143,7 @@ function Dashboard(props) {
                 />
               </Col>
             </Row>
+            <br />
             <Row className="mobileHidden">
               <Col xs={24} lg={24}>
                 <LineColumnChart
