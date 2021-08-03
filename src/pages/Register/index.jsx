@@ -1,48 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import { GlobalActions } from '../../redux/rootAction';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import RegisForm from './components/RegisForm';
 import SuccessRegisBox from './components/SuccessRegisBox';
 import RegisterStyles from './Register.module.css';
-import styles from '../../assets/moduleCss/form.module.css';
+import './Register.scss';
 
 function Register(props) {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const { t } = useTranslation();
   const [isRegisSuccess, setIsRegisSuccess] = useState(false);
-  //Fake Loading
-  useEffect(() => {
-    const loadingFake = setTimeout(() => {
-      dispatch(GlobalActions.setIsLoading(false));
-    }, 500);
-    return () => {
-      clearTimeout(loadingFake);
-    };
-  });
 
   const handleRegisSuccess = () => {
     setIsRegisSuccess(!isRegisSuccess);
   };
 
   return (
-    <>
-      <div>
-        {/* <SuccessRegisBox /> */}
-        {/* <button onClick={handleButtonLoginClick}>Log in</button> */}
-
+    <div className="register__wrapper">
+      <div className="register__content">
         {isRegisSuccess ? (
           <SuccessRegisBox onRegisSuccess={handleRegisSuccess} />
         ) : (
           <div>
-            <Link to="/login" className={RegisterStyles.regisButtonLogin}>
-              Log in
-            </Link>
+            <div className="register__image">
+              <img
+                src="./images/register-image.svg"
+                alt="register"
+                className="register__image-main"
+              />
+            </div>
             <RegisForm onRegisSuccess={handleRegisSuccess} />
+            <Link to="/login" className={RegisterStyles.regisButtonLogin}>
+              {t('login')}
+            </Link>
+            <img
+              src="./images/wavesOpacity.svg"
+              alt="register"
+              className="register__image-wave"
+            />
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,0 +1,16 @@
+.detail-info-covid-country {
+  &__pretto-slider {
+    width: 80%;
+    margin: 0px auto;
+
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .detail-info-covid-country {
+    &__pretto-slider {
+      width: 50%;
+    }
+  }
+}

@@ -1,43 +1,41 @@
-import React, { useEffect } from 'react';
+import { message } from 'antd';
+import covidAllAPI from 'apis/covidAllAPI';
+import WrapperPage from 'HOCs/WrapperPage';
+import IntroHome from 'pages/Home/component/IntroHome';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import HeaderHome from '../../components/HeaderHome';
-import { GlobalActions } from '../../redux/rootAction';
-import { Breadcrumb, Layout, Menu } from 'antd';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-import SidebarHome from '../../components/SidebarHome';
+import MainContent from './component/MainContent';
+import NewsHome from './component/NewsHome';
+import './Home.scss';
 
-const { Header, Content, Footer, Sider } = Layout;
 function HomePage(props) {
   const dispatch = useDispatch();
-  // fake loading
+  const [infoCovidAll, setInfoCovidAll] = useState({});
+  const [isLocalLoading, setIsLocalLoading] = useState(true);
+
+  // Fetch Covid All
+  const fetchCovidAll = async () => {
+    try {
+      const InfoCovidAll = await covidAllAPI.getAll();
+      setInfoCovidAll(InfoCovidAll);
+      setIsLocalLoading(false);
+    } catch (error) {
+      message.warning(
+        'Something wrong !!! Please try again or check your connection'
+      );
+    }
+  };
   useEffect(() => {
-    dispatch(GlobalActions.setIsLoading(true));
-    const loadingFake = setTimeout(() => {
-      dispatch(GlobalActions.setIsLoading(false));
-    }, 500);
-    return () => {
-      clearTimeout(loadingFake);
-    };
-  });
+    setIsLocalLoading(true);
+    fetchCovidAll();
+  }, [dispatch]);
   return (
-    <div className="container">
-      {/* <Header /> */}
-      <Layout>
-        <HeaderHome />
-        <Layout>
-          <SidebarHome />
-          <Content style={{ padding: '0 50px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
-              <Breadcrumb.Item>Covid</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ minHeight: '280px', padding: '24px', background: '#fff' }}>Content</div>
-          </Content>
-        </Layout>
-        <Footer>Footer</Footer>
-      </Layout>
+    <div className="home-body container">
+      <IntroHome infoCovidAll={infoCovidAll} isLocalLoading={isLocalLoading} />
+      <MainContent />
+      <NewsHome />
     </div>
   );
 }
 
-export default HomePage;
+export default WrapperPage(HomePage);

@@ -1,22 +1,16 @@
 import { FastField, Form, Formik } from 'formik';
-import React, { useRef } from 'react';
-import InputField from '../../../../custom-fields/InputField';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
 import styles from '../../../../assets/moduleCss/form.module.css';
+import InputField from '../../../../custom-fields/InputField';
+import { FormRegisterActions } from '../../../../redux/rootAction';
 import regisFormStyles from './RegisForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  FormRegisterActions,
-  GlobalActions,
-} from '../../../../redux/rootAction';
 
 function RegisForm(props) {
+  const { t } = useTranslation();
   const { onRegisSuccess } = props;
-  const storeAccountRef = useRef([]);
-  const storeAccount = useSelector(
-    (state) => state.FormRegisterReducer.storeAccount
-  );
   const dispatch = useDispatch();
 
   const initialValues = {
@@ -41,18 +35,24 @@ function RegisForm(props) {
 
   const handleFormRegisSubmit = (values) => {
     const { username, password } = values;
-
     dispatch(FormRegisterActions.getRegisterAccount({ username, password }));
-    console.log(storeAccount);
-    // storeAccountRef.current.push({ username, password });
-    // console.log(storeAccountRef.current);
-    // storeAccount.push({ username, password });
-    // localStorage.setItem(
-    //   'storeAccount',
-    //   JSON.stringify(storeAccountRef.current)
-    // );
     localStorage.setItem('username', username);
     localStorage.setItem('password', password);
+    const listAccounts = JSON.parse(
+      localStorage.getItem('listAccountsStorage')
+    );
+    if (listAccounts) {
+      const newListAccounts = [...listAccounts, { username, password }];
+      localStorage.setItem(
+        'listAccountsStorage',
+        JSON.stringify(newListAccounts)
+      );
+    } else {
+      localStorage.setItem(
+        'listAccountsStorage',
+        JSON.stringify([{ username, password }])
+      );
+    }
     onRegisSuccess();
   };
   return (
@@ -60,55 +60,51 @@ function RegisForm(props) {
       <div className={regisFormStyles.regisContainer}>
         <div className="form regis-form">
           <div className="form-group form-group-id">
-            {/* {storeAccount}
-            <button onClick={() => dispatch(FormRegisterActions.increase(1))}>
-              click
-            </button> */}
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={handleFormRegisSubmit}
             >
               {(formikProps) => {
-                // const { values, errors, touched } = formikProps;
-                // console.log({ values, errors, touched });
                 return (
                   <Form className={`${styles.form}`}>
-                    <h3 className="text-light">Create Your Account</h3>
+                    <h3 className="text-light">
+                      {t('regis_create-your-account')}
+                    </h3>
                     <FastField
                       name="username"
                       component={InputField}
-                      label="Your User Name"
-                      placeholder="Username"
+                      label={t('regis_your-user-name')}
+                      placeholder={t('regis_enter-your-user-name')}
                     />
                     <FastField
                       name="email"
                       component={InputField}
-                      label="Your Email"
-                      placeholder="Enter Your Email"
+                      label={t('regis_your-email')}
+                      placeholder={t('regis_enter-your-email')}
                     />
                     <FastField
                       name="password"
                       component={InputField}
-                      label="Your Password"
-                      placeholder="Enter Your Password"
+                      label={t('regis_your-password')}
+                      placeholder={t('regis_enter-your-password')}
                       type="password"
                     />
                     <FastField
                       name="confirmPassword"
                       component={InputField}
-                      label="Confirm Your Password"
-                      placeholder="Confirm Your Password"
+                      label={t('regis_confirm-your-password')}
+                      placeholder={t('regis_confirm-your-password')}
                       type="password"
                     />
                     <div className="form-group">
                       <button type="submit" className={styles.button}>
-                        Register
+                        {t('regis_register')}
                       </button>
                     </div>
                     <div className="form-group">
                       <button type="reset" className={styles.button}>
-                        Reset
+                        {t('regis_reset')}
                       </button>
                     </div>
                   </Form>

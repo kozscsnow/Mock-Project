@@ -1,8 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   isLoggedIn: false,
+  isLocalLoading: false,
+  theme: 'light',
 };
 
 const globalSlice = createSlice({
@@ -12,10 +14,15 @@ const globalSlice = createSlice({
     setIsLoading(state, action) {
       state.isLoading = action.payload;
     },
+    setIsLocalLoading(state, action) {
+      state.isLocalLoading = action.payload;
+    },
     setIsLoggedIn(state, action) {
       state.isLoggedIn = action.payload;
     },
-
+    setTheme(state, action) {
+      state.theme = action.payload;
+    },
     resetStoreRedux(state, action) {
       return initialState;
     },

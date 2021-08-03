@@ -1,11 +1,9 @@
 .regisContainer {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 
   margin-top: 20px;
-  /* height: 100vh; */
 }
 
 .regisButtonLogin {
@@ -27,4 +25,15 @@
 }
 .regisButtonLogin:focus {
   outline: none;
+}
+
+@media screen and (min-width: 768px){
+  .regisContainer {
+    margin-top: 150px;
+  }
+}
+@media screen and (min-width: 1440px){
+  .regisContainer {
+    margin-top: 120px;
+  }
 }

@@ -1,91 +1,124 @@
-import React from 'react';
+import Highcharts from 'highcharts';
 // import HighChartsReact from 'highcharts-react-official';
 import HighchartsReact from 'highcharts-react-official';
-import Highcharts from 'highcharts';
+import moment from 'moment';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-const generateOptions = () => {
-  return {
-    chart: {
-      plotBackgroundColor: null,
-      plotBorderWidth: null,
-      plotShadow: false,
-      type: 'pie',
-    },
-    title: {
-      text: 'Browser market shares in January, 2018',
-    },
-    tooltip: {
-      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
-    },
-    accessibility: {
-      point: {
-        valueSuffix: '%',
+const generateDataOption = (infoCovidHistory, t) => {
+  if (
+    infoCovidHistory.cases &&
+    infoCovidHistory.deaths &&
+    infoCovidHistory.recovered
+  ) {
+    const listCases = Object.values(infoCovidHistory.cases);
+    const listDeaths = Object.values(infoCovidHistory.deaths);
+    const listRecovered = Object.values(infoCovidHistory.recovered);
+    const listDate = Object.keys(infoCovidHistory.cases);
+    const listDateFormated = listDate.map((item) =>
+      moment(item).format('DD/MM/YYYY')
+    );
+
+    const categories = [...listDateFormated];
+    return {
+      title: {
+        text: `${t('line-chart_title-cases')}`,
       },
-    },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: true,
-          format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+      subtitle: {
+        text: `${t('line-chart_sub-title-cases')}`,
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: `${t('line-chart_title-horizontal')}`,
         },
       },
-    },
-    series: [
-      {
-        name: 'Brands',
-        colorByPoint: true,
-        data: [
-          {
-            name: 'Chrome',
-            y: 61.41,
-            sliced: true,
-            selected: true,
+      xAxis: {
+        categories: categories,
+      },
+      colors: ['#FF4757', '#70A1FF', '#FFA502'],
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+      },
+      tooltip: {
+        headerFormat:
+          '<span style="font-size:10px">ngày {point.key}</span><table>',
+        pointFormat:
+          '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+          '<td style="padding:0"><b>{point.y} ca</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true,
+      },
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0,
+        },
+        series: {
+          events: {
+            legendItemClick: function (bla) {
+              if (this.visible) {
+                var count = 0;
+                for (var index in this.chart.series) {
+                  if (this.chart.series[index].visible) {
+                    count = count + 1;
+                    if (count > 1) break;
+                  }
+                }
+                if (count === 1) return false;
+              }
+            },
           },
+        },
+      },
+      series: [
+        {
+          name: `${t('cases')}`,
+          data: [...listCases],
+        },
+        {
+          name: `${t('recovered')}`,
+          data: [...listRecovered],
+        },
+        {
+          name: `${t('deaths')}`,
+          data: [...listDeaths],
+        },
+      ],
+      responsive: {
+        rules: [
           {
-            name: 'Internet Explorer',
-            y: 11.84,
-          },
-          {
-            name: 'Firefox',
-            y: 10.85,
-          },
-          {
-            name: 'Edge',
-            y: 4.67,
-          },
-          {
-            name: 'Safari',
-            y: 4.18,
-          },
-          {
-            name: 'Sogou Explorer',
-            y: 1.64,
-          },
-          {
-            name: 'Opera',
-            y: 1.6,
-          },
-          {
-            name: 'QQ',
-            y: 1.2,
-          },
-          {
-            name: 'Other',
-            y: 2.61,
+            condition: {
+              maxWidth: 500,
+            },
+            chartOptions: {
+              legend: {
+                layout: 'horizontal',
+                align: 'center',
+                verticalAlign: 'bottom',
+              },
+            },
           },
         ],
       },
-    ],
-  };
+    };
+  }
 };
+
 function LineChart(props) {
+  const { t } = useTranslation();
+  const { infoCovidHistory } = props;
   return (
     <div>
-      <HighchartsReact highcharts={Highcharts} options={generateOptions()} />
+      <HighchartsReact
+        highcharts={Highcharts}
+        options={generateDataOption(infoCovidHistory, t)}
+      />
     </div>
   );
 }
 
-export default LineChart;
+export default React.memo(LineChart);

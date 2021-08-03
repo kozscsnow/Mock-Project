@@ -10,7 +10,6 @@ import './SocialMedia.scss';
 function SocialMedia(props) {
   return (
     <div className="social">
-      <p className="social__text">Sign in with social platforms</p>
       <div className="social__media">
         <a href="# " className="social__icon">
           <FacebookOutlined />

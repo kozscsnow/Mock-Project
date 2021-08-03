@@ -6,8 +6,8 @@ const covidCountriesAPI = {
     const url = `/${urlParam}`;
     return axiosClientCovid.get(url, { params });
   },
-  get(id) {
-    const url = `/${urlParam}/${id}`;
+  get(countryName) {
+    const url = `/${urlParam}/${countryName}`;
     return axiosClientCovid.get(url);
   },
   add(data) {

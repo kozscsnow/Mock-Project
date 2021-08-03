@@ -1,6 +1,7 @@
 import { axiosClientNews } from './axiosClient';
 
-const urlParam = `everything?q=google&from=2021-07-01&to=2021-07-01&sortBy=popularity&apiKey=aaf3d9874b944c16baf8f6dee354ad06`;
+// const urlParam = `everything?q=google&from=2021-07-01&to=2021-07-01&sortBy=popularity&apiKey=aaf3d9874b944c16baf8f6dee354ad06`;
+const urlParam = `articles`;
 const newsAPI = {
   getAll(params) {
     const url = `/${urlParam}`;

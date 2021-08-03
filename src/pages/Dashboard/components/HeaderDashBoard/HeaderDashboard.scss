@@ -1,0 +1,54 @@
+.header-dashboard {
+  &__container {
+    margin: 0px 10px 10px;
+    padding-top: 10px;
+  }
+  &__logo {
+    width: 40px;
+  }
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 50px;
+    width: 100%;
+    margin: 0px 10px;
+    padding: 4px;
+    border-radius: 4px;
+    flex: 4;
+  }
+  &__contact {
+    &-icon {
+      cursor: pointer;
+    }
+  }
+  &__text {
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  &__icon {
+    font-size: 30px;
+    margin-left: 4px;
+
+    cursor: pointer;
+  }
+  &__logo {
+    cursor: pointer;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header-dashboard {
+    &__contact {
+      &-icon {
+        font-size: 30px;
+      }
+    }
+  }
+}

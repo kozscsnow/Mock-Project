@@ -1,31 +1,48 @@
+import 'antd/dist/antd.css';
+import LoadingSpin from 'components/LoadingSpin';
 import { createBrowserHistory } from 'history';
-import React from 'react';
+import i18n from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import HttpApi from 'i18next-http-backend';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { initReactI18next } from 'react-i18next';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
 import store from './redux/store';
-import GlobalLoading from './components/GlobalLoading';
-import 'antd/dist/antd.css';
+import reportWebVitals from './reportWebVitals';
+
+i18n
+  .use(initReactI18next)
+  .use(LanguageDetector)
+  .use(HttpApi)
+  .init({
+    detection: {
+      order: ['cookie', 'htmlTag', 'path', 'localStorage', 'subdomain'],
+      caches: ['cookie'],
+    },
+    fallbackLng: 'en',
+    supportedLngs: ['en', 'vi'],
+    backend: {
+      loadPath: '/assets/locales/{{lng}}/translation.json',
+    },
+  });
 
 const history = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <GlobalLoading>
-        <BrowserRouter history={history}>
+  <Suspense fallback={<LoadingSpin height={'100vh'} />}>
+    <React.StrictMode>
+      <Provider store={store}>
+        <Router history={history}>
           <App />
-        </BrowserRouter>
-      </GlobalLoading>
-    </Provider>
-  </React.StrictMode>,
+        </Router>
+      </Provider>
+    </React.StrictMode>
+  </Suspense>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

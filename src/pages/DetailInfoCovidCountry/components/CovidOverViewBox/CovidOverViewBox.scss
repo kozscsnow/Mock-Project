@@ -1,0 +1,63 @@
+.covid-overview-box {
+  &__container {
+    margin: 10px 0px;
+  }
+  &__info {
+    &-header {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+
+      &-icon {
+        cursor: pointer;
+      }
+      img {
+        margin-bottom: 4px;
+      }
+      p {
+        padding: 0px 10px;
+
+        font-size: 16px;
+      }
+    }
+    &-content {
+      display: flex;
+      justify-content: space-around;
+    }
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p {
+        text-align: center;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      h4 {
+        font-weight: 700;
+      }
+    }
+  }
+}
+.confirmed {
+  color: rgb(243, 11, 11);
+}
+.recovered {
+  color: rgb(0, 225, 255);
+}
+.deaths {
+  color: rgb(155, 155, 155);
+}
+
+@media screen and (min-width: 768px) {
+  .covid-overview-box {
+    &__info-header {
+      p {
+        font-size: 24px;
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
-import React from 'react';
-import { FormGroup, Input, Label, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { ErrorMessage } from 'formik';
+import React from 'react';
+import { FormGroup, Input, Label } from 'reactstrap';
 import styles from '../../assets/moduleCss/form.module.css';
 import './InputField.scss';
 
@@ -29,7 +28,7 @@ function InputField(props) {
   const showError = errors[name] && touched[name];
 
   return (
-    <>
+    <div className="input-field__container">
       <FormGroup className={styles.formGroup}>
         {label && (
           <Label id="form-id" for={name} className={styles.label}>
@@ -49,23 +48,12 @@ function InputField(props) {
           invalid={showError}
         ></Input>
         {showError && (
-          <small className="form-valid form-text text-danger">
+          <small className="form-valid form-text input-field__text--danger">
             {errors[name]}
           </small>
         )}
-        {/* <ErrorMessage name={name} /> */}
-        {/* {label && <Label for={name}>{label}</Label>}
-          <Input
-            name={name}
-            id={name}
-            onChange={onChange}
-            value={value}
-            onBlur={onBlur}
-            placeholder={placeholder}
-            disabled={disabled}
-          /> */}
       </FormGroup>
-    </>
+    </div>
   );
 }
 
